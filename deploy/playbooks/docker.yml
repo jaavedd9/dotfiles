@@ -1,0 +1,47 @@
+- name: Install apt-transport-https
+  ansible.builtin.apt:
+    name:
+      # - apt-transport-https # already built in from apt 1.5, debian 11 is 2.2.4
+      - ca-certificates # certificate authorities shipped with mozilla
+      - lsb-release # to query linux distro being used
+      - gnupg
+    state: latest
+    update_cache: true
+
+# - name: Add docker gpg public key to the apt-key ring
+#   ansible.builtin.apt_key:
+#     url: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
+#     state: present
+
+- name: Check if docker gpg key exists in keyring 
+  stat:
+    path: "{{ docker_gpg_key_path }}"
+  register: stat_result
+
+- name: Add docker gpg public key to the apt-key ring
+  shell: "curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o {{ docker_gpg_key_path }}"
+  when: not stat_result.stat.exists
+
+- name: Add repository into sources list
+  ansible.builtin.apt_repository:
+    # repo: "deb [arch={{ ansible_architecture }}] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
+    repo: "deb [arch={{ ansible_architecture }}
+  signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/{{
+  ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
+    state: present
+    filename: docker
+
+- name: Install Docker
+  ansible.builtin.apt:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: latest
+    update_cache: true
+
+- name: adding existing user '{{ workstation_user }}' to group docker
+  user:
+    name: '{{ workstation_user }}'
+    groups: docker
+    append: yes

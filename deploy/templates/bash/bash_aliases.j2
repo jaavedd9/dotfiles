@@ -1,0 +1,62 @@
+# coloring
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# handy
+alias untar='tar -zxvf '
+alias getpass="openssl rand -base64 20"
+alias ipi='ipconfig getifaddr en0'
+alias ipe='curl ipinfo.io/ip'
+alias c='clear'
+
+# alias cdls='cd "$@" && ls'
+cdls() {
+  cd "$1" && ls
+}
+# function cd {
+#     builtin cd "$@" && ls -F
+# }
+
+## get rid of command not found ##
+alias cd..='cd ..'
+# cd to projects
+alias pp='cd {{ workstation_home }}/Code/personal && ls'
+alias wp='cd {{ workstation_home }}/Code/work && ls'
+ 
+## a quick way to get out of current directory ##
+alias ..='cd ..'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+alias .....='cd ../../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../..'
+
+# emacs
+# ref: https://news.ycombinator.com/item?id=9395981
+
+# e/vim/vi launches a terminal-mode client for the Emacs daemon, which only takes a split-second if
+# the daemon is already running.
+# If the daemon isn't running, it gets started automatically by virtue of the empty string being
+# passed with the -a flag,
+# per the man page for emacsclient.
+# open file in existing emacs, xmonad in workspace 1
+alias ea="emacsclient -t -a ''"
+
+# eb/emacsbare very quickly fires up a "clean" (ignores init files) terminal-mode Emacs instance.
+alias eb="emacsbare"
+
+# ec launches a "gui-mode" (X/quartz) client for the daemon, which is started automatically if isn't running, same as before.
+# launches in the same workspace, xmonad
+alias e="emacsclient -c -n -a ''"
+alias emacsbare="emacs -nw -Q --eval '(load-theme 'misterioso)'"
+# alias vim="e"
+# alias vi="e"
+# alias vi=vim
+
+# dropbox
+alias dropb="HOME=/mnt/data dropbox" # to launch dropbox in any non-home(other) directory
+alias settings="XDG_CURRENT_DESKTOP=GNOME gnome-control-center"

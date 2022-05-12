@@ -1,0 +1,140 @@
+---
+
+- name: Setting up workstation 
+  connection: local
+  gather_facts: yes
+  hosts: workstation
+  become: true
+  vars:
+    nodejs_version_major: 16
+    ansible_managed: "ansible managed"
+    workstation_user: "jaavedkhan"
+    workstation_home: "/home/jaavedkhan"
+    copyq_deb_url: "https://github.com/hluk/CopyQ/releases/download/v6.1.0/copyq_6.1.0_Debian_11-1_amd64.deb"
+    dropbox_deb_url: "https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb"
+    rescuetime_deb_url: "https://www.rescuetime.com/installers/rescuetime_current_amd64.deb"
+    virtualenvs_path: "/home/jaavedkhan/.virtualenvs"
+    docker_gpg_key_path: "/usr/share/keyrings/docker-archive-keyring.gpg"
+    tmux_plugin_manager_path: "/home/jaavedkhan/.tmux/plugins/tpm"
+    workstation_user_personal_private_key_path: "/home/jaavedkhan/.ssh/jaavedkhan_p"
+    workstation_user_work_private_key_path: "/home/jaavedkhan/.ssh/jaavedkhan"
+    compton_config_path: "/home/jaavedkhan/.config/compton.conf"
+
+  tasks:
+    - name: Update and upgrade apt packages
+      become: true
+      apt:
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: 86400 #One day
+      tags: apt
+      
+    - name: Create code organization directories 
+      file:
+        path: "{{ item }}" 
+        state: directory
+        owner: "{{ workstation_user }}"
+        group: "{{ workstation_user }}"
+      with_items:
+        - "{{ workstation_home }}/Code/personal"
+        - "{{ workstation_home }}/Code/work"
+        - "{{ workstation_home }}/Code/learning"
+        - "{{ workstation_home }}/Code/personal/apps"
+        - "{{ workstation_home }}/Code/personal/configs"
+        - "{{ workstation_home }}/Code/work/apps"
+        - "{{ workstation_home }}/Code/work/configs"
+        - "{{ workstation_home }}/Code/work/docs"
+        - "{{ workstation_home }}/Code/work/cmss"
+
+    - name: apt packages
+      import_tasks: playbooks/apt_packages.yml
+      tags: apt
+
+    - name: python installations and configs
+      import_tasks: playbooks/python.yml
+      tags: python
+
+    - name: install nodejs
+      import_tasks: playbooks/nodejs.yml
+      tags: nodejs
+
+    - name: install snapd and snaps
+      import_tasks: playbooks/snap.yml 
+      tags: snap
+
+    - name: install docker 
+      import_tasks: playbooks/docker.yml 
+      tags: docker
+
+    - name: install and config tmux 
+      import_tasks: playbooks/tmux.yml 
+      tags: tmux
+
+    - name: configure dotfiles
+      import_tasks: playbooks/dotfiles.yml
+      tags: dotfiles
+    
+  handlers:
+    - name: reload tmux configs 
+      command: "tmux source-file {{ workstation_home }}/.tmux.conf"
+      become: yes
+      become_user: "{{ workstation_user }}"
+
+    - name: reload compton 
+      shell: "pkill compton; compton --config {{ compton_config_path }} &"
+      become: yes
+      become_user: "{{ workstation_user }}"
+      # with_items:
+      #   - "pkill compton"
+      #   - "compton --config {{ compton_config_path }}"
+
+    - name: source profile 
+      shell: "source {{ workstation_home }}/.profile"
+      become: yes
+      become_user: "{{ workstation_user }}"
+      args:
+        executable: /bin/bash
+
+    - name: source zprofile 
+      shell: "source {{ workstation_home }}/.zprofile"
+      become: yes
+      become_user: "{{ workstation_user }}"
+      args:
+        executable: /usr/bin/zsh
+
+    - name: reload xmonad
+      shell: "xmonad --restart" 
+      become: yes
+      become_user: "{{ workstation_user }}"
+      args:
+        executable: /usr/bin/zsh
+
+    - name: reload xresources
+      shell: "xrdb -merge {{ workstation_home }}/.Xresources" 
+      become: yes
+      become_user: "{{ workstation_user }}"
+      args:
+        executable: /usr/bin/zsh
+
+  roles:
+    - role: gantsign.oh-my-zsh
+      oh_my_zsh_install: yes
+      users:
+        - username: "{{ workstation_user }}"
+      oh_my_zsh_theme: jonathan
+      oh_my_zsh_plugins: [git zsh-completions zsh-autosuggestions zsh-syntax-highlighting sudo
+  web-search copydir copyfile copybuffer dirhistory ansible colorize  debian django z ssh-agent
+  ripgrep python mercurial emacs docker fzf vi-mode kubectl zsh-fzf-history-search]
+      tags: zsh
+
+    - role: githubixx.kubectl 
+      # Owner of "kubectl" binary
+      kubectl_owner: "{{ workstation_user }}"
+      # Group of "kubectl" binary
+      kubectl_group: "{{ workstation_user }}"
+
+  post_tasks:
+  # run after the roles and tasks
+    - name: append to .zshrc
+      blockinfile: path="{{ workstation_home }}/.zshrc" block="{{lookup('template', 'bash/file-to-append-zshrc.j2')}}" create=yes state=present
+      notify: source zprofile

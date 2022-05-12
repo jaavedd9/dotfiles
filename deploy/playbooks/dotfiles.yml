@@ -1,0 +1,154 @@
+- name: link emacs dotfiles
+  file:
+    src: "{{ workstation_home }}/Code/personal/configs/dotfiles/emacs.d"
+    dest: "{{ workstation_home }}/.emacs.d"
+    state: link
+    owner: "{{ workstation_user }}"
+  tags: emacs
+  
+- name: create rofi and copyq config dirs 
+  file:
+    path: "{{ workstation_home }}/.config/{{ item }}"
+    state: directory
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+  with_items:
+    - rofi
+    - copyq
+
+- name: create data directory to mount 
+  file:
+    path: "/mnt/data"
+    state: directory
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+
+- name: install oh my zsh plugins
+  script: "{{ workstation_home }}/Code/personal/configs/dotfiles/deploy/files/zsh-plugins-installation.sh"
+  become: true
+  become_user: "{{ workstation_user }}"
+  tags: zsh
+  ignore_errors: true
+
+- name: xmodap to remap caps and control keys
+  template:
+    src: xmodmap.j2
+    dest: "{{ workstation_home }}/.Xmodmap"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+
+- name: xresources
+  template:
+    src: xresources.j2
+    dest: "{{ workstation_home }}/.Xresources"
+    owner: "{{ workstation_user }}"
+  notify: reload xresources
+
+- name: inputrc
+  template:
+    src: inputrc.j2
+    dest: "{{ workstation_home }}/.inputrc"
+    owner: "{{ workstation_user }}"
+
+- name: delete existing profile
+  file:
+    path: "{{ workstation_home }}/.profile"
+    state: absent
+    
+- name: create bash profile 
+  template:
+    src: "bash/profile.j2"
+    dest: "{{ workstation_home }}/.profile"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+  notify: source profile
+
+- name: create bashrc 
+  template:
+    src: "bash/bashrc.j2"
+    dest: "{{ workstation_home }}/.bashrc"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+
+- name: create bash env 
+  template:
+    src: "bash/env.j2"
+    dest: "{{ workstation_home }}/.env"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+  notify: source profile
+
+- name: create bash aliases 
+  template:
+    src: "bash/bash_aliases.j2"
+    dest: "{{ workstation_home }}/.bash_aliases"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+  notify: source profile
+
+- name: create zsh zprofile  
+  template:
+    src: "bash/zprofile.j2"
+    dest: "{{ workstation_home }}/.zprofile"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+  notify: source zprofile
+
+- name: link copyq config  
+  template:
+    src: "copyq.conf.j2"
+    dest: "{{ workstation_home }}/.config/copyq/copyq.conf"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+
+- name: rofi config
+  template:
+    src: config.rasi.j2
+    dest: "{{ workstation_home }}/.config/rofi/config.rasi"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+
+- name: make sure xmonad config directory  exists
+  file:
+    path: "{{ workstation_home }}/.xmonad"
+    state: directory
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+
+- name: xmonad config
+  template:
+    src: xmonad.hs.j2
+    dest: "{{ workstation_home }}/.xmonad/xmonad.hs"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+  notify: reload xmonad
+
+- name: xmonad xession desktop
+  template:
+    src: xmonad.desktop.j2
+    dest: /usr/share/xsessions/xmonad.desktop
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+
+- name: xmobar config
+  copy:
+    src: xmobar
+    dest: "{{ workstation_home }}/.config"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+  notify: reload xmonad
+
+- name: ssh config
+  template:
+    src: ssh_config.j2
+    dest: "{{ workstation_home }}/.ssh/config"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+
+- name: compton config
+  template:
+    src: compton.conf.j2
+    dest: "{{ workstation_home }}/.config/compton.conf"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+  notify: reload compton

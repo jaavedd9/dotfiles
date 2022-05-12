@@ -1,0 +1,22 @@
+- name: Add(makesure) loop kernel module is loaded
+  modprobe:
+    name: loop
+    state: present
+    # params: 'max_loop=255'
+
+- name: install snapd
+  apt:
+    name: snapd
+
+- name: install snap packages 
+  command: "snap install {{ item }}" 
+  with_items:
+    - "emacs --classic"
+    - "maildir-utils"       
+    - remmina
+    - slack
+    - teams
+    - pomatez # pomodoro timer which can force you to take a break
+
+
+    

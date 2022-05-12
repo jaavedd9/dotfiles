@@ -1,0 +1,94 @@
+# Git ignore file
+### emacs
+# Emacs temp. files
+\#*\#
+*~
+.#*
+emacs.d/tramp
+
+# ELC
+*.elc
+
+# Packages installed & byte-compiled by elpa
+emacs.d/elpa/
+
+# Graphene's geometry details
+emacs.d/.graphene-geometry
+
+# DS_Store
+emacs.d/.DS_Store
+
+# Emacs cache
+emacs.d/cache/
+#bookmarks
+
+# Private stuff
+emacs.d/var/
+
+# Emacs server dir
+emacs.d/server/
+
+# Autocomplete history and other dbs
+emacs.d/ac-comphist.dat
+emacs.d/semanticdb/
+
+# Always keep .gitignore
+!.gitignore
+
+# Org-mode
+emacs.d/.org-id-locations
+emacs.d/*_archive
+
+# Emacs-W3
+emacs.d/url/
+
+# Flycheck
+emacs.d/flycheck_*
+
+emacs.d/.docsets/*
+emacs.d/.cache/*
+emacs.d/projectile.cache
+emacs.d/session.*
+emacs.d/#eshell/*
+emacs.d/emacs.d/straight/*
+emacs.d/company-statistics-cache.el
+emacs.d/.python-environments/*
+emacs.d/transient/*
+emacs.d/recentf
+emacs.d/.emacs.desktop
+emacs.d/.emacs.desktop.lock
+emacs.d/projectile-bookmarks.eld
+emacs.d/helm-adaptive-history
+emacs.d/auto-save-list/*
+emacs.d/elpy/*
+emacs.d/custom.el
+emacs.d/eshell/*
+emacs.d/quelpa/*
+emacs.d/site-lisp/*
+emacs.d/devdocs-browser/*
+emacs.d/eln-cache/*
+emacs.d/org-roam.db
+emacs.d/.lsp-session*
+emacs.d/.dap-breakpoints
+emacs.d/emacs-custom.el
+# projectiles files
+
+# directory configuration
+emacs.d/.dir-locals.el
+
+# network security
+emacs.d/network-security.data
+
+#straight
+emacs.d/straight/*
+emacs.d/.trello/*
+local-init.el
+
+# vim
+*.swp
+
+# ************* xmonad **************
+xmonad/xmonad.errors
+xmonad/xmonad.o
+xmonad/xmonad-x86_64-linux
+

@@ -1,0 +1,16 @@
+- name: make sure virutenvs directory exist
+  file:
+    path: "{{ virtualenvs_path }}" 
+    state: directory
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+
+- name: install virualenv and wrapper
+  pip:
+    name:
+      - virtualenv
+      - virtualenvwrapper
+      - ansible-lint
+      - hvac # ansible hashi corp vault lookup
+  become: true
+  become_user: "{{ workstation_user }}"

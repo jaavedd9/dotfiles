@@ -1,0 +1,18 @@
+- name: Check if tmux plugin manager exists
+  stat:
+    path: "{{ tmux_plugin_manager_path }}"
+  register: stat_result
+
+- name: install tmux manager
+  command: "git clone https://github.com/tmux-plugins/tpm {{ tmux_plugin_manager_path }}"
+  become: yes
+  become_user: "{{ workstation_user }}"
+  when: not stat_result.stat.exists
+
+- name: tmux config
+  template:
+    src: tmux.conf.j2
+    dest: "{{ workstation_home }}/.tmux.conf"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+  notify: reload tmux configs

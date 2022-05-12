@@ -1,0 +1,93 @@
+-- http://projects.haskell.org/xmobar/
+-- install xmobar with these flags: --flags="with_alsa" --flags="with_mpd" --flags="with_xft"  OR --flags="all_extensions"
+-- you can find weather location codes here: http://weather.noaa.gov/index.html
+
+Config { -- font    = "xft:Ubuntu:weight=bold:pixelsize=14:antialias=true:hinting=true"
+        font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
+       , additionalFonts = [ "xft:Mononoki Nerd Font:pixelsize=11:antialias=true:hinting=true"
+                           , "xft:FontAwesome:pixelsize=13"
+                           ]
+       , bgColor = "#282c34"
+       , fgColor = "#ff6c6b"
+       , position = Static { xpos = 0 , ypos = 0, width = 1920, height = 24 }
+       , lowerOnStart = True
+       , hideOnStart = False
+       , allDesktops = True
+       , persistent = True
+       , iconRoot = "/home/jaavedkhan/.xmonad/xpm/"  -- default: "."
+       , commands = [
+                      -- Time and date
+                      Run Date "<fn=1>\xf133</fn>  %b %d %Y - (%H:%M) " "date" 50
+                      -- Network up and down
+                    , Run Network "enp6s0" ["-t", "<fn=1>\xf0aa</fn>  <rx>kb  <fn=1>\xf0ab</fn>  <tx>kb"] 20
+                      -- Cpu usage in percent
+                    , Run Cpu ["-t", "<fn=1>\xf108</fn>  cpu: (<total>%)","-H","50","--high","red"] 20
+                      -- Ram used number and percent
+                    , Run Memory ["-t", "<fn=1>\xf233</fn>  mem: <used>M (<usedratio>%)"] 20
+                      -- Disk space free
+                    , Run DiskU [("/", "<fn=1>\xf0c7</fn>  hdd: <free> free")] [] 60
+                      -- Runs custom script to check for pacman updates.
+                      -- This script is in my dotfiles repo in .local/bin.
+                    , Run Com "/home/jaavedkhan/.local/bin/pacupdate" [] "pacupdate" 36000
+                      -- Runs a standard shell command 'uname -r' to get kernel version
+                    , Run Com "uname" ["-r"] "" 3600
+                      -- Prints out the left side items such as workspaces, layout, etc.
+                      -- The workspaces are 'clickable' in my configs.
+                    , Run UnsafeStdinReader
+                    -- , Run DynNetwork [] 70 -- network traffic
+                    , Run DynNetwork     [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
+                             , "--Low"      , "1000"       -- units: B/s
+                             , "--High"     , "5000"       -- units: B/s
+                             , "--low"      , "#98b7d1"
+                             , "--normal"   , "#98b7d1"
+                             , "--high"     , "#98b7d1"
+                             ] 70
+                             -- custom JAK
+                      -- cpu activity monitor
+        , Run MultiCpu       [ "--template" , "Cpu: <total0>%|<total1>%"
+                             , "--Low"      , "50"         -- units: %
+                             , "--High"     , "85"         -- units: %
+                             , "--low"      , "#9e9e9e"
+                             , "--normal"   , "#6f90c9"
+                             , "--high"     , "#6f90c9"
+                             ] 80
+        ,  Run StdinReader
+        -- cpu core temperature monitor
+        , Run CoreTemp       [ "--template" , "Temp: <core0>°C|<core1>°C"
+                             , "--Low"      , "70"        -- units: °C
+                             , "--High"     , "80"        -- units: °C
+                             , "--low"      , "#9e9e9e"
+                             , "--normal"   , "#ead581"
+                             , "--high"     , "#6f90c9"
+                             ] 90
+                          
+        -- memory usage monitor
+        , Run Memory         [ "--template" ,"Mem: <usedratio>%"
+                             , "--Low"      , "20"        -- units: %
+                             , "--High"     , "90"        -- units: %
+                             , "--low"      , "#9e9e9e"
+                             , "--normal"   , "#ead581"
+                             , "--high"     , "#f77647"
+                             ] 100
+
+        -- battery monitor
+        , Run Battery        [ "--template" , "Batt: <acstatus>"
+                             , "--Low"      , "10"        -- units: %
+                             , "--High"     , "80"        -- units: %
+                             , "--low"      , "#f77647"
+                             , "--normal"   , "#dde298"
+                             , "--high"     , "#b8e298"
+
+                             , "--" -- battery specific options
+                                       -- discharging status
+                                       , "-o"    , " <left>% <fc=#efaf5b> (<timeleft>) </fc>"
+                                       -- AC "on" status
+                                       , "-O"    , "<fc=#dd5d6c>Currently Charging</fc>"
+                                       -- charged status
+                                       , "-i"    , "<fc=#60e9ff>Fully Charged</fc>"
+                             ] 110
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = " <action=`xdotool key control+alt+g`><icon=haskell_20.xpm/> </action><fc=#666666>  |</fc> %UnsafeStdinReader% }{ <fc=#666666> | </fc> <fc=#ecbe7b> %memory% </fc><fc=#666666> |</fc> | <fc=#98b7d1> %dynnetwork% </fc> |%multicpu% | %coretemp% | %disku% | %date% | %battery% "
+       }

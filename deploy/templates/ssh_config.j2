@@ -1,0 +1,21 @@
+host *
+    controlmaster auto
+    controlpath /tmp/ssh-%r@%h:%p
+
+host github.com 
+    IdentityFile  {{ workstation_user_personal_private_key_path }}
+
+host ksaflyer.com 
+    IdentityFile  {{ workstation_user_personal_private_key_path }}
+    StrictHostKeyChecking  yes
+    ForwardAgent yes
+
+host *.kfupm.edu.sa
+    ForwardAgent yes
+    ServerAliveInterval 240
+    IdentityFile {{ workstation_user_work_private_key_path }} 
+
+host *.test.kfupm.edu.sa
+    ForwardAgent yes
+    ServerAliveInterval 240
+    IdentityFile {{ workstation_user_work_private_key_path }} 

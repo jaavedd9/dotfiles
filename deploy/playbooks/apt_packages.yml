@@ -1,0 +1,71 @@
+- name: Install apt packages 
+  apt:
+    name:
+      # tiling window manager
+      - xmonad
+      - xmobar
+      - slock
+      - libnotify-bin
+      - python3-pip 
+      # terminal
+      - terminator
+      - tmux
+      # video player
+      - vlc
+      # editor
+      - vim
+      - mu4e
+      - zsh
+      - fzf
+      - rxvt-unicode
+      - rofi 
+      - python3-dev 
+      - htop 
+      - tilix 
+      # emacs editor dependencies
+      - gawk
+      - ripgrep
+      - silversearcher-ag
+      # notdeft and xapian dependencies 
+      - xapian-tools 
+      - libtclap-dev
+      - libxapian-dev 
+      # java 
+      - openjdk-17-jre 
+      - openjdk-17-jdk 
+      # tools
+      - xclip
+      - flameshot
+      - thunderbird
+      - okular # pdf reader
+      - arandr # randr with gui for monitor layout 
+      - libtool # for compiling vterm
+      - libtool-bin # for compiling vterm 
+      - cmake  # for vterm
+      # for emacs everywhere
+      - xclip
+      - xdotool
+      # - xprop
+      # - xwininfo
+      - x11-utils
+      - xbindkeys
+      # compton
+      - compton
+      - feh
+      - xautolock
+      # queue
+      - redis-server
+      # non free firmwares
+      - firmware-misc-nonfree
+
+- name: intall copyq 
+  apt:
+    deb: "{{ copyq_deb_url }}"
+
+- name: intall dropbox 
+  apt:
+    deb: "{{ dropbox_deb_url }}"
+
+- name: intall rescuetime 
+  apt:
+    deb: "{{ rescuetime_deb_url }}"
