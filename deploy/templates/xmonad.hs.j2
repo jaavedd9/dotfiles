@@ -135,7 +135,8 @@ myStartupHook = do
           -- spawnOnce "nitrogen --restore &"
           -- spawnOnce "picom --experimental-backends &" -- packman or archlinux distro
           -- spawnOnce "compton &"
-          spawnOnce "compton --config {{ compton_config_path }} &" 
+          -- spawnOnce "compton --config {{ compton_config_path }} &" 
+          spawnOnce "picom &" 
           spawnOnce "feh --randomize --bg-fill /mnt/data/Dropbox/emacs/wallpapers/*"  -- feh set random wallpaper
           spawnOnce "copyq &"
           -- spawnOnce "emacs &"

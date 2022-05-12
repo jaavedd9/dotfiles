@@ -9,7 +9,7 @@
       - python3-pip 
       # terminal
       - terminator
-      - tmux
+      - tmux # <prefix>+I to install tmux plugins
       # video player
       - vlc
       # editor
@@ -51,6 +51,7 @@
       - xbindkeys
       # compton
       - compton
+      - picom  
       - feh
       - xautolock
       # queue
