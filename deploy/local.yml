@@ -19,6 +19,8 @@
     workstation_user_personal_private_key_path: "/home/jaavedkhan/.ssh/jaavedkhan_p"
     workstation_user_work_private_key_path: "/home/jaavedkhan/.ssh/jaavedkhan"
     compton_config_path: "/home/jaavedkhan/.config/compton.conf"
+    vim_dir: "/home/jaavedkhan/.vim"
+    vimrc: "/home/jaavedkhan/.vimrc"
 
   tasks:
     - name: Update and upgrade apt packages
@@ -70,9 +72,14 @@
       import_tasks: playbooks/tmux.yml 
       tags: tmux
 
+    - name: vim configs  
+      import_tasks: playbooks/vim.yml
+      tags: vim
+
     - name: configure dotfiles
       import_tasks: playbooks/dotfiles.yml
       tags: dotfiles
+    
     
   handlers:
     - name: reload tmux configs 

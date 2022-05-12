@@ -145,7 +145,7 @@
     owner: "{{ workstation_user }}"
     group: "{{ workstation_user }}"
 
-- name: compton config
+- name: compton(picom) config
   template:
     src: compton.conf.j2
     dest: "{{ workstation_home }}/.config/compton.conf"
