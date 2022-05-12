@@ -16,11 +16,13 @@ managed packages and configs inclucde
 12. xmobar
 13. rofi
 14. copyq
+15. rescuetime # to track time on OS
+16. wakatime # to track time in Editor(emacs) 
 
 
 # Installation
 1. install debian(11)
-2. install ansible
+2. install ansible with pip
 ```
 pip3 install ansible
 ```
