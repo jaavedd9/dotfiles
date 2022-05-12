@@ -5,6 +5,7 @@ managed packages and configs inclucde
 1. emacs
 2. zsh
 3. python # development packages
+4. java # openjdk
 4. compton # compositor
 5. nodejs
 6. snap
