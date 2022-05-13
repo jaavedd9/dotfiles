@@ -22,9 +22,9 @@ managed packages and configs inclucde
 
 # emacs
 
-make sure "~/.emacs.d" directory is removed, because this playbook will create a sysmlink from this repo's "emacs.d" directory to "~/.emacs.d". 
+make sure "$HOME/.emacs.d" directory is removed, because this playbook will create a sysmlink from this repo's "emacs.d" directory to "$HOME/.emacs.d". 
 
-Reason for creating symlink instead of copying files to "~/.emacs.d" directory is to avoid running ansible playbook after every change in emacs config - which I do frequently.
+Reason for creating symlink instead of copying files to "$HOME/.emacs.d" directory is to avoid running ansible playbook after every change in emacs config - which I do frequently.
 
 
 # Installation
