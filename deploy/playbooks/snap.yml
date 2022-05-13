@@ -3,13 +3,16 @@
     name: loop
     state: present
     # params: 'max_loop=255'
+  become: true
 
 - name: install snapd
   apt:
     name: snapd
+  become: true
 
 - name: install snap packages 
   command: "snap install {{ item }}" 
+  become: true
   with_items:
     - "emacs --classic"
     - "maildir-utils"       

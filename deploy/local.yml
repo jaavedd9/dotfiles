@@ -1,10 +1,8 @@
 ---
-
-- name: Setting up workstation 
+- name: Setting up workstation
   connection: local
   gather_facts: yes
   hosts: workstation
-  become: true
   vars:
     nodejs_version_major: 16
     ansible_managed: "ansible managed"
@@ -23,14 +21,6 @@
     vimrc: "/home/jaavedkhan/.vimrc"
 
   tasks:
-    - name: Update and upgrade apt packages
-      become: true
-      apt:
-        upgrade: yes
-        update_cache: yes
-        cache_valid_time: 86400 #One day
-      tags: apt
-      
     - name: Create code organization directories 
       file:
         path: "{{ item }}" 
@@ -139,6 +129,7 @@
       kubectl_owner: "{{ workstation_user }}"
       # Group of "kubectl" binary
       kubectl_group: "{{ workstation_user }}"
+      become: yes
 
   post_tasks:
   # run after the roles and tasks

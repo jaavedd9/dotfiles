@@ -7,6 +7,7 @@
       - gnupg
     state: latest
     update_cache: true
+  become: true
 
 # - name: Add docker gpg public key to the apt-key ring
 #   ansible.builtin.apt_key:
@@ -17,6 +18,7 @@
   stat:
     path: "{{ docker_gpg_key_path }}"
   register: stat_result
+  
 
 - name: Add docker gpg public key to the apt-key ring
   shell: "curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o {{ docker_gpg_key_path }}"
@@ -30,6 +32,7 @@
   ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
     state: present
     filename: docker
+  become: true
 
 - name: Install Docker
   ansible.builtin.apt:
@@ -39,9 +42,13 @@
       - containerd.io
     state: latest
     update_cache: true
+  become: true
 
 - name: adding existing user '{{ workstation_user }}' to group docker
   user:
     name: '{{ workstation_user }}'
     groups: docker
     append: yes
+  become: true
+
+
