@@ -21,11 +21,10 @@ managed packages and configs inclucde
 16. wakatime # to track time in Editor(emacs) 
 
 # emacs
-make sure "~/.emacs.d" directory is removed, because this playbook will create a sysmlink from this
-repo's "emacs.d" directory to "~/.emacs.d". 
 
-Reason for creating symlink instead of copying files to "~/.emacs.d" directory is to avoid running
-ansible playbook after every change in emacs config - which I do frequently.
+make sure "~/.emacs.d" directory is removed, because this playbook will create a sysmlink from this repo's "emacs.d" directory to "~/.emacs.d". 
+
+Reason for creating symlink instead of copying files to "~/.emacs.d" directory is to avoid running ansible playbook after every change in emacs config - which I do frequently.
 
 
 # Installation
