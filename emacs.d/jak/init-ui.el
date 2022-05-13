@@ -68,6 +68,7 @@
 (blink-cursor-mode -1)
 (tool-bar-mode -1)
 (toggle-scroll-bar -1)
+(scroll-bar-mode -1)
 
 ;; line and column number
 ;; (global-hl-line-mode +1)
