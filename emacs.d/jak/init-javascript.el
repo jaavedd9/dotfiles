@@ -115,5 +115,12 @@
 (use-package js-react-redux-yasnippets
   :ensure t)
 
+(use-package eslintd-fix
+  :ensure t
+  )
+
+(use-package eslint-fix
+  :ensure t
+  )
 
 (provide 'init-javascript)
