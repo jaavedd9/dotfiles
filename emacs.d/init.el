@@ -507,6 +507,13 @@
   ;; https://www.reddit.com/r/emacs/comments/tejte0/undotree_bug_undotree_files_scattering_everywhere/
   )
 
+(defun clean-undo-tree ()
+  (interactive)
+  ;; (setq buffer-undo-tree nil))
+  (undo-tree-discard-history)
+  )
+;; (global-set-key [(control c) u] 'clean-undo-tree)
+
 (use-package 
   paren 
   :straight (:type built-in) 
