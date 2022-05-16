@@ -106,7 +106,7 @@ myEditor = "emacsclient -c -a emacs "  -- Sets emacs as editor for tree select
 -- myEditor = myTerminal ++ " -e vim "    -- Sets vim as editor for tree select
 
 myBorderWidth :: Dimension
-myBorderWidth = 5          -- Sets border width for windows
+myBorderWidth = 2          -- Sets border width for windows
 
 myNormColor :: String
 -- myNormColor   = "#282c34"  -- Border color of normal windows
