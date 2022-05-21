@@ -100,11 +100,12 @@
         executable: /usr/bin/zsh
 
     - name: reload xmonad
-      shell: "xmonad --restart" 
+      shell: "xmonad --restart"
       become: yes
       become_user: "{{ workstation_user }}"
       args:
         executable: /usr/bin/zsh
+      tags: xmonad
 
     - name: reload xresources
       shell: "xrdb -merge {{ workstation_home }}/.Xresources" 

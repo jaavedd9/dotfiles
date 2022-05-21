@@ -114,7 +114,8 @@
     state: directory
     owner: "{{ workstation_user }}"
     group: "{{ workstation_user }}"
-
+  tags: xmonad
+ 
 - name: xmonad config
   template:
     src: xmonad.hs.j2
@@ -122,6 +123,7 @@
     owner: "{{ workstation_user }}"
     group: "{{ workstation_user }}"
   notify: reload xmonad
+  tags: xmonad
 
 - name: xmonad xession desktop
   template:
@@ -129,6 +131,7 @@
     dest: /usr/share/xsessions/xmonad.desktop
     owner: "{{ workstation_user }}"
     group: "{{ workstation_user }}"
+  tags: xmonad
 
 - name: xmobar config
   copy:
@@ -137,6 +140,7 @@
     owner: "{{ workstation_user }}"
     group: "{{ workstation_user }}"
   notify: reload xmonad
+  tags: xmonad
 
 - name: ssh config
   template:
