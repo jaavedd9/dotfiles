@@ -13,6 +13,7 @@
     name:
       # tiling window manager
       - xmonad
+      - libghc-xmonad-contrib-dev
       - xmobar
       - slock
       - libnotify-bin
