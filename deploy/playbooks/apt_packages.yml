@@ -68,6 +68,7 @@
       - redis-server
       # non free firmwares
       - firmware-misc-nonfree
+      - jq # json processor tanzu dependency
 
 - name: intall copyq 
   apt:
