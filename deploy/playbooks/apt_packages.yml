@@ -70,8 +70,11 @@
       # non free firmwares
       - firmware-misc-nonfree
       - jq # json processor tanzu dependency
+      # music
+      - moc
+      - moc-ffmpeg-plugin
 
-- name: intall copyq 
+- name: intall copyq
   apt:
     deb: "{{ copyq_deb_url }}"
 
