@@ -142,6 +142,15 @@
   notify: reload xmonad
   tags: xmonad
 
+- name: conky config copy
+  copy:
+    src: conky
+    dest: "{{ workstation_home }}/.config"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+  notify: reload xmonad
+  tags: conky
+
 - name: ssh config
   template:
     src: ssh_config.j2

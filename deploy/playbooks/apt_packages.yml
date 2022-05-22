@@ -73,6 +73,8 @@
       # music
       - moc
       - moc-ffmpeg-plugin
+      # system info
+      - conky-all
 
 - name: intall copyq
   apt:

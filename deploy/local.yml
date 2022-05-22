@@ -119,7 +119,8 @@
       oh_my_zsh_install: yes
       users:
         - username: "{{ workstation_user }}"
-      oh_my_zsh_theme: jonathan
+      # oh_my_zsh_theme: jonathan
+      oh_my_zsh_theme: spaceship
       oh_my_zsh_plugins: [git zsh-completions zsh-autosuggestions zsh-syntax-highlighting sudo
   web-search copydir copyfile copybuffer dirhistory ansible colorize  debian django z ssh-agent
   ripgrep python mercurial emacs docker fzf vi-mode kubectl zsh-fzf-history-search]
