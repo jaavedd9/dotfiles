@@ -156,3 +156,6 @@
     owner: "{{ workstation_user }}"
     group: "{{ workstation_user }}"
   notify: reload compton
+  tags:
+    - picom
+    - compton
