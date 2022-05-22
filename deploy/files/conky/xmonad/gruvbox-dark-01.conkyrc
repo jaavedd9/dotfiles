@@ -102,32 +102,4 @@ ${color2}${goto 12}${membar 8,254}${color}
 ${goto 12}${voffset 5}${color1}${top_mem name 1}$alignr$color${top_mem mem_res 1}
 ${goto 12}${color1}${top_mem name 2}$alignr$color${top_mem mem_res 2}
 ${goto 12}${color1}${top_mem name 3}$alignr$color${top_mem mem_res 3}
-${voffset 18}${color1}${alignc}${font4}XMONAD KEYBINDINGS${font}${color}
-${color1}${hr}${color}
-${color1}[S]+[RET]${alignr}${color2}open terminal${color}
-${color1}[S]+b${alignr}${color2}open qutebrowser${color}
-${color1}[S]+[SHIFT]+[RET]${alignr}${color2}run prompt${color}
-${color1}[S]+[SHIFT]+c${alignr}${color2}close window${color}
-${color1}[S]+hjkl${alignr}${color2}move win focus${color}
-${color1}[S]+[SHIFT]+hjkl${alignr}${color2}move window${color}
-${color1}[S]+[1-9]${alignr}${color2}switch workspace${color}
-${color1}[S]+[SHIFT]+[1-9]${alignr}${color2}send window${color}
-${color1}[S]+h/l${alignr}${color2}shrink/expand${color}
-${color1}${hr}${color}
-${color1}[S]+e, e${alignr}${color2}launch emacs${color}
-${color1}[S]+e, b${alignr}${color2}ibuffer${color}
-${color1}[S]+e, d${alignr}${color2}dired${color}
-${color1}[S]+e, n${alignr}${color2}elfeed${color}
-${color1}[S]+e, s${alignr}${color2}eshell${color}
-${color1}[S]+e, v${alignr}${color2}vterm${color}
-${color1}${hr}${color}
-${color1}[S]+p, h${alignr}${color2}dm-hub${color}
-${color1}[S]+p, b${alignr}${color2}dm-setbg${color}
-${color1}[S]+p, e${alignr}${color2}dm-confedit${color}
-${color1}[S]+p, m${alignr}${color2}dm-man${color}
-${color1}[S]+p, o${alignr}${color2}dm-bookman${color}
-${color1}[S]+p, s${alignr}${color2}dm-websearch${color}
-${color1}${hr}${color}
-${color1}[S]+[SHIFT]+r${alignr}${color2}restart xmonad${color}
-${color1}[S]+[SHIFT]+q${alignr}${color2}quit xmonad${color}
 ]];
