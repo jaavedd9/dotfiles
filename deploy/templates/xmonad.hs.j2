@@ -102,6 +102,7 @@ myBrowser = "google-chrome-stable --force-device-scale-factor=1.5 &"            
 
 colorScheme :: String
 colorScheme = "gruvbox-dark"
+-- colorScheme = "tomorrow-night"
 
 -- myBrowser = myTerminal ++ " -e lynx " -- Sets lynx as browser for tree select
 
@@ -142,14 +143,14 @@ myStartupHook = do
           spawnOnce "picom &" 
           spawnOnce "feh --randomize --bg-fill /mnt/data/Dropbox/emacs/wallpapers/*"  -- feh set random wallpaper
           spawnOnce "copyq &"
-          -- spawn "killall conky"   -- kill current conky on each restart
+          spawn "killall conky"   -- kill current conky on each restart
           -- spawnOnce "emacs &"
           -- spawnOnce "dropbox start &" -- for laptop start manually
           spawnOnce "dropb start &" -- added dropb alias in ~/.profile to move dropbox to a different location
          -- spawnOnce "python3 /opt/thefanclub/overgrive/overgrive &" -- overgrive
           spawnOnce "nm-applet &"
           spawnOnce "volumeicon &"
-          -- spawn ("sleep 2 && conky -c $HOME/.config/conky/xmonad/" ++ colorScheme ++ "-01.conkyrc")
+          spawn ("sleep 2 && conky -c $HOME/.config/conky/xmonad/" ++ colorScheme ++ "-01.conkyrc")
 
           -- spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22 &"
           -- spawnOnce "/snap/bin/emacs --daemon &" -- emacs daemon for the emacsclient
@@ -158,9 +159,6 @@ myStartupHook = do
           -- spawnOnce "urxvtd -q -o -f &"      -- urxvt daemon for better performance
           spawn "xmodmap ~/.Xmodmap &"
           -- spawn "xrandr --output DisplayPort-0 --primary --auto --output DisplayPort-1 --right-of DisplayPort-0"
-          spawn "dropb start &" -- added dropb alias in ~/.profile to move dropbox to a different location
-
-          spawnOnce "xmodmap ~/.xmodmap &" -- remaps keys as needed
           -- start applications in respective workspaces
           -- emacs already starting auto in ws 1
           spawnOn "1" "google-chrome"
