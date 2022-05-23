@@ -79,7 +79,7 @@
       - firmware-iwlwifi
       # bluebooth manager
       - blueman
-
+      
 - name: intall copyq
   apt:
     deb: "{{ copyq_deb_url }}"
