@@ -11,6 +11,7 @@
     copyq_deb_url: "https://github.com/hluk/CopyQ/releases/download/v6.1.0/copyq_6.1.0_Debian_11-1_amd64.deb"
     dropbox_deb_url: "https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb"
     rescuetime_deb_url: "https://www.rescuetime.com/installers/rescuetime_current_amd64.deb"
+    hugo_deb_url: "https://github.com/gohugoio/hugo/releases/download/v0.99.1/hugo_0.99.1_Linux-64bit.deb"
     virtualenvs_path: "/home/jaavedkhan/.virtualenvs"
     docker_gpg_key_path: "/usr/share/keyrings/docker-archive-keyring.gpg"
     tmux_plugin_manager_path: "/home/jaavedkhan/.tmux/plugins/tpm"

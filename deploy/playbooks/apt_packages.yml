@@ -83,11 +83,19 @@
 - name: intall copyq
   apt:
     deb: "{{ copyq_deb_url }}"
+  become: true
 
 - name: intall dropbox
   apt:
     deb: "{{ dropbox_deb_url }}"
+  become: true
 
 - name: intall rescuetime
   apt:
     deb: "{{ rescuetime_deb_url }}"
+  become: true
+
+- name: intall hugo static site generator
+  apt:
+    deb: "{{ hugo_deb_url }}"
+  become: true
