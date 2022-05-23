@@ -19,6 +19,7 @@ managed packages and configs inclucde
 14. copyq
 15. rescuetime # to track time on OS
 16. wakatime # to track time in Editor(emacs) 
+17. hugo
 
 # emacs
 
