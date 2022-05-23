@@ -810,17 +810,17 @@
 ;; *** From  David Wilson personal configurations ***
 ;; https://github.com/daviwil/dotfiles/blob/master/Emacs.org#auto-reverting-changed-files
 
-(use-package 
-  super-save 
-  :ensure t
-  ;;:defer 1
-  ;;:diminish super-save-mode
-  ;; add integration with ace-window
-  ;; save on find-file
-  :config (super-save-mode +1) 
-  (setq super-save-auto-save-when-idle t) 
-  (setq super-save-remote-files nil) 
-  (setq super-save-exclude '(".gpg")))
+;; (use-package 
+;;   super-save 
+;;   :ensure t
+;;   ;;:defer 1
+;;   ;;:diminish super-save-mode
+;;   ;; add integration with ace-window
+;;   ;; save on find-file
+;;   :config (super-save-mode +1) 
+;;   (setq super-save-auto-save-when-idle t) 
+;;   (setq super-save-remote-files nil) 
+;;   (setq super-save-exclude '(".gpg")))
 
 (require 'super-save)
 (add-to-list 'super-save-triggers 'ace-window)
