@@ -75,6 +75,10 @@
       - moc-ffmpeg-plugin
       # system info
       - conky-all
+      # hp elitebook wifi drivers
+      - firmware-iwlwifi
+      # bluebooth manager
+      - blueman
 
 - name: intall copyq
   apt:
