@@ -62,7 +62,7 @@
       - xbindkeys
       # compton
       - compton
-      - picom  
+      - picom
       - feh
       - xautolock
       # queue
@@ -84,10 +84,10 @@
   apt:
     deb: "{{ copyq_deb_url }}"
 
-- name: intall dropbox 
+- name: intall dropbox
   apt:
     deb: "{{ dropbox_deb_url }}"
 
-- name: intall rescuetime 
+- name: intall rescuetime
   apt:
     deb: "{{ rescuetime_deb_url }}"
