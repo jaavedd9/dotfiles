@@ -42,6 +42,22 @@
     - name: apt packages
       import_tasks: playbooks/apt_packages.yml
       tags: apt
+      # xcape
+    - name: pull xcape
+      ansible.builtin.git:
+        repo: https://github.com/alols/xcape.git
+        dest: /tmp/xcape
+      tags: xcape
+
+    - name: make xcape
+      command: chdir=/tmp/xcape/ make
+      become: true
+      tags: xcape
+
+    - name: make xcape install
+      command: chdir=/tmp/xcape/ make install
+      become: true
+      tags: xcape
 
     - name: python installations and configs
       import_tasks: playbooks/python.yml
@@ -70,7 +86,6 @@
     - name: configure dotfiles
       import_tasks: playbooks/dotfiles.yml
       tags: dotfiles
-    
     
   handlers:
     - name: reload tmux configs 

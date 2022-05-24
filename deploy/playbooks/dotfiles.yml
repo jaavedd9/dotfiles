@@ -36,6 +36,7 @@
     dest: "{{ workstation_home }}/.Xmodmap"
     owner: "{{ workstation_user }}"
     group: "{{ workstation_user }}"
+  tags: xmodmap
 
 - name: xresources
   template:

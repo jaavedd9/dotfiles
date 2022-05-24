@@ -79,6 +79,12 @@
       - firmware-iwlwifi
       # bluebooth manager
       - blueman
+      # packages required for xcape
+      - libxfixes-dev
+      - libxi-dev
+      - libxtst-dev
+      - x11proto-input-dev
+      - x11proto-record-dev
       
 - name: intall copyq
   apt:
