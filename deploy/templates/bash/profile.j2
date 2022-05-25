@@ -41,16 +41,3 @@ source /usr/local/bin/virtualenvwrapper.sh
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
 fi
-
-# HybridModifier and xcape
-# Make tab a superkey when held down, tab when pressed alone
-xmodmap -e "keysym Tab = Hyper_L"
-xmodmap -e "remove mod4 = Hyper_L"
-xmodmap -e "keycode any = Tab"
-xcape -e "Hyper_L=Tab"
-
-# Make backslash a superkey when held down, backslash when pressed alone
-xmodmap -e "keysym backslash = Hyper_R"
-xmodmap -e "remove mod4 = Hyper_R"
-xmodmap -e "keycode any = backslash"
-xcape -e "Hyper_R=backslash"

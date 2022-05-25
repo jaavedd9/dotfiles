@@ -169,3 +169,13 @@
   tags:
     - picom
     - compton
+
+- name: create xsession
+  template:
+    src: xsession.j2
+    dest: "{{ workstation_home }}/.xsession"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+    mode: a+x
+  tags:
+    - xsession
