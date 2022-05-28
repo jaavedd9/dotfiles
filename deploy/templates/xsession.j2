@@ -3,7 +3,10 @@
 # from https://github.com/Zetagon/dotfiles/blob/master/xsession
 # xbindkeys --defaults > $HOME/.xbindkeysrc
 
-# note: no. of times this script is excucted, hitting backslash or tab is created those many clicksk
+
+# kill xcape process, without this everytime this script is run it is multiplying backslash and tab keys 
+# multiple xcape process causing this issue
+pkill xcape
 xbindkeys
 # Log stderror to a file 
 #exec awesome 
@@ -23,3 +26,7 @@ xmodmap -e "keysym backslash = Hyper_R"
 xmodmap -e "remove mod4 = Hyper_R"
 xmodmap -e "keycode any = backslash"
 xcape -e "Hyper_R=backslash"
+
+# to restore pipe when clicking blackslash with shift
+# from here https://github.com/alols/xcape/issues/120
+xmodmap -e "keysym  backslash = backslash bar"
