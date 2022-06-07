@@ -137,7 +137,8 @@
         - username: "{{ workstation_user }}"
       # oh_my_zsh_theme: jonathan
       # oh_my_zsh_theme: spaceship
-      oh_my_zsh_theme: arrow
+      # oh_my_zsh_theme: arrow
+      oh_my_zsh_theme: minimal
       oh_my_zsh_plugins: [git zsh-completions zsh-autosuggestions zsh-syntax-highlighting sudo
   web-search copypath copyfile copybuffer dirhistory ansible colorize  debian z ssh-agent
   ripgrep python mercurial emacs docker fzf vi-mode kubectl zsh-fzf-history-search]
