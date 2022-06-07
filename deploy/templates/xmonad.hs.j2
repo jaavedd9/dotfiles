@@ -94,8 +94,8 @@ myModMask :: KeyMask
 myModMask = mod4Mask       -- Sets modkey to super/windows key
 
 myTerminal :: String
--- myTerminal = "tilix"   -- Sets default terminal
-myTerminal = "urxvt"   -- Sets default terminal
+myTerminal = "tilix"   -- Sets default terminal
+-- myTerminal = "urxvt"   -- Sets default terminal
 
 myBrowser :: String
 -- myBrowser = "qutebrowser "               -- Sets qutebrowser as browser for tree select
@@ -145,7 +145,7 @@ myStartupHook = do
           spawnOnce "feh --randomize --bg-fill /mnt/data/Dropbox/emacs/wallpapers/*"  -- feh set random wallpaper
           spawnOnce "copyq &"
           spawn "killall conky"   -- kill current conky on each restart
-          -- spawnOnce "emacs &"
+          -- spawnOnce "export LSP_USE_PLISTS=true & emacs &"
           -- spawnOnce "dropbox start &" -- for laptop start manually
           spawnOnce "dropb start &" -- added dropb alias in ~/.profile to move dropbox to a different location
          -- spawnOnce "python3 /opt/thefanclub/overgrive/overgrive &" -- overgrive
