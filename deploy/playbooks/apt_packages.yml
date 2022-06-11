@@ -85,6 +85,8 @@
       - libxtst-dev
       - x11proto-input-dev
       - x11proto-record-dev
+      # emacs silversearcher dependency
+      - silversearcher-ag
       
 - name: intall copyq
   apt:
