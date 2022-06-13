@@ -14,5 +14,6 @@
       - hvac # ansible hashi corp vault lookup
       - jinja2
       - pyyaml
+      - black # python formatting
   become: true
   become_user: "{{ workstation_user }}"
