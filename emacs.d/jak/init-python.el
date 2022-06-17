@@ -132,7 +132,7 @@ FILTER is function that runs after the process is finished, its args should be
   ;;(python-mode . fk/python-auto-f-string-mode)
   (python-mode . (lambda ()
                    (setq-local company-prescient-sort-length-enable nil)
-                   (lsp-deferred)
+                   ;; (lsp-deferred)
                    (flycheck-add-next-checker 'python-pyright 'python-flake8 'python-mypy 'python-pylint 'lsp)
                ))
   ;;(python-mode . (lambda () (fk/add-local-hook 'before-save-hook 'eglot-format-buffer)))
@@ -274,14 +274,31 @@ beginning of the string that has curly brackets in it."
   ;;
   ;; importmagic runs ~100mb ipython process per python file, and it does not
   ;; always find imports, 60%-70% maybe. I stop using this, but still want to keep.
+  :config
+    (add-hook 'python-mode-hook 'importmagic-mode)
   :commands importmagic-mode)
 
 (use-package blacken
   ;; pip3 install black flake8
   :ensure t
-  :commands blacken-mode blacken-buffer)
+  :commands blacken-mode blacken-buffer
+  )
 
 
+(use-package elpy
+  :init
+  (elpy-enable)
+  :config
+  (setq python-shell-interpreter "ipython" ;require pip install ipython
+	python-shell-interpreter-args "-i --simple-prompt")
+  ;; (add-hook 'python-mode-hook 'eldoc-mode)
+  (setq elpy-rpc-python-command "python3")
+  (setq elpy-shell-echo-output nil)
+  (setq python-shell-completion-native-enable nil)
+  (setq elpy-rpc-backend "jedi")
+  (setq python-indent-offset 4
+        python-indent 4)
+  )
 
 ;; python code folding
 ;; Customize mode-specific Outline folding.
