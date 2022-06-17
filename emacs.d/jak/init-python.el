@@ -286,7 +286,6 @@ beginning of the string that has curly brackets in it."
 ;; python code folding
 ;; Customize mode-specific Outline folding.
 
-
 (provide 'init-python)
 ;;; init-python.el ends here
 ;; Local Variables:

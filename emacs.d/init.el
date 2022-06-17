@@ -215,7 +215,7 @@
   :ensure t 
   :init (global-flycheck-mode)
   :config
- (setq flycheck-python-pylint-executable "python3")
+  (setq flycheck-flake8rc "~/.config/flake8")
   )
 
 (setq custom-file "~/.emacs.d/custom.el")

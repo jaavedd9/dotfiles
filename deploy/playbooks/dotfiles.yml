@@ -152,6 +152,14 @@
   notify: reload xmonad
   tags: conky
 
+- name: flake8
+  template:
+    src: flake8.j2
+    dest: "{{ workstation_home }}/.ssh/config"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+  tags: flake8
+
 - name: ssh config
   template:
     src: ssh_config.j2
