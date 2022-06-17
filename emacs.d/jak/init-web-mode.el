@@ -165,7 +165,8 @@
 
 ;; react native tsx
 (define-derived-mode typescript-tsx-mode typescript-mode "TypeScript-tsx")
-(add-to-list 'auto-mode-alist '("\\.tsx?\\'" . web-mode))
+;;(add-to-list 'auto-mode-alist '("\\.tsx?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
 
   (setq web-mode-markup-indent-offset 2
         web-mode-css-indent-offset 2

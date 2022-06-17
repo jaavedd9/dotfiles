@@ -1,6 +1,6 @@
 - name: make sure virutenvs directory exist
   file:
-    path: "{{ virtualenvs_path }}" 
+    path: "{{ virtualenvs_path }}"
     state: directory
     owner: "{{ workstation_user }}"
     group: "{{ workstation_user }}"

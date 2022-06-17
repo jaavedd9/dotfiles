@@ -244,6 +244,7 @@
 (require 'init-helm)
 (require 'init-lsp)
 (require 'init-javascript)
+(require 'init-typescript)
 (require 'init-web-mode)
 (require 'init-prodigy)
 (require 'init-rest)

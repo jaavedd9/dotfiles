@@ -53,20 +53,18 @@
                            (when (string-equal "js" (file-name-extension buffer-file-name)) 
                              (setup-tide-mode))))
 
-;; configure jsx-tide checker to run after your default jsx checker
-(flycheck-add-mode 'javascript-eslint 'web-mode)
-(flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append)
-;;(setq-default flycheck-disabled-checkers (append flycheck-disabled-checkers '(tsx-tide)))
+
+(add-hook 'web-mode-hook (lambda () 
+                           (when (string-equal "js" (file-name-extension buffer-file-name)) 
+                             (setup-tide-mode))))
+
+
 
 (add-hook 'js2-mode-hook (lambda () 
                            (setup-tide-mode)))
 
 
-
-;;(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . typescript-mode))
-;; set indent level2
-(setq typescript-indent-level 2)
 
 ;; eglot
 
@@ -82,35 +80,11 @@
 
 ;; (global-set-key (kbd "C-S-e") 'ansible-lint-current-buffer)
 
-
-;; typescript and tsx javascript
-;; took sometime to figure out config with 2 indentation
-;; and supports tsx
-
-
-;; (use-package typescript-mode
-;;   :ensure t
-;;   :mode "\\.tsx?$")
-;; (use-package emmet-mode :ensure t :hook typescript-mode)
-;; (use-package tree-sitter :ensure t)
-;; (use-package tree-sitter-langs :ensure t)
-;; (use-package prettier-js :ensure t :hook (typescript-mode))
-
 ;; ;; couldn't make it work with `use-package`, plain elisp instead
 ;; (require 'tree-sitter)
 ;; (require 'tree-sitter-langs)
 ;; (add-hook 'typescript-mode-hook #'tree-sitter-hl-mode)
 
-;; (use-package typescript-mode
-;;   :mode (rx ".ts" string-end)
-;;   :init
-;;   (define-derived-mode typescript-tsx-mode typescript-mode "typescript-tsx")
-;;   (add-to-list 'auto-mode-alist (cons (rx ".tsx" string-end) #'typescript-tsx-mode)))
-
-;; (use-package tree-sitter
-;;   :hook (typescript-mode . tree-sitter-hl-mode)
-;;   :config
-;;   (setf (alist-get 'typescript-tsx-mode tree-sitter-major-mode-language-alist) 'tsx))
 
 (use-package js-react-redux-yasnippets
   :ensure t)
