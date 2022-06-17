@@ -87,6 +87,7 @@
       - x11proto-record-dev
       # emacs silversearcher dependency
       - silversearcher-ag
+      - gnome-control-center
       
 - name: intall copyq
   apt:
