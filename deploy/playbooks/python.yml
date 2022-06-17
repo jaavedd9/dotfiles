@@ -15,5 +15,10 @@
       - jinja2
       - pyyaml
       - black # python formatting
+      # python linters or syntax checkers used by emacs
+      - flake8
+      - pylint
+      - mypy
+      - pyright
   become: true
   become_user: "{{ workstation_user }}"

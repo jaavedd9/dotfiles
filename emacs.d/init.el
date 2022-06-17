@@ -213,7 +213,10 @@
 (use-package 
   flycheck 
   :ensure t 
-  :init (global-flycheck-mode))
+  :init (global-flycheck-mode)
+  :config
+ (setq flycheck-python-pylint-executable "python3")
+  )
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)

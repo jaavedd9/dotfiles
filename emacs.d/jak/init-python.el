@@ -130,9 +130,11 @@ FILTER is function that runs after the process is finished, its args should be
   ;; sudo npm install -g pyright && pip install flake8 black(optional)
   ;; NOTE: these hooks runs in reverse order
   ;;(python-mode . fk/python-auto-f-string-mode)
-  (python-mode . (lambda () (setq-local company-prescient-sort-length-enable nil)))
-  (python-mode . flycheck-mode)
-  (python-mode . lsp-deferred)
+  (python-mode . (lambda ()
+                   (setq-local company-prescient-sort-length-enable nil)
+                   (lsp-deferred)
+                   (flycheck-add-next-checker 'python-pyright 'python-flake8 'python-mypy 'python-pylint 'lsp)
+               ))
   ;;(python-mode . (lambda () (fk/add-local-hook 'before-save-hook 'eglot-format-buffer)))
   ;;(python-mode . eglot-ensure)
   ;; importmagic runs ~100mb ipython process per python file, and it does not
