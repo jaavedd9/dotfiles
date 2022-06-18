@@ -289,8 +289,8 @@ beginning of the string that has curly brackets in it."
   :init
   (elpy-enable)
   :config
-  (setq python-shell-interpreter "ipython" ;require pip install ipython
-	python-shell-interpreter-args "-i --simple-prompt")
+  (setq python-shell-interpreter "ipython") ;require pip install ipython
+	;; python-shell-interpreter-args "-i --simple-prompt")
   ;; (add-hook 'python-mode-hook 'eldoc-mode)
   (setq elpy-rpc-python-command "python3")
   (setq elpy-shell-echo-output nil)
