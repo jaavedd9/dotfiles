@@ -1,4 +1,4 @@
-;; elpy mode settings
+; elpy mode settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;elpy;;;;;;;;;;;;;;;;;;;;;
 (setq python-shell-interpreter "python3")
 ;; to deal with "Searching for program: No such file or directory"
@@ -133,7 +133,9 @@ FILTER is function that runs after the process is finished, its args should be
   (python-mode . (lambda ()
                    (setq-local company-prescient-sort-length-enable nil)
                    ;; (lsp-deferred)
-                   (flycheck-add-next-checker 'python-pyright 'python-flake8 'python-mypy 'python-pylint 'lsp)
+                   ;;(flycheck-add-next-checker 'python-pyright 'python-flake8 'python-mypy 'python-pylint 'lsp)
+                   ;; (flycheck-add-next-checker 'lsp)
+                   ;; (flycheck-add-next-checker 'python-pyright 'python-flake8 'python-pylint 'lsp 'append)
                ))
   ;;(python-mode . (lambda () (fk/add-local-hook 'before-save-hook 'eglot-format-buffer)))
   ;;(python-mode . eglot-ensure)
@@ -289,7 +291,8 @@ beginning of the string that has curly brackets in it."
   :init
   (elpy-enable)
   :config
-  (setq python-shell-interpreter "ipython") ;require pip install ipython
+  (setq python-shell-interpreter "ipython"
+        python-shell-interpreter-args "-i --simple-prompt")
 	;; python-shell-interpreter-args "-i --simple-prompt")
   ;; (add-hook 'python-mode-hook 'eldoc-mode)
   (setq elpy-rpc-python-command "python3")
