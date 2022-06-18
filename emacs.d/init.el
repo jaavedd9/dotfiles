@@ -275,6 +275,7 @@
 (require 'init-custom-shortcuts)
 (require 'init-org-roam)
 (require 'init-external-programs)
+(require 'init-fonts)
 ;;emmet
 
 (use-package 
