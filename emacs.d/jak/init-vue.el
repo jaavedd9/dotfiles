@@ -7,6 +7,7 @@
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . genehack-vue-mode))
 (add-hook 'genehack-vue-mode-hook #'eglot-ensure)
 (add-to-list 'eglot-server-programs '(genehack-vue-mode "vls"))
+(flycheck-add-mode 'javascript-eslint 'genehack-vue-mode)
 
 ;; vue
 (require 'lsp-mode)
