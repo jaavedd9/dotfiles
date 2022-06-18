@@ -86,8 +86,11 @@
     "fjl"  '(eslint-current-buffer :which-key "lint: eslint")
     "fc"   '(web-beautify-css :which-key "format css")
     "fe"   '(editorconfig-format-buffer :which-key "editorconfig format")
-    "fb"   '(blacken-buffer :which-key "blacken python buffer")
     "fl"   '(elisp-format-buffer :which-key "elisp format buffer")
+    "fp"   '(:ignore t :which-key "python")
+    "fpb"   '(elpy-black-fix-code :which-key "blacken python buffer")
+    "fpy"   '(elpy-yapf-fix-code :which-key "ypaf python buffer")
+    "fpi"   '(py-isort-buffer :which-key "isort python import in buffer")
     ;; helm
     "h"   '(:ignore t :which-key "helm")
     ;; "ho"  '(helm-occur :which-key "Helm Occur")
