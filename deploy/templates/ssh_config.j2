@@ -5,6 +5,9 @@ host *
 host github.com 
     IdentityFile  {{ workstation_user_personal_private_key_path }}
 
+host bitbucket.org 
+    IdentityFile  {{ workstation_user_personal_private_key_path }}
+
 host ksaflyer.com 
     IdentityFile  {{ workstation_user_personal_private_key_path }}
     StrictHostKeyChecking  yes
