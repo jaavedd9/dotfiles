@@ -509,6 +509,9 @@
   (global-undo-tree-mode 1)
   ;; (setq undo-tree-history-directory-alist (concat user-emacs-directory "undo-tree"))
   (setq undo-tree-history-directory-alist '(("." . "~/.cache/emacs/undo-tree")))
+  ;;   https://emacs.stackexchange.com/questions/69779/emacs-get-frozen-due-to-error-reading-undo-tree-history
+  (setq undo-tree-enable-undo-in-region nil)
+  (setq undo-tree-auto-save-history nil)
   ;; https://www.reddit.com/r/emacs/comments/tejte0/undotree_bug_undotree_files_scattering_everywhere/
   )
 
