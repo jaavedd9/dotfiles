@@ -269,7 +269,6 @@ beginning of the string that has curly brackets in it."
 
 ;;;;;;;;;;;;;;;;;;;;; lsp-mode python end ;;;;;;;;;;;;;;;;;;;;;;;;
 
-
 (use-package importmagic
   :ensure t
   ;; pip install importmagic epc

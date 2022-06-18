@@ -56,7 +56,7 @@
   :config
   (setq devdocs-data-dir  (concat dropbox-path "emacs/devdocs"))
   (add-hook 'python-mode-hook
-          (lambda () (setq-local devdocs-current-docs '("python~3.8" "django~4.0"))))
+          (lambda () (setq-local devdocs-current-docs '("python~3.9" "django~4.0"))))
   (add-hook 'yaml-mode-hook
           (lambda () (setq-local devdocs-current-docs '("ansible~2.10"))))
   (add-hook 'typescript-mode-hook
