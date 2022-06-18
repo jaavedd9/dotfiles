@@ -15,7 +15,6 @@
 ;;   :ensure t
 ;;   )
 ;;(require 'company-bootstrap)
-
 (use-package company
   ;;  :diminish company-mode
   :init
@@ -24,7 +23,7 @@
   (setq company-idle-delay 0.100 ;; How long to wait before popping up
         company-minimum-prefix-length 1 ;; Show the menu after one key press
         company-tooltip-limit 10 ;; Limit on how many options to display
-        ;; company-show-numbers t   ;; Show numbers behind options
+        company-show-numbers t   ;; Show numbers behind options
         company-tooltip-align-annotations t ;; Align annotations to the right
         company-require-match nil           ;; Allow free typing
         company-selection-wrap-around t ;; Wrap around to beginning when you hit bottom of suggestions
@@ -269,6 +268,39 @@
                                           "turkish"
                                         "english")))
     (message ispell-local-dictionary)))
+
+
+(defun ora-company-number ()
+  "Forward to `company-complete-number'.
+Unless the number is potentially part of the candidate.
+In that case, insert the number."
+  (interactive)
+  (let* ((k (this-command-keys))
+         (re (concat "^" company-prefix k)))
+    (if (or (cl-find-if (lambda (s) (string-match re s))
+                        company-candidates)
+            (> (string-to-number k)
+               (length company-candidates))
+            (looking-back "[0-9]+\\.[0-9]*" (line-beginning-position)))
+        (self-insert-command 1)
+      (company-complete-number
+       (if (equal k "0")
+           10
+         (string-to-number k))))))
+
+(defun ora--company-good-prefix-p (orig-fn prefix)
+  (unless (and (stringp prefix) (string-match-p "\\`[0-9]+\\'" prefix))
+    (funcall orig-fn prefix)))
+(ora-advice-add 'company--good-prefix-p :around #'ora--company-good-prefix-p)
+
+(let ((map company-active-map))
+  (mapc (lambda (x) (define-key map (format "%d" x) 'ora-company-number))
+        (number-sequence 0 9))
+  (define-key map " " (lambda ()
+                        (interactive)
+                        (company-abort)
+                        (self-insert-command 1)))
+  (define-key map (kbd "<return>") nil))
 
 (provide 'init-company)
 ;;; init-company.el ends here
