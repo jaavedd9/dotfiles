@@ -1,3 +1,8 @@
+- name: create file where emacs customizations will be stored
+  file:
+    path: "{{ workstation_home }}/.emacs.d/emacs-custom.el"
+    state: preset
+
 - name: link emacs dotfiles
   file:
     src: "{{ workstation_home }}/Code/personal/configs/dotfiles/emacs.d"
@@ -5,8 +10,8 @@
     state: link
     owner: "{{ workstation_user }}"
   tags: emacs
-  
-- name: create rofi and copyq config dirs 
+
+- name: create rofi and copyq config dirs
   file:
     path: "{{ workstation_home }}/.config/{{ item }}"
     state: directory
@@ -22,6 +27,7 @@
     state: directory
     owner: "{{ workstation_user }}"
     group: "{{ workstation_user }}"
+  become: true
 
 - name: install oh my zsh plugins
   script: "{{ workstation_home }}/Code/personal/configs/dotfiles/deploy/files/zsh-plugins-installation.sh"
