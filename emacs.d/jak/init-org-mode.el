@@ -660,6 +660,7 @@
 (add-to-list 'org-structure-template-alist '("go" . "src go"))
 (add-to-list 'org-structure-template-alist '("yaml" . "src yaml"))
 (add-to-list 'org-structure-template-alist '("json" . "src json"))
+(add-to-list 'org-structure-template-alist '("plant" . "src plantuml"))
 
 
 ;;We want the same syntax highlighting in source blocks as in the native language files.
