@@ -1,7 +1,7 @@
 - name: create file where emacs customizations will be stored
   file:
     path: "{{ workstation_home }}/.emacs.d/emacs-custom.el"
-    state: preset
+    state: file
 
 - name: link emacs dotfiles
   file:
