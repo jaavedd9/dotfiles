@@ -68,7 +68,7 @@
       # queue
       - redis-server
       # non free firmwares
-      - firmware-misc-nonfree
+      # - firmware-misc-nonfree
       - jq # json processor tanzu dependency
       # music
       - moc
@@ -76,7 +76,7 @@
       # system info
       - conky-all
       # hp elitebook wifi drivers
-      - firmware-iwlwifi
+      # - firmware-iwlwifi
       # bluebooth manager
       - blueman
       # packages required for xcape
