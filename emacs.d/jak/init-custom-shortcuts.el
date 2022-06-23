@@ -76,8 +76,12 @@
     "eidd"  '(devdocs-browser-install-doc :which-key "devdocs install")
     "eido"  '(devdocs-browser-download-offline-data :which-key "devdocs download offline")
     "et"   '(load-theme :which-key "load theme")
-    ;; format
+    ;; format and find
     "f"   '(:ignore t :which-key "format")
+    ;; ffind
+    "ff"  '(projectile-find-file :which-key "find file in project")
+    "fd"  '(projectile-find-dir :which-key "find directory in project")
+    ;; format
     "fa"   '(:ignore t :which-key "ansible")
     "fas"  '(ansible-syntax-check-current-buffer :which-key "syntax check")
     "fal"  '(ansible-lint-current-buffer :which-key "lint")
