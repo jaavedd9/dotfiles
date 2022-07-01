@@ -31,7 +31,8 @@
     "bp"  '(engine/search-pocket :which-key "Evernote")
     "be"  '(engine/search-evernote :which-key "Evernote")
     "bg"  '(engine/search-google :which-key "Google")
-    "bd"  '(engine/search-dictionary :which-key "Dictionary")
+    ;; "bd"  '(engine/search-dictionary :which-key "Dictionary")
+    "bd"  '(dictionary-search :which-key "Dictionary")
     "bh"  '(engine/search-github :which-key "Github")
     "bs"  '(engine/search-stack-overflow :which-key "stackoverflow")
     ;; completions
@@ -187,10 +188,11 @@
     "org"   '(:ignore t :which-key "Daily Goto")
     "orgt"  '(org-roam-dailies-goto-today :which-key "goto daily roam journal")
     "orgd"  '(org-roam-dailies-goto-date :which-key "goto dated journal roam")
-    ;; editing/culling
+    ;; editing/culling/deleting
     "k"   '(:ignore t :which-key "editing/culling")
     "kd"   '(flush-lines :which-key "flush lines")
     "kk"   '(keep-lines :which-key "keep lines")
+    "ks"   '(delete-trailing-whitespace :which-key "delete trailing white spaces")
     ;; projectile
     "p"   '(projectile-command-map :which-key "Projectile")
     ;; password, question(?)
