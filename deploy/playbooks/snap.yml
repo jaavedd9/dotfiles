@@ -10,17 +10,17 @@
     name: snapd
   become: true
 
-- name: install snap packages 
-  command: "snap install {{ item }}" 
+- name: install snap packages
+  command: "snap install {{ item }}"
   become: true
   with_items:
     - "emacs --classic"
-    - "maildir-utils"       
+    - "maildir-utils"
     - remmina
     - slack
     - teams
     - pomatez # pomodoro timer which can force you to take a break
     # sound cloud music
     - orange-app
-    - postman 
-    
+    - postman
+    - btop

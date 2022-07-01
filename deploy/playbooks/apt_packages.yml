@@ -7,7 +7,7 @@
     cache_valid_time: 86400 #One day
   tags: apt
 
-- name: Install apt packages 
+- name: Install apt packages
   become: true
   apt:
     name:
@@ -17,7 +17,7 @@
       - xmobar
       - slock
       - libnotify-bin
-      - python3-pip 
+      - python3-pip
       # terminal
       - terminator
       - tmux # <prefix>+I to install tmux plugins
@@ -29,29 +29,29 @@
       - zsh
       - fzf
       - rxvt-unicode
-      - rofi 
-      - python3-dev 
-      - htop 
-      - tilix 
+      - rofi
+      - python3-dev
+      - htop
+      - tilix
       # emacs editor dependencies
       - gawk
       - ripgrep
       - silversearcher-ag
-      # notdeft and xapian dependencies 
-      - xapian-tools 
+      # notdeft and xapian dependencies
+      - xapian-tools
       - libtclap-dev
-      - libxapian-dev 
-      # java 
-      - openjdk-17-jre 
-      - openjdk-17-jdk 
+      - libxapian-dev
+      # java
+      - openjdk-17-jre
+      - openjdk-17-jdk
       # tools
       - xclip
       - flameshot
       - thunderbird
       - okular # pdf reader
-      - arandr # randr with gui for monitor layout 
+      - arandr # randr with gui for monitor layout
       - libtool # for compiling vterm
-      - libtool-bin # for compiling vterm 
+      - libtool-bin # for compiling vterm
       - cmake  # for vterm
       # for emacs everywhere
       - xclip
@@ -88,7 +88,13 @@
       # emacs silversearcher dependency
       - silversearcher-ag
       - gnome-control-center
-      
+      # disk usage/free, alternative to df
+      - duf
+      # super charged version of du
+      - ncdu
+      # file manager
+      - nnn
+
 - name: intall copyq
   apt:
     deb: "{{ copyq_deb_url }}"
