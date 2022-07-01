@@ -11,6 +11,7 @@
     copyq_deb_url: "https://github.com/hluk/CopyQ/releases/download/v6.1.0/copyq_6.1.0_Debian_11-1_amd64.deb"
     dropbox_deb_url: "https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb"
     rescuetime_deb_url: "https://www.rescuetime.com/installers/rescuetime_current_amd64.deb"
+    duf_deb_url: "https://github.com/muesli/duf/releases/download/v0.8.1/duf_0.8.1_linux_amd64.deb"
     hugo_deb_url: "https://github.com/gohugoio/hugo/releases/download/v0.99.1/hugo_0.99.1_Linux-64bit.deb"
     virtualenvs_path: "/home/jaavedkhan/.virtualenvs"
     docker_gpg_key_path: "/usr/share/keyrings/docker-archive-keyring.gpg"
@@ -22,9 +23,9 @@
     vimrc: "/home/jaavedkhan/.vimrc"
 
   tasks:
-    - name: Create code organization directories 
+    - name: Create code organization directories
       file:
-        path: "{{ item }}" 
+        path: "{{ item }}"
         state: directory
         owner: "{{ workstation_user }}"
         group: "{{ workstation_user }}"
@@ -68,32 +69,32 @@
       tags: nodejs
 
     - name: install snapd and snaps
-      import_tasks: playbooks/snap.yml 
+      import_tasks: playbooks/snap.yml
       tags: snap
 
-    - name: install docker 
-      import_tasks: playbooks/docker.yml 
+    - name: install docker
+      import_tasks: playbooks/docker.yml
       tags: docker
 
-    - name: install and config tmux 
-      import_tasks: playbooks/tmux.yml 
+    - name: install and config tmux
+      import_tasks: playbooks/tmux.yml
       tags: tmux
 
-    - name: vim configs  
+    - name: vim configs
       import_tasks: playbooks/vim.yml
       tags: vim
 
     - name: configure dotfiles
       import_tasks: playbooks/dotfiles.yml
       tags: dotfiles
-    
+
   handlers:
-    - name: reload tmux configs 
+    - name: reload tmux configs
       command: "tmux source-file {{ workstation_home }}/.tmux.conf"
       become: yes
       become_user: "{{ workstation_user }}"
 
-    - name: reload compton 
+    - name: reload compton
       shell: "pkill compton; compton --config {{ compton_config_path }} &"
       become: yes
       become_user: "{{ workstation_user }}"
@@ -101,14 +102,14 @@
       #   - "pkill compton"
       #   - "compton --config {{ compton_config_path }}"
 
-    - name: source profile 
+    - name: source profile
       shell: "source {{ workstation_home }}/.profile"
       become: yes
       become_user: "{{ workstation_user }}"
       args:
         executable: /bin/bash
 
-    - name: source zprofile 
+    - name: source zprofile
       shell: "source {{ workstation_home }}/.zprofile"
       become: yes
       become_user: "{{ workstation_user }}"
@@ -124,7 +125,7 @@
       tags: xmonad
 
     - name: reload xresources
-      shell: "xrdb -merge {{ workstation_home }}/.Xresources" 
+      shell: "xrdb -merge {{ workstation_home }}/.Xresources"
       become: yes
       become_user: "{{ workstation_user }}"
       args:
@@ -144,7 +145,7 @@
   ripgrep python mercurial emacs docker fzf vi-mode kubectl zsh-fzf-history-search]
       tags: zsh
 
-    - role: githubixx.kubectl 
+    - role: githubixx.kubectl
       # Owner of "kubectl" binary
       kubectl_owner: "{{ workstation_user }}"
       # Group of "kubectl" binary
