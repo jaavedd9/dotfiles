@@ -317,6 +317,8 @@
              :keybinding "C-h")
   (defengine stack-overflow "https://stackoverflow.com/search?q=%s" 
              :keybinding "C-s") 
+  (defengine pocket "https://getpocket.com/my-list/search?query=%s" 
+             :keybinding "C-p") 
   (defengine evernote "https://www.evernote.com/client/web#?query=%s" 
              :keybinding "C-e") 
   (defengine dictionary "https://www.dictionary.com/browse/%s" 

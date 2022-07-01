@@ -28,6 +28,7 @@
     ;; Browser
     "b"   '(:ignore t :which-key "Browser")
     "bb"  '(eww-search-words :which-key "eww search words")
+    "bp"  '(engine/search-pocket :which-key "Evernote")
     "be"  '(engine/search-evernote :which-key "Evernote")
     "bg"  '(engine/search-google :which-key "Google")
     "bd"  '(engine/search-dictionary :which-key "Dictionary")
