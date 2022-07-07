@@ -216,6 +216,7 @@
   :init (global-flycheck-mode)
   :config
   (setq flycheck-flake8rc "~/.config/flake8")
+  (setq-default flycheck-disabled-checkers '(python-pylint))
   )
 
 (setq custom-file "~/.emacs.d/custom.el")
