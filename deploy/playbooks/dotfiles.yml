@@ -158,13 +158,21 @@
   notify: reload xmonad
   tags: conky
 
-- name: flake8
+- name: create flake8 config
   template:
     src: flake8.j2
-    dest: "{{ workstation_home }}/.ssh/config"
+    dest: "{{ workstation_home }}/.config/flake8"
     owner: "{{ workstation_user }}"
     group: "{{ workstation_user }}"
   tags: flake8
+
+- name: create mypy config
+  template:
+    src: mypy.ini.j2
+    dest: "{{ workstation_home }}/.config/mypy.ini"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+  tags: mypy
 
 - name: ssh config
   template:

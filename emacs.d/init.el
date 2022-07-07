@@ -216,6 +216,7 @@
   :init (global-flycheck-mode)
   :config
   (setq flycheck-flake8rc "~/.config/flake8")
+  (setq flycheck-python-mypy-ini "~/.config/mypy.ini")
   (setq-default flycheck-disabled-checkers '(python-pylint))
   )
 
