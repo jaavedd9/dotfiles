@@ -215,7 +215,7 @@
     "v"   '(:ignore t :which-key "docker/kuberntes")
     "vd"   '(docker :which-key "docker")
     "vk"   '(kubernetes-overview :which-key "kubernetes")
-    ;; Misc
+    ;; Misc for speed and convenience
     ;; "l"   '(locate :which-key "Locate")
     ;; "f"   '(find-dired :which-key "Find: result in dired")
     ;; "f"   '(fzf-directory :which-key "fzf find file")
@@ -228,6 +228,7 @@
     ;; "SPC" '(helm-projectile-find-file :which-key "projectile find file")
     "SPC" '(helm-mini :which-key "opened buffers and recent files")
     "/"   '(helm-occur :which-key "helm occur local buffer")
+    "j"  '(helm-projectile-rg :which-key "rg, rip grep")
     ;; in normal mode
     ;; "u"   '(universal-argument :which-key "universal argument")
     ","   '(previous-buffer :which-key "previous buffer")
