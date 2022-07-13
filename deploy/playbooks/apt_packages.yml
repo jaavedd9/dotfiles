@@ -92,6 +92,7 @@
       - ncdu
       # file manager
       - nnn
+      - dnsutils
 
 - name: intall copyq
   apt:
