@@ -21,7 +21,7 @@
     - rofi
     - copyq
 
-- name: create data directory to mount 
+- name: create data directory to mount
   file:
     path: "/mnt/data"
     state: directory
@@ -61,8 +61,8 @@
   file:
     path: "{{ workstation_home }}/.profile"
     state: absent
-    
-- name: create bash profile 
+
+- name: create bash profile
   template:
     src: "bash/profile.j2"
     dest: "{{ workstation_home }}/.profile"
@@ -70,38 +70,44 @@
     group: "{{ workstation_user }}"
   notify: source profile
 
-- name: create bashrc 
+- name: create bashrc
   template:
     src: "bash/bashrc.j2"
     dest: "{{ workstation_home }}/.bashrc"
     owner: "{{ workstation_user }}"
     group: "{{ workstation_user }}"
+  tags: bash
 
-- name: create bash env 
+- name: create bash env
   template:
     src: "bash/env.j2"
     dest: "{{ workstation_home }}/.env"
     owner: "{{ workstation_user }}"
     group: "{{ workstation_user }}"
+  tags: bash
   notify: source profile
 
-- name: create bash aliases 
+- name: create bash aliases
   template:
     src: "bash/bash_aliases.j2"
     dest: "{{ workstation_home }}/.bash_aliases"
     owner: "{{ workstation_user }}"
     group: "{{ workstation_user }}"
-  notify: source profile
+  tags: [bash zsh]
+  notify:
+    - source profile
+    - source zprofile
 
-- name: create zsh zprofile  
+- name: create zsh zprofile
   template:
     src: "bash/zprofile.j2"
     dest: "{{ workstation_home }}/.zprofile"
     owner: "{{ workstation_user }}"
     group: "{{ workstation_user }}"
+  tags: [zsh]
   notify: source zprofile
 
-- name: link copyq config  
+- name: link copyq config
   template:
     src: "copyq.conf.j2"
     dest: "{{ workstation_home }}/.config/copyq/copyq.conf"
@@ -122,7 +128,7 @@
     owner: "{{ workstation_user }}"
     group: "{{ workstation_user }}"
   tags: xmonad
- 
+
 - name: xmonad config
   template:
     src: xmonad.hs.j2

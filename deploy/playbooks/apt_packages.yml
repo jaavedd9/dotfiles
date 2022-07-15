@@ -95,6 +95,7 @@
       - dnsutils
       - autojump
       - ranger
+      - thefuck
 
 - name: intall copyq
   apt:

@@ -144,7 +144,7 @@
       zsh-syntax-highlighting sudo web-search copypath copyfile
       copybuffer dirhistory ansible colorize  debian z ssh-agent
       ripgrep python mercurial emacs docker fzf vi-mode kubectl
-      zsh-fzf-history-search autojump]
+      zsh-fzf-history-search autojump thefuck]
       tags: zsh
 
     - role: githubixx.kubectl
