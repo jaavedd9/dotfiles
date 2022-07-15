@@ -94,6 +94,7 @@
       - nnn
       - dnsutils
       - autojump
+      - ranger
 
 - name: intall copyq
   apt:
