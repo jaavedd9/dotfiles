@@ -93,6 +93,7 @@
       # file manager
       - nnn
       - dnsutils
+      - autojump
 
 - name: intall copyq
   apt:
