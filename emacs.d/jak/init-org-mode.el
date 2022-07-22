@@ -590,6 +590,13 @@
   ;; Apply args for all sounds
   (advice-add 'org-pomodoro-sound-args :override (lambda (_) "-volume 20 -nodisp -nostats -hide_banner")))
 
+
+(use-package org-wild-notifier
+  :init
+  (setq org-wild-notifier-mode 1)
+  :ensure t
+  )
+
 ;; (use-package valign
 ;;   :ensure t
 ;;   :straight (:host github :repo "casouri/valign")
