@@ -720,7 +720,10 @@ myKeys =
 
 -- Emacs (SUPER-e followed by a key)
         , ("M-e e", spawn (myEmacs ++ ("--eval '(dashboard-refresh-buffer)'")))   -- emacs dashboard
-        , ("M-e b", spawn (myEmacs ++ ("--eval '(ibuffer)'")))   -- list buffers
+        , ("M-e <space>", spawn (myEmacs ++ ("--eval '(ibuffer)'")))   -- list buffers
+     -- , ("M-e b", spawn (myEmacs ++ ("--eval '(ibuffer)'")))   -- list buffers
+        , ("M-e b", spawn (myEmacs ++ ("--eval '(helm-mini)'")))   -- list buffers and recentf
+        , ("M-e p", spawn (myEmacs ++ ("--eval '(helm-projectile)'")))   -- list buffers
         , ("M-e d", spawn (myEmacs ++ ("--eval '(dired nil)'"))) -- dired
         , ("M-e i", spawn (myEmacs ++ ("--eval '(erc)'")))       -- erc irc client
         , ("M-e n", spawn (myEmacs ++ ("--eval '(elfeed)'")))    -- elfeed rss
@@ -728,7 +731,7 @@ myKeys =
         , ("M-e t", spawn (myEmacs ++ ("--eval '(mastodon)'")))  -- mastodon.el
         , ("M-e v", spawn (myEmacs ++ ("--eval '(+vterm/here nil)'"))) -- [[id:417785f7-c378-4a90-8c7a-2e1d5ae3586a][Compositor]]vterm if on Doom Emacs
         , ("M-e w", spawn (myEmacs ++ ("--eval '(doom/window-maximize-buffer(eww \"distro.tube\"))'"))) -- eww browser if on Doom Emacs
-        , ("M-e a", spawn (myEmacs ++ ("--eval '(emms)' --eval '(emms-play-directory-tree \"/mnt/data/Dropbox/music/\")'")))
+    --  , ("M-e a", spawn (myEmacs ++ ("--eval '(emms)' --eval '(emms-play-directory-tree \"/mnt/data/Dropbox/music/\")'")))
 
     -- KB_GROUP Scratchpads
     -- Toggle show/hide these programs.  They run on a hidden workspace.

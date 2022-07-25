@@ -2,7 +2,6 @@
 (setq helm-recentf-fuzzy-match t)
 (setq helm-mode-fuzzy-match t)
 (setq helm-completion-in-region-fuzzy-match t)
-(setq helm-buffers-fuzzy-matching t)
 
 
 (use-package helm
@@ -14,6 +13,8 @@
   ("M-y" . helm-show-kill-ring)
   ("C-x b" . helm-mini)
   :config
+  (setq helm-buffers-fuzzy-matching t
+        helm-recentf-fuzzy-match    t)
   (require 'helm-config)
   (helm-mode 1)
   ;;  (setq helm-split-window-inside-p t

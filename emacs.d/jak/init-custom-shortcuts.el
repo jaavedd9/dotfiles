@@ -81,7 +81,8 @@
     ;; format and find
     "f"   '(:ignore t :which-key "format")
     ;; ffind
-    "ff"  '(projectile-find-file :which-key "find file in project")
+    ;; "ff"  '(projectile-find-file :which-key "find file in project")
+    "ff"  '(helm-mini :which-key "list open buffers and recent files")
     "fd"  '(projectile-find-dir :which-key "find directory in project")
     ;; format
     "fa"   '(:ignore t :which-key "ansible")
@@ -98,6 +99,10 @@
     "fpb"   '(elpy-black-fix-code :which-key "blacken python buffer")
     "fpy"   '(elpy-yapf-fix-code :which-key "ypaf python buffer")
     "fpi"   '(py-isort-buffer :which-key "isort python import in buffer")
+    ;; aGenda
+    "g"   '(:ignore t :which-key "aGenda")
+    "gg"  '(org-agenda-show-super-zaen-view :which-key "show zaen view")
+    "ga"  '(org-agenda-show-super-week-view :which-key "show week view")
     ;; helm
     "h"   '(:ignore t :which-key "helm")
     ;; "ho"  '(helm-occur :which-key "Helm Occur")
@@ -225,8 +230,8 @@
     "y"   '(helm-show-kill-ring :which-key "Kill Ring")
     ;;"g"   '(magit-status :which-key "magit-status")
     ;; Misc, convinient shortucts
-    ;; "SPC" '(helm-projectile-find-file :which-key "projectile find file")
-    "SPC" '(helm-mini :which-key "opened buffers and recent files")
+    "SPC" '(helm-projectile-find-file :which-key "projectile find file")
+    ;; "SPC" '(helm-mini :which-key "opened buffers and recent files")
     "/"   '(helm-occur :which-key "helm occur local buffer")
     "j"  '(helm-projectile-rg :which-key "rg, rip grep")
     ;; in normal mode

@@ -721,6 +721,15 @@
   )
 
 
+(defun org-agenda-show-super-zaen-view (&optional arg)
+  (interactive "P")
+  (org-agenda arg "z"))
+
+
+(defun org-agenda-show-super-week-view (&optional arg)
+  (interactive "P")
+  (org-agenda arg "a"))
+
 (use-package evil-org
   :ensure t
   :after org
