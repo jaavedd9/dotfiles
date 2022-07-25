@@ -103,6 +103,10 @@
     "g"   '(:ignore t :which-key "aGenda")
     "gg"  '(org-agenda-show-super-zaen-view :which-key "show zaen view")
     "ga"  '(org-agenda-show-super-week-view :which-key "show week view")
+    "gb"  '(org-timer-start :which-key "org timer start")
+    "gs"  '(org-timer-set-timer :which-key "org set timer")
+    "gp"  '(org-timer-pause-or-continue :which-key "org timer pause or continue")
+    "gk"  '(org-timer-stop :which-key "org timer kill/stop")
     ;; helm
     "h"   '(:ignore t :which-key "helm")
     ;; "ho"  '(helm-occur :which-key "Helm Occur")

@@ -5,6 +5,9 @@
 (require 'org)
 
 
+;; to set sounds for org-timer
+(setq org-clock-sound (file-truename(concat dropbox-path  "emacs/sounds/service-bell-ring.wav")))
+
 ;; from https://explog.in/notes/writingsetup.html
 ;; layout
 (add-hook
