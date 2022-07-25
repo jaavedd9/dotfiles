@@ -208,3 +208,17 @@
   tags:
     - xsession
     - xcape
+
+- name: create org.freedesktop.Notifications.service for emacs with xmonad for notifications
+  # ref: https://wiki.archlinux.org/title/Desktop_notifications#Standalone
+  template:
+    src: org.freedesktop.Notifications.service.j2
+    dest: "/usr/share/dbus-1/services/org.freedesktop.Notifications.service"
+    owner: "root"
+    group: "root"
+    mode: a+x
+  become: true
+  tags:
+    - emacs
+    - xmonad
+    - notification
