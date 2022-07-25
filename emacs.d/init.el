@@ -239,6 +239,7 @@
 (require 'init-python)
 (require 'init-ansible)
 (require 'init-org-mode)
+(require 'init-org-agenda)
 (require 'init-projectile)
 (require 'init-ui)
 (require 'init-company)

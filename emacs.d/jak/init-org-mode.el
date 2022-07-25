@@ -6,7 +6,7 @@
 
 
 ;; to set sounds for org-timer
-(setq org-clock-sound (file-truename(concat dropbox-path  "emacs/sounds/service-bell-ring.wav")))
+(setq org-clock-sound (file-truename(concat dropbox-path  "emacs/sounds/service-bell-ring.")))
 
 ;; from https://explog.in/notes/writingsetup.html
 ;; layout
@@ -299,107 +299,6 @@
   (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1))))
 
 (require 'org-habit)
-
-
-(use-package org-super-agenda
-  :ensure t
-  :config
-  (org-super-agenda-mode +1)
-  )
-
-
-(setq org-agenda-custom-commands
-      '(("z" "Super zaen view"
-         (
-          ;; (agenda "" ((org-agenda-span 'day)
-          ;;             (org-super-agenda-groups
-          ;;              '((:name "Today"
-          ;;                       :time-grid t
-          ;;                       :date today
-          ;;                       :todo "TODAY"
-          ;;                       :scheduled today
-          ;;                       :order 1)))))
-          (alltodo "" ((org-agenda-overriding-header "Todo List")
-                       (org-super-agenda-groups
-                        
-                        '(
-                          ;; (:name "Today"
-                          ;;        :time-grid t
-                          ;;        :date today
-                          ;;        :todo "TODAY"
-                          ;;        :order 1
-                          ;;        )
-                          (:name "Next to do"
-                                 :todo "NEXT"
-                                 :order 1)
-                          (:name "### Important ###"
-                                 :tag "Important"
-                                 :priority "A"
-                                 :order 6)
-                          (:name "## Start Today ##"
-                                 :scheduled today
-                                 :order 2)
-                          (:name "##**## Complete Today ##**##"
-                                 :deadline today
-                                 :order 2)
-                          (:name "Due Soon"
-                                 :deadline future
-                                 :order 8)
-                          (:name "Overdue"
-                                 :deadline past
-                                 :order 7)
-                          (:name "Assignments"
-                                 :tag "Assignment"
-                                 :order 10)
-                          (:name "Grouped wrt tags"
-                                 :auto-tags t
-                                 :order 90
-                                 )
-                          (:name "Waiting"
-                                 :todo "WAITING"
-                                 :order 20)
-                          (:name "Emacs"
-                                 :tag "emacs"
-                                 :order 100)
-                          (:name "During leisure"
-                                 :priority<= "C"
-                                 :tag ("trivial" "unimportant")
-                                 :todo ("SOMEDAY" )
-                                 :order 200)
-                          (:order-multi (99 (:name "Shopping in town"
-                                                   ;; Boolean AND group matches items that match all subgroups
-                                                   :and (:tag "shopping" :tag "@town"))
-                                            (:name "elastic stack"
-                                                   ;; Multiple args given in list with implicit OR
-                                                   :tag ("app_search" "elastic"))
-                                            (:name "Personal"
-                                                   :habit t
-                                                   :tag "personal")
-                                            (:name "Space-related (non-moon-or-planet-related)"
-                                                   ;; Regexps match case-insensitively on the entire entry
-                                                   :and (:regexp ("space" "NASA")
-                                                                 ;; Boolean NOT also has implicit OR between selectors
-                                                                 :not (:regexp "moon" :tag "planet")))))
-                          ;; (:Discard (:tag ("Chore" "Routine" "Daily")
-                          ;;                 )
-                          ;;           )
-                          ))))))))
-
-
-;; to add additional custom command in agenda
-;; https://emacs.stackexchange.com/questions/56029/when-creating-an-org-agenda-custom-commands-command-how-can-i-make-the-agenda
-
-(add-to-list 'org-agenda-custom-commands
-             '("p" "All TODOs groups by category" alltodo ""
-               (
-                (org-super-agenda-groups '((:auto-category t)))
-                ;; ((org-super-agenda-group-property-name "project")
-                (org-super-agenda-groups
-                 ;;                '((:auto-group t)))
-                 '((:auto-tags t)))
-                ;;  (org-agenda-list))
-                )
-               ))
 
 
 ;;to suppress warning
