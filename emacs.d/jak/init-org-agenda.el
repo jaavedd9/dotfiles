@@ -107,6 +107,18 @@
 ;; And this is what I actually use.  The `defvar' is stored in my
 ;; prot-org.el file.  In the video I explain why I use this style.
 
+(defun air-org-skip-subtree-if-priority (priority)
+  "Skip an agenda subtree if it has a priority of PRIORITY.
+
+PRIORITY may be one of the characters ?A, ?B, or ?C."
+  (let ((subtree-end (save-excursion (org-end-of-subtree t)))
+        (pri-value (* 1000 (- org-lowest-priority priority)))
+        (pri-current (org-get-priority (thing-at-point 'line t))))
+    (if (= pri-value pri-current)
+        subtree-end
+      nil)))
+
+
 (defvar prot-org-custom-daily-agenda
   ;; NOTE 2021-12-08: Specifying a match like the following does not
   ;; work.
@@ -139,34 +151,46 @@
                 (org-agenda-block-separator nil)
                 (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
                 (org-agenda-overriding-header "\nNext three days\n")))
-    (agenda "" ((org-agenda-time-grid nil)
-                ;; (org-agenda-start-on-weekday nil)
-                (org-agenda-start-on-weekday 0)
-                ;; We don't want to replicate the previous section's
-                ;; three days, so we start counting from the day after.
-                (org-agenda-start-day "+4d")
-                (org-agenda-span 14)
-                (org-agenda-show-all-dates nil)
-                (org-deadline-warning-days 0)
-                (org-agenda-block-separator nil)
-                (org-agenda-entry-types '(:deadline))
-                (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-                (org-agenda-overriding-header "\nUpcoming deadlines (+14d)\n")))
+    ;; (agenda "" ((org-agenda-time-grid nil)
+    ;;             ;; (org-agenda-start-on-weekday nil)
+    ;;             (org-agenda-start-on-weekday 0)
+    ;;             ;; We don't want to replicate the previous section's
+    ;;             ;; three days, so we start counting from the day after.
+    ;;             (org-agenda-start-day "+4d")
+    ;;             (org-agenda-span 14)
+    ;;             (org-agenda-show-all-dates nil)
+    ;;             (org-deadline-warning-days 0)
+    ;;             (org-agenda-block-separator nil)
+    ;;             (org-agenda-entry-types '(:deadline))
+    ;;             (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+    ;;             (org-agenda-overriding-header "\nUpcoming deadlines (+14d)\n")))
     (alltodo "" (
-                 (org-agenda-overriding-header "Important tasks without a date\n")
+                 (org-agenda-overriding-header "Tasks without date and priority\n")
+                 (org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline 'scheduled))
+                 ;; (org-agenda-skip-entry-if 'regexp "TODO\s*\[\#A\]")
+                 ;; (org-agenda-skip-function
+                 ;;     '(or (air-org-skip-subtree-if-priority ?A)
+                 ;;          (air-org-skip-subtree-if-priority ?B)
+                 ;;          (air-org-skip-subtree-if-priority ?C)
+                 ;;          (org-agenda-skip-if nil '(scheduled deadline))))
+                 (org-agenda-skip-function '(air-org-skip-subtree-if-priority ?A))
+                 ;; (org-agenda-skip-function '(air-org-skip-subtree-if-priority ?B))
+                 ;; (org-agenda-skip-function '(air-org-skip-subtree-if-priority ?C))
+                 (org-super-agenda-groups
+                '((:name "Grouped wrt tags"
+                                 :auto-tags t
+                                 :order 90
+                                 )
                  ))
-(tags-todo "*"
-               ((org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
-                (org-agenda-skip-function
-                 `(org-agenda-skip-entry-if
-                   'notregexp ,(format "\\[#%s\\]" (char-to-string org-priority-highest))))
-                (org-agenda-block-separator nil)
-                (org-agenda-overriding-header "*** Important tasks without a date\n")))
+                 ))
+
     )
   "Custom agenda for use in `org-agenda-custom-commands'.")
 
+
+
 (setq org-agenda-custom-commands
-      `(("A" "Daily agenda and top priority tasks"
+      `(("j" "Daily agenda and top priority tasks"
          ,prot-org-custom-daily-agenda)
         ("P" "Plain text daily agenda and top priorities"
          ,prot-org-custom-daily-agenda
@@ -175,7 +199,8 @@
           (org-agenda-current-time-string ,(car (last org-agenda-time-grid)))
           (org-agenda-fontify-priorities nil)
           (org-agenda-remove-tags t))
-         ("agenda.txt"))
+         ;; ("agenda.txt")
+         )
         ("z" "Super zaen view"
          (
           ;; (agenda "" ((org-agenda-span 'day)

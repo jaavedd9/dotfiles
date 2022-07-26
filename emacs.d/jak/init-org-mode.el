@@ -627,6 +627,9 @@
   (interactive "P")
   (org-agenda arg "z"))
 
+(defun org-agenda-show-jak-customized (&optional arg)
+  (interactive "P")
+  (org-agenda arg "j"))
 
 (defun org-agenda-show-super-week-view (&optional arg)
   (interactive "P")

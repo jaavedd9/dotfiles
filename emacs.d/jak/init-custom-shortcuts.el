@@ -101,7 +101,7 @@
     "fpi"   '(py-isort-buffer :which-key "isort python import in buffer")
     ;; aGenda
     "g"   '(:ignore t :which-key "aGenda")
-    "gg"  '(org-agenda-show-super-zaen-view :which-key "show zaen view")
+    "gg"  '(org-agenda-show-jak-customized :which-key "show jak agenda")
     "ga"  '(org-agenda-show-super-week-view :which-key "show week view")
     "gb"  '(org-timer-start :which-key "org timer start")
     "gs"  '(org-timer-set-timer :which-key "org set timer")
