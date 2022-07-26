@@ -7,6 +7,8 @@
   (org-super-agenda-mode +1)
   )
 
+;; default is 40
+(setq org-habit-graph-column 80)
 
 (setq org-agenda-custom-commands
       '(("z" "Super zaen view"
