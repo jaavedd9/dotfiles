@@ -95,7 +95,15 @@
   (advice-add 'projectile-recentf-files :around 'fk/projectile-recentf-files-first-five))
 
 
-
+;; intergrating tab-bar with projectile
+(use-package tab-bar
+  :bind (:map tab-prefix-map ("p" . my/new-project-tab))
+  :init
+  (defun my/new-project-tab ()
+    (interactive)
+    (other-tab-prefix)
+    (projectile-switch-project)
+    (tab-rename (projectile-project-name))))
 
 (provide 'init-projectile)
 ;;; init-projectile.el ends here
