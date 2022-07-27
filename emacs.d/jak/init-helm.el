@@ -14,7 +14,10 @@
   ("C-x b" . helm-mini)
   :config
   (setq helm-buffers-fuzzy-matching t
-        helm-recentf-fuzzy-match    t)
+        helm-recentf-fuzzy-match    t
+        helm-full-frame nil;; to select candidates in the same window
+        helm-split-window-default-side 'same
+        )
   (require 'helm-config)
   (helm-mode 1)
   ;;  (setq helm-split-window-inside-p t
