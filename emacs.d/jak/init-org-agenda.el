@@ -9,7 +9,9 @@
 
 ;; default is 40
 (setq org-habit-graph-column 80)
-(setq org-agenda-window-setup 'other-window)
+(setq org-agenda-window-setup 'reorganize-frame)
+;; to record and restored windows config after quitting agenda
+(setq org-agenda-restore-windows-after-quit 't)
 
 (setq org-agenda-custom-commands
       '(("z" "Super zaen view"
