@@ -25,6 +25,7 @@
     "ae"  '(eshell :which-key "e Shell")
     "av"  '(vterm :which-key "vterm")
     "ap"  '(projectile-run-shell :which-key "projectile shell")
+    "at"  '(tldr :which-key "tldr")
     ;; Browser
     "b"   '(:ignore t :which-key "Browser")
     "bb"  '(eww-search-words :which-key "eww search words")
@@ -230,6 +231,15 @@
     ;; "f"   '(fzf-directory :which-key "fzf find file")
     "x"   '(helm-M-x :which-key "M-x")
     "s"   '(save-buffer :which-key "Save Buffer")
+    ;; tabs
+    "t"   '(:ignore t :which-key "tabs or emacs workspaces")
+    "tt"  '(tab-switch  :which-key "switch to another tab")
+    "ts"  '(tab-switch  :which-key "switch to another tab")
+    "tr"  '(tab-rename  :which-key "tab rename")
+    "tb"  '(my/switch-to-tab-buffer  :which-key "select buffers in current tab")
+    "tc"  '(tab-close  :which-key "tab close")
+    "tn"  '(my/new-project-tab  :which-key "projectile project in new tab")
+    "tp"  '(my/new-project-tab  :which-key "projectile project in new tab")
     ;; "e"   '(mu4e :which-key "Email Client")
     "y"   '(helm-show-kill-ring :which-key "Kill Ring")
     ;;"g"   '(magit-status :which-key "magit-status")

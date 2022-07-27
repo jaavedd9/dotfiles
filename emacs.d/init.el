@@ -1060,6 +1060,22 @@
 (use-package tldr
   :ensure t)
 
+;; Only show the tab bar if there are 2 or more tabs
+(setq tab-bar-show 1)
+
+(defun my/switch-to-tab-buffer ()
+  (interactive)
+  (if (project-current)
+      (call-interactively #'project-switch-to-buffer)
+    (call-interactively #'switch-to-buffer)))
+
+(global-set-key (kbd "C-x b") #'my/switch-to-tab-buffer)
+
+;; Turn on tab bar mode after startup
+(tab-bar-mode 1)
+
+;; Save the desktop session
+(desktop-save-mode 1)
 
 (defun load-file-if-exists (path)
   (if (file-exists-p path)
