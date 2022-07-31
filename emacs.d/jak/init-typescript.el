@@ -8,21 +8,33 @@
 
 ;;(setq-default flycheck-disabled-checkers (append flycheck-disabled-checkers '(tsx-tide)))
 
-(add-hook 'typescript-mode (lambda ()
-                   (flycheck-add-mode 'typescript-tslint 'typescript-tsx-mode)
-                   (flycheck-add-next-checker 'typescript-tide 'typescript-tslint 'javascript-eslint  'lsp)
-               ))
+(use-package 
+  typescript-mode 
+  :ensure t
+  ;; :mode "\\.tsx?$"
+  :config
+  (setq typescript-indent-level 2) 
+  :hook
+  (typescript-mode . (lambda () 
+                       (flycheck-add-mode
+                        'typescript-tslint
+                        'typescript-tsx-mode) 
+                       (flycheck-add-next-checker
+                        ;;'typescript-tide
+                        'typescript-tslint
+                        'javascript-eslint
+                        'lsp))))
 
+
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 
 ;;(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 ;; set indent level2
 
 ;; typescript and tsx javascript
 ;; took sometime to figure out config with 2 indentation
 ;; and supports tsx
 
-(setq typescript-indent-level 2)
 
 ;; (use-package typescript-mode
 ;;   :ensure t
