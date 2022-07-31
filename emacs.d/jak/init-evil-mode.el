@@ -2,6 +2,11 @@
 (use-package 
   evil 
   :ensure t 
+  :bind ((:map evil-window-map
+             ("C-j" . evil-window-down)
+             ("C-k" . evil-window-up)
+             ("C-l" . evil-window-right)
+             ("C-h" . evil-window-left)))
   :init ;; tweak evil's configuration before loading it
   (progn 
     (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
@@ -61,7 +66,32 @@
                                          :jump t) 
             (evil-add-command-properties #'helm-projectile-find-dir 
                                          :jump t)
+            (evil-add-command-properties #'evil-window-left
+                                         :jump t)
+            (evil-add-command-properties #'evil-window-right
+                                         :jump t)
+            (evil-add-command-properties #'evil-window-up
+                                         :jump t)
+            (evil-add-command-properties #'evil-window-down
+                                         :jump t)
+            (evil-add-command-properties #'evil-scroll-down
+                                         :jump t)
+            (evil-add-command-properties #'evil-scroll-up
+                                         :jump t)
+            (evil-add-command-properties #'helm-occur
+                                         :jump t)
+            (evil-add-command-properties #'dired-find-file :jump t)
+            (evil-add-command-properties #'dired-jump :jump t)
+            ;; (setq evil--jumps-buffer-targets "")
             ;; add numbered jumpts to the jump list
+            (defun vj-rename-dired-buffer ()
+            (interactive)
+            (unless (string-match-p "Dired:" (buffer-name))
+                (rename-buffer (concat "Dired:" (buffer-name)))))
+
+            (add-hook 'dired-mode-hook 'vj-rename-dired-buffer)
+            (setq evil--jumps-buffer-targets "\\(\\*\\(\\new\\|scratch\\)\\*\\|Dired:.+\\)")
+
             (defun my-jump-advice (oldfun &rest args) 
               (let ((old-pos (point))) 
                 (apply oldfun args) 
