@@ -32,6 +32,7 @@
   ;;https://emacs.stackexchange.com/a/18872/26147
   (define-key helm-map (kbd "C-j") 'helm-next-line)
   (define-key helm-map (kbd "C-k") 'helm-previous-line)
+  (define-key helm-map (kbd "C-c C-k") nil)
   )
 
 
