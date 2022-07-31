@@ -198,13 +198,13 @@
     "org"   '(:ignore t :which-key "Daily Goto")
     "orgt"  '(org-roam-dailies-goto-today :which-key "goto daily roam journal")
     "orgd"  '(org-roam-dailies-goto-date :which-key "goto dated journal roam")
+    ;; projectile
+    "p"   '(projectile-command-map :which-key "Projectile")
     ;; editing/culling/deleting
     "k"   '(:ignore t :which-key "editing/culling")
     "kd"   '(flush-lines :which-key "flush lines")
     "kk"   '(keep-lines :which-key "keep lines")
     "ks"   '(delete-trailing-whitespace :which-key "delete trailing white spaces")
-    ;; projectile
-    "p"   '(projectile-command-map :which-key "Projectile")
     ;; password, question(?)
     "q"   '(:ignore t :which-key "passwords")
     "qq"   '(password-store-copy :which-key "copy password")
@@ -225,6 +225,7 @@
     "v"   '(:ignore t :which-key "docker/kuberntes")
     "vd"   '(docker :which-key "docker")
     "vk"   '(kubernetes-overview :which-key "kubernetes")
+    ;; Misc for speed and convenience
     ;; Misc for speed and convenience
     ;; "l"   '(locate :which-key "Locate")
     ;; "f"   '(find-dired :which-key "Find: result in dired")
@@ -260,6 +261,48 @@
     )
   )
 
+(global-set-key (kbd "C-x b") #'my/switch-to-tab-buffer)
+;; global key shortcuts
+;; kill this buffer without asking name
+(global-set-key (kbd "C-x k") 'kill-this-buffer)
+
+;; ace-jump-mode
+;;(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
+(global-set-key (kbd "C-;") 'ace-jump-mode)
+(global-set-key (kbd "M-n") 'ace-jump-line-mode)
+
+;; webjump
+(global-set-key (kbd "s-j") 'webjump)
+
+;; ace-jump-helm-line
+(eval-after-load "helm" '(define-key helm-map (kbd "C-q") 'ace-jump-helm-line))
+
+;; new line and indent
+(global-set-key (kbd "<S-return>") 
+                (kbd "C-e C-m"))
+;; (global-set-key [C-tab] 'next-buffer)
+;; (global-set-key [C-S-iso-lefttab] 'previous-buffer)
+;; (global-set-key (kbd "M-]") 'next-buffer)
+;; (global-set-key (kbd "M-[") 'previous-buffer)
+
+(global-set-key (kbd "C-c C-j") 'previous-buffer)
+(global-set-key (kbd "C-c C-k") 'next-buffer)
+
+(global-set-key (kbd "<M-up>") 'drag-stuff-up)
+(global-set-key (kbd "<M-down>") 'drag-stuff-down)
+
+
+;; some package is using M-o by default, placed this here to override it
+(global-set-key (kbd "M-o") 'ace-window)
+
+(global-set-key (kbd "C--") 'fk/decrease-font-size)
+(global-set-key (kbd "C-*") 'fk/increase-font-size)
+(global-set-key (kbd "C-0") 'fk/reset-font-size)
+;; delete white spaces before saving
+;;(add-hook 'before-save-hook 'whitespace-cleanup)
+
+;; copy line
+;;(global-set-key (kbd "s-d") "\C-a\C- \C-n\M-w\C-y")
 ;; (use-package helm-gitignore
 ;;   :ensure t)
 

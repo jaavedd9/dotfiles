@@ -373,35 +373,9 @@
 ;; tabs are 4 spaces
 (setq-default tab-width 4 indent-tabs-mode nil)
 
-;; global key shortcuts
-;; kill this buffer without asking name
-(global-set-key (kbd "C-x k") 'kill-this-buffer)
-
-;; ace-jump-mode
-;;(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
-(global-set-key (kbd "C-;") 'ace-jump-mode)
-(global-set-key (kbd "M-n") 'ace-jump-line-mode)
-
-;; webjump
-(global-set-key (kbd "s-j") 'webjump)
-
-;; ace-jump-helm-line
-(eval-after-load "helm" '(define-key helm-map (kbd "C-q") 'ace-jump-helm-line))
-
-;; new line and indent
-(global-set-key (kbd "<S-return>") 
-                (kbd "C-e C-m"))
-
-;; delete white spaces before saving
-;;(add-hook 'before-save-hook 'whitespace-cleanup)
-
-;; copy line
-;;(global-set-key (kbd "s-d") "\C-a\C- \C-n\M-w\C-y")
-
 (use-package 
   duplicate-thing 
   :ensure t)
-(global-set-key (kbd "C-c C-j") 'duplicate-thing)
 
 ;; smartparens
 (use-package 
@@ -418,13 +392,6 @@
   (package-refresh-contents))
 
 ;; next and previous buffers
-
-;; (global-set-key [C-tab] 'next-buffer)
-;; (global-set-key [C-S-iso-lefttab] 'previous-buffer)
-(global-set-key (kbd "M-]") 'next-buffer)
-(global-set-key (kbd "M-[") 'previous-buffer)
-
-
 
 
 ;; stackexchange
@@ -459,8 +426,6 @@
   drag-stuff 
   :ensure t 
   :config (drag-stuff-global-mode 1))
-(global-set-key (kbd "<M-up>") 'drag-stuff-up)
-(global-set-key (kbd "<M-down>") 'drag-stuff-down)
 
 ;; expand region
 ;; (use-package 
@@ -804,12 +769,6 @@
 
 (setq delete-old-versions t)
 
-;; some package is using M-o by default, placed this here to override it
-(global-set-key (kbd "M-o") 'ace-window)
-
-(global-set-key (kbd "C--") 'fk/decrease-font-size)
-(global-set-key (kbd "C-*") 'fk/increase-font-size)
-(global-set-key (kbd "C-0") 'fk/reset-font-size)
 
 ;; tramp speedup
 ;; from here https://emacs.stackexchange.com/questions/17543/tramp-mode-is-much-slower-than-using-terminal-to-ssh
@@ -962,9 +921,6 @@
   outline 
   :ensure nil                           ; built-in
   :config (setq outline-blank-line t) 
-  (global-set-key (kbd "<f1>") 'outline-toggle-children) 
-  (global-set-key (kbd "S-<f1>") 'outline-show-subtree) 
-  (global-set-key (kbd "<f2>") 'outline-previous-visible-heading)
   ;; leave unhidden blank line before heading
   )
 
@@ -1068,8 +1024,6 @@
   (if (project-current)
       (call-interactively #'project-switch-to-buffer)
     (call-interactively #'switch-to-buffer)))
-
-(global-set-key (kbd "C-x b") #'my/switch-to-tab-buffer)
 
 ;; Turn on tab bar mode after startup
 (tab-bar-mode 1)
