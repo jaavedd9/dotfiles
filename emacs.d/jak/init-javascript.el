@@ -20,6 +20,8 @@
 ;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
 ;; unbind it.
 (define-key js-mode-map (kbd "M-.") nil)
+(define-key js-mode-map (kbd "C-c C-k") nil)
+(define-key js-mode-map (kbd "C-c C-j") nil)
 
 (add-hook 'js2-mode-hook (lambda () 
                            (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
@@ -45,8 +47,9 @@
    (setq company-tooltip-align-annotations t)
 
    ;; formats the buffer before saving
-   (add-hook 'before-save-hook 'tide-format-before-save)
-   (add-hook 'typescript-mode-hook #'setup-tide-mode))
+   ;; (add-hook 'before-save-hook 'tide-format-before-save)
+   ;; (add-hook 'typescript-mode-hook #'setup-tide-mode)
+   )
 
 
 (add-hook 'web-mode-hook (lambda () 
