@@ -1,32 +1,31 @@
 # Description
-Dotfiles with ansible playbooks for the debian(11) OS.
+Dotfiles with ansible playbooks for the Debian(11) OS.
 
 managed packages and configs inclucde
-1. emacs
-2. zsh
+1. emacs # extensible editor
+2. zsh # shell language
 3. python # development packages
 4. java # openjdk
-4. compton # compositor
+4. compton # compositor for transparency 
 5. nodejs
 6. snap
-7. tmux
-8. kubectl
+7. tmux # terminal session manager
+8. kubectl # kubernetes
 9. apt-packages
-10. docker
-11. xmonad
-12. xmobar
-13. rofi
-14. copyq
+10. docker # containers
+11. xmonad # tiling windows manager
+12. xmobar # task bar for xmonad
+13. rofi # application launcher and window switcher
+14. copyq # paste manager with suport for storing encrypted passwords
 15. rescuetime # to track time on OS
 16. wakatime # to track time in Editor(emacs) 
 17. hugo # static site generator
+18. vim 
 
 # emacs
 
-
-
 # Installation
-1. install debian(11)
+1. install Debian(11)
 2. install ansible with pip
 ```
 pip3 install ansible
