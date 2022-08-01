@@ -14,16 +14,18 @@
   ;; :mode "\\.tsx?$"
   :config
   (setq typescript-indent-level 2) 
-  :hook
-  (typescript-mode . (lambda () 
-                       (flycheck-add-mode
-                        'typescript-tslint
-                        'typescript-tsx-mode) 
-                       (flycheck-add-next-checker
-                        ;;'typescript-tide
-                        'typescript-tslint
-                        'javascript-eslint
-                        'lsp))))
+  ;; :hook
+  ;; (typescript-mode . (lambda () 
+  ;;                      (flycheck-add-mode
+  ;;                       'typescript-tslint
+  ;;                       'typescript-tsx-mode) 
+  ;;                      ;; (flycheck-add-next-checker
+  ;;                      ;;  'typescript-tide
+  ;;                      ;;  'typescript-tslint
+  ;;                      ;;  'javascript-eslint
+  ;;                      ;;  'lsp)
+  ;;                      ))
+  )
 
 
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
