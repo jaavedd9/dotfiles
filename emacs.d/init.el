@@ -102,7 +102,6 @@
   '(better-defaults ;; Set up some better Emacs defaults
     helm            ;; incremental completion and selection narrowing framework
     elpy            ;; Emacs Lisp python env
-    flycheck        ;; On the fly syntax checking
     ;; py-autopep8                     ;; run autopep8 on save
     ;; blacken                         ;; black formatting on save
     all-the-icons ;; might needed by  packages before it use-package install it
@@ -129,6 +128,13 @@
           (unless (package-installed-p package) 
             (package-install package))) myPackages)
 
+
+(use-package flycheck
+  :ensure t
+  :custom
+  (flycheck-display-errors-delay 0)
+  )
+;; On the fly syntax checking
 
 ;; ace-window
 ;; thoughtful keys to switch windows
@@ -763,9 +769,12 @@
   json-mode 
   :ensure t 
   :defer t 
-  :config (add-hook 'json-mode-hook (lambda () 
+  :config
+  (add-hook 'json-mode-hook (lambda () 
                                       (set (make-local-variable 'company-backends) 
-                                           '(( company-files))))))
+                                           '(( company-files)))))
+  (define-key json-mode-map (kbd "C-c C-k") nil)
+  )
 
 (setq delete-old-versions t)
 
