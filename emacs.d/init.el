@@ -1043,6 +1043,14 @@
 (defun load-file-if-exists (path)
   (if (file-exists-p path)
       (load-file path)))
+
+
+(defun my-buffer-predicate (buffer)
+  (if (string-match "helm" (buffer-name buffer))
+      nil
+    t))
+
+(set-frame-parameter nil 'buffer-predicate 'my-buffer-predicate)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Do any initialization that's specific to this machine
