@@ -1,6 +1,10 @@
 ;; org mode
 (use-package org
-  :pin gnu)
+  :pin gnu
+  :config
+  (define-key org-mode-map (kbd "C-c C-j") nil)
+  (define-key org-mode-map (kbd "C-c C-k") nil)
+  )
 
 (require 'org)
 
