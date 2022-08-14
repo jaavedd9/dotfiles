@@ -88,6 +88,7 @@
   (require 'notdeft-global)
   ;; (global-set-key [f8] 'notdeft-global-map)
   )
+  (define-key notdeft-mode-map (kbd "C-c C-j") nil)
   )
 
 ;;; copied

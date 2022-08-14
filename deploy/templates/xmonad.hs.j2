@@ -702,6 +702,10 @@ myKeys =
         , ("<Print>", spawn "flameshot gui")
         , ("M-S-l", spawn "slock")
         , ("M-S-b", spawn "feh --randomize --bg-fill /mnt/data/Dropbox/emacs/wallpapers/*")
+        -- follow instructions to install lux
+        -- https://lambdablob.com/posts/xmonad-screen-brightness-control-lux/
+        , ("<XF86MonBrightnessUp>", spawn "lux -a 5%")
+        , ("<XF86MonBrightnessDown>", spawn "lux -s 5%")
 
     -- -- Emacs shortcuts(CTRL-e followed by a key)
     --     , ("M-x e", spawn "emacsclient -c -a 'emacs'")                            -- start emacs
