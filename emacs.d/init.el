@@ -1045,6 +1045,7 @@
       (load-file path)))
 
 
+;; to remove helm buffers inactive selection from helm previous and next buffers
 (defun my-buffer-predicate (buffer)
   (if (string-match "helm" (buffer-name buffer))
       nil
