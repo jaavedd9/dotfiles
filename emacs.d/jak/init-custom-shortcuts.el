@@ -298,6 +298,9 @@
 (global-set-key (kbd "C--") 'fk/decrease-font-size)
 (global-set-key (kbd "C-*") 'fk/increase-font-size)
 (global-set-key (kbd "C-0") 'fk/reset-font-size)
+
+;; dired
+(global-set-key (kbd "C-x C-,") `dired-sidebar-toggle-sidebar)
 ;; delete white spaces before saving
 ;;(add-hook 'before-save-hook 'whitespace-cleanup)
 

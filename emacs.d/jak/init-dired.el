@@ -2,6 +2,7 @@
 ;; ref: https://github.com/daviwil/emacs-from-scratch/blob/8c302a79bf5700f6ef0279a3daeeb4123ae8bd59/Emacs.org#dired
 
 (use-package dired
+  ;; native package
   :ensure nil
   :commands (dired dired-jump)
   :bind (("C-x C-j" . dired-jump))
@@ -85,7 +86,6 @@
     (dired-sidebar-toggle-sidebar)
     (ibuffer-sidebar-toggle-sidebar))
   )
-(global-set-key (kbd "C-x C-,") `dired-sidebar-toggle-sidebar)
 
 
 (use-package ibuffer-sidebar
@@ -107,15 +107,6 @@
 ;;   :straight (:host github :repo "conao3/dired-posframe.el")
 ;;   :commands dired-posframe-mode)
 
-(use-package dired-recent
-  :ensure t
-  :after dired  ; TODO: is bind still defer?
-  :bind
-  ( :map files
-    ("d" . dired-recent-open))
-  :config
-  (dired-recent-mode))
-
 (use-package dired-show-readme
   :straight (:host gitlab :repo "kisaragi-hiu/dired-show-readme")
   :commands dired-show-readme-mode
@@ -134,8 +125,8 @@
 
 
 ;; to enable unzip action from dired
-(eval-after-load "dired-aux"
-  '(add-to-list 'dired-compress-file-suffixes
-                '("\\.zip\\'" ".zip" "unzip")))
+;; (eval-after-load "dired-aux"
+;;   '(add-to-list 'dired-compress-file-suffixes
+;;                 '("\\.zip\\'" ".zip" "unzip")))
 
 (provide 'init-dired)
