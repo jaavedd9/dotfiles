@@ -659,6 +659,12 @@
 (use-package helm-org-ql
   :quelpa (helm-org-ql :fetcher github :repo "alphapapa/org-ql"
                        :files ("helm-org-ql.el")))
+
+;; custom date time format
+(setq org-agenda-timegrid-use-ampm t)
+(setq org-display-custom-times t)
+(setq org-time-stamp-custom-formats '("<%a %b %e %Y>" . "<%a %b %e %Y %H:%M>"))
+
 (provide 'init-org-mode)
 ;;; init-org.el ends here
 ;; Local Variables:
