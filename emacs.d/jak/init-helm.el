@@ -76,7 +76,7 @@
   :ensure t
   :config
   (push 'fussy completion-styles)
-  (shelm-M-x-fuzzy-matchq
+  (setq
    ;; For example, project-find-file uses 'project-files which uses
    ;; substring completion by default. Set to nil to make sure it's using
    ;; flx.
