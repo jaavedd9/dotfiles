@@ -665,6 +665,9 @@
 (setq org-display-custom-times t)
 (setq org-time-stamp-custom-formats '("<%a %b %e %Y>" . "<%a %b %e %Y %H:%M>"))
 
+;; in org mode imenu index headlines of level 2 not below that
+(setq org-imenu-depth 7)
+
 (provide 'init-org-mode)
 ;;; init-org.el ends here
 ;; Local Variables:
