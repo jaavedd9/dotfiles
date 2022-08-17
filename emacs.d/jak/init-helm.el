@@ -33,10 +33,18 @@
   (define-key helm-map (kbd "C-j") 'helm-next-line)
   (define-key helm-map (kbd "C-k") 'helm-previous-line)
   (define-key helm-map (kbd "C-c C-k") nil)
-  (setq helm-semantic-fuzzy-match t
-        helm-imenu-fuzzy-match    t
-        helm-apropos-fuzzy-match t
-        )
+  (setq
+      helm-M-x-fuzzy-match                  t
+      helm-bookmark-show-location           t
+      helm-buffers-fuzzy-matching           t
+      helm-completion-in-region-fuzzy-match t
+      helm-file-cache-fuzzy-match           t
+      helm-imenu-fuzzy-match                t
+      helm-mode-fuzzy-match                 t
+      helm-locate-fuzzy-match               t 
+      helm-quick-update                     t
+      helm-recentf-fuzzy-match              t
+      helm-semantic-fuzzy-match             t)
   )
 
 
@@ -53,7 +61,8 @@
   :ensure t
   :config
   (helm-flx-mode +1)
-  (setq helm-flx-for-helm-find-files t ;; t by default
+  (setq
+      helm-flx-for-helm-find-files t ;; t by default
       helm-flx-for-helm-locate t) ;; nil by default
   )
 
