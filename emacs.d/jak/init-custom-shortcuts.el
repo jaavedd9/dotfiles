@@ -142,6 +142,8 @@
     ;; "lx"  '(lsp-ui--goto-xref :which-key "xref")
     "lf"  '(lsp-find-references :which-key "references")
     "lo"  '(lsp-ui-imenu :which-key "imenu/outline")
+    "li"  '(lsp-ui-imenu :which-key "imenu/outline")
+    "ll"  '(imenu-list :which-key "imenu list")
     "lw"  '(lsp-restart-workspace :which-key "restart lsp workspace")
     ;; dumb-jump
     ;; "j"   '(:ignore t :which-key "dumb-jump")
