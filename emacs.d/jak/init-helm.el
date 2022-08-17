@@ -33,6 +33,10 @@
   (define-key helm-map (kbd "C-j") 'helm-next-line)
   (define-key helm-map (kbd "C-k") 'helm-previous-line)
   (define-key helm-map (kbd "C-c C-k") nil)
+  (setq helm-semantic-fuzzy-match t
+        helm-imenu-fuzzy-match    t
+        helm-apropos-fuzzy-match t
+        )
   )
 
 
@@ -43,6 +47,35 @@
 (use-package helm-xref
   :ensure t
   )
+
+;;  Flx-based fuzzy intelligent sorting for helm
+(use-package helm-flx
+  :ensure t
+  :config
+  (helm-flx-mode +1)
+  (setq helm-flx-for-helm-find-files t ;; t by default
+      helm-flx-for-helm-locate t) ;; nil by default
+  )
+
+(use-package helm-fuzzier
+  :ensure t 
+  :config
+  (helm-fuzzier-mode 1)
+  )
+  
+(use-package fussy
+  :ensure t
+  :config
+  (push 'fussy completion-styles)
+  (shelm-M-x-fuzzy-matchq
+   ;; For example, project-find-file uses 'project-files which uses
+   ;; substring completion by default. Set to nil to make sure it's using
+   ;; flx.
+   completion-category-defaults nil
+   completion-category-overrides nil))
+
+(setq helm-completion-style 'emacs)
+
 
 (setq helm-ag-insert-at-point 'symbol)
 ;; (global-set-key (kbd "C-s") 'helm-swoop)
@@ -84,6 +117,11 @@
   :ensure t
   :config
   (setq helm-swoop-use-fuzzy-match t
+        helm-swoop-use-line-number-face t
+        ;; to get color in seach candidates at the expense of speed
+        helm-swoop-speed-or-color t
+        ;; Go to the opposite side of line from the end or beginning of line
+        helm-swoop-move-to-line-cycle t
         helm-swoop-use-line-number-face t
         ;; helm-multi-swoop-edit-save t
         )

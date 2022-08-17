@@ -115,6 +115,9 @@
     "h/"  '(helm-projectile-rg :which-key "rg, rip grep")
     "hh"  '(helm-projectile-rg :which-key "rg, rip grep")
     "hg"  '(helm-projectile-rg :which-key "rg, rip grep")
+    "hi"  '(helm-imenu :which-key "helm imenu")
+    "hp"  '(helm-semantic :which-key "helm semantic")
+    "hl"  '(helm-semantic-or-imenu :which-key "helm semantic or imenu")
     ;; "hs"  '(helm-projectile-ag :which-key "ag, silver searcher")
     "hs"   '(:ignore t :which-key "helm search/find")
     "hsf"  '(helm-find :which-key "Helm Find: find files recursively in current directory")
@@ -247,8 +250,9 @@
     ;; Misc, convinient shortucts
     "SPC" '(helm-projectile-find-file :which-key "projectile find file")
     ;; "SPC" '(helm-mini :which-key "opened buffers and recent files")
-    "/"   '(helm-occur :which-key "helm occur local buffer")
-    "j"  '(helm-projectile-rg :which-key "rg, rip grep")
+    ;; "/"   '(helm-occur :which-key "helm occur local buffer")
+    "/"   '(helm-swoop :which-key "helm swoop local buffer")
+    ;; "j"  '(helm-projectile-rg :which-key "rg, rip grep")
     ;; in normal mode
     ;; "u"   '(universal-argument :which-key "universal argument")
     ","   '(previous-buffer :which-key "previous buffer")
