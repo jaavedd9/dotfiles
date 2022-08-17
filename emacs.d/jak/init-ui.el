@@ -551,11 +551,6 @@ size. This function also handles icons and modeline font sizes."
 ;;
 ;;
 
-;; evil folding z operator uses origami
-(use-package origami
-  :ensure t
-  )
-
 ;; (use-package highlight-indentation
 ;;   :ensure t
 ;;   :config

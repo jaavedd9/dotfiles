@@ -1,3 +1,7 @@
+(use-package origami
+  :ensure t
+  )
+
 ;; evil package
 (use-package 
   evil 
