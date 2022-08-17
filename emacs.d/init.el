@@ -933,6 +933,21 @@
   ;; leave unhidden blank line before heading
   )
 
+(use-package outline-minor-faces
+  :ensure t
+  :after outline
+  :config (add-hook 'outline-minor-mode-hook
+		      #'outline-minor-faces-mode))
+
+
+;; Customize the distracting folding markers.
+;; replace ... with +
+(set-display-table-slot
+   standard-display-table
+   'selective-display
+   (let ((face-offset (* (face-id 'shadow) (lsh 1 22))))
+     (vconcat (mapcar (lambda (c) (+ face-offset c)) " +"))))
+
 (use-package 
   bicycle 
   :ensure t 
@@ -1023,6 +1038,9 @@
   )
 
 (use-package tldr
+  :ensure t)
+
+(use-package imenu-list
   :ensure t)
 
 ;; Only show the tab bar if there are 2 or more tabs
