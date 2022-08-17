@@ -302,8 +302,20 @@ beginning of the string that has curly brackets in it."
         python-indent 4)
   )
 
+;; from this reddit: https://www.reddit.com/r/emacs/comments/e2u5n9/code_folding_with_outlineminormode/
 ;; python code folding
 ;; Customize mode-specific Outline folding.
+(add-hook 'python-mode-hook
+        (defun baba/outline-python ()
+            "Fold only definitions in Python."
+            (setq outline-regexp
+                (rx (or
+                        ;; Definitions
+                        (group (group (* space)) bow (or "class" "def") eow)
+
+                        ;; Decorators
+                        (group (group (* space)) "@"))))
+            (baba/outline-overview)))
 
 (provide 'init-python)
 ;;; init-python.el ends here
