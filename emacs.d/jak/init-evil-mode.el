@@ -24,7 +24,9 @@
     (setq evil-respect-visual-line-mode t) 
     (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state) 
     (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up) 
-    (define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)) 
+    (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up) 
+    ;; (define-key evil-visual-state-map (kbd "<tab>") 'bicycle-cycle)) 
+    ;; (define-key evil-normal-state-map (kbd "<tab>") 'bicycle-cycle)) 
     ;; evil-indent-plus
     (define-key evil-inner-text-objects-map "i" 'evil-indent-plus-i-indent)
     (define-key evil-outer-text-objects-map "i" 'evil-indent-plus-a-indent)
@@ -32,6 +34,16 @@
     (define-key evil-outer-text-objects-map "I" 'evil-indent-plus-a-indent-up)
     (define-key evil-inner-text-objects-map "J" 'evil-indent-plus-i-indent-up-down)
     (define-key evil-outer-text-objects-map "J" 'evil-indent-plus-a-indent-up-down)
+    ;;;  evil fold
+    ;; show fold
+   (define-key evil-normal-state-map (kbd "z o") 'outline-show-entry)
+   ;; show all folds
+   (define-key evil-normal-state-map (kbd "z r") 'outline-show-all)
+   ;; close fold
+   (define-key evil-normal-state-map (kbd "z c") 'outline-hide-leaves)
+   ;; close all folds
+   (define-key evil-normal-state-map (kbd "z m") 'outline-hide-body)
+   (define-key evil-normal-state-map (kbd "z s") 'outline-hide-sublevels))
   :config (progn 
             (setq evil-emacs-state-cursor '("purple" bar)) 
             (setq evil-normal-state-cursor '("firebrick" box)) 
@@ -117,6 +129,17 @@
   (setq evil-collection-setup-minibuffer t) 
   (setq evil-collection-want-find-usages-bindings t))
 
+;; (use-package vimish-fold
+;;   :ensure
+;;   :after evil)
+
+;; (use-package evil-vimish-fold
+;;   :ensure
+;;   :after
+;;    vimish-fold
+;;   :hook
+;;    ((prog-mode conf-mode text-mode) . evil-vimish-fold-mode))
+
 (use-package 
   evil-tutor 
   :ensure t)
@@ -190,6 +213,19 @@
   evil-indent-plus 
   :ensure t)
 
+
+(use-package vimish-fold
+  :ensure
+  :after evil)
+
+;; (use-package evil-vimish-fold
+;;   :ensure
+;;   :after vimish-fold
+;;   :init
+;;   (setq evil-vimish-fold-mode-lighter " ⮒")
+;;   (setq evil-vimish-fold-target-modes '(prog-mode conf-mode text-mode))
+;;   :config
+;;   (global-evil-vimish-fold-mode))
 
 (provide 'init-evil-mode)
 
