@@ -119,7 +119,8 @@ FILTER is function that runs after the process is finished, its args should be
     ;;("M-p" . python-nav-backward-block)
     ("C-c r" . python-indent-shift-right)
     ("C-c l" . python-indent-shift-left)
-    ("<tab>" . bicycle-cycle)
+    ;; affecting in insert mode as well
+    ;; ("<tab>" . bicycle-cycle)
     ("C-c C-j" . nil)
     ("C-c C-v" . nil))
   :hook
