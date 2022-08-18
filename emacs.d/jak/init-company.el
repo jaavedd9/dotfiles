@@ -247,7 +247,6 @@
   :commands fk/company-wordfreq-mode
   :custom
   (company-wordfreq-path (concat no-littering-var-directory "wordfreq-dicts"))
-  (ispell-local-dictionary "english")
   :config
   (define-minor-mode fk/company-wordfreq-mode
     "Suggest words by frequency."

@@ -1044,6 +1044,15 @@
 (use-package imenu-list
   :ensure t)
 
+(use-package ispell
+  :ensure nil
+  ;; native package
+  :config
+  (progn
+  ;; (ispell-local-dictionary "english")
+  (ispell-change-dictionary "american"))
+  )
+
 ;; Only show the tab bar if there are 2 or more tabs
 (setq tab-bar-show 1)
 
