@@ -7,6 +7,16 @@
   (org-super-agenda-mode +1)
   )
 
+
+;; to display habits in agenda grid not at bottom
+;; https://emacs.stackexchange.com/questions/17125/how-to-see-habit-items-along-the-timegrid-like-normal-items
+(setq org-agenda-sorting-strategy
+  '((agenda time-up priority-down category-keep)
+    (todo   priority-down category-keep)
+    (tags   priority-down category-keep)
+    (search category-keep)))
+
+
 ;; default is 40
 (setq org-habit-graph-column 80)
 (setq org-agenda-window-setup 'reorganize-frame)
