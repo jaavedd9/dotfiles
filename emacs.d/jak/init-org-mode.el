@@ -360,6 +360,7 @@
 ;;                             :client-secret "B70ft_qMhgdji0XeIAcVh4HC")
 (use-package olivetti
   :ensure t)
+
 ;; slide presentation
 (use-package org-tree-slide
   :ensure t
@@ -371,11 +372,13 @@
   (org-tree-slide-heading-emphasis t)
   (org-tree-slide-slide-in-waiting 0.025)
   (org-tree-slide-content-margin-top 4)
+  ;; to be able to start presentation from the subtree where the cursor is at
+  (org-tree-slide-cursor-init nil)
   :custom-face
   (org-tree-slide-heading-level-1 ((t (:height 1.8 :weight bold))))
   (org-tree-slide-heading-level-2 ((t (:height 1.5 :weight bold))))
-  (org-tree-slide-heading-level-3 ((t (:height 1.5 :weight bold))))
-  (org-tree-slide-heading-level-4 ((t (:height 1.5 :weight bold))))
+  (org-tree-slide-heading-level-3 ((t (:height 1.3 :weight bold))))
+  (org-tree-slide-heading-level-4 ((t (:height 1.1 :weight bold))))
   :bind
   ( :map org
          ("s" . org-tree-slide-mode)
