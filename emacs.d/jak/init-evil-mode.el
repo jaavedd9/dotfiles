@@ -43,7 +43,7 @@
    (define-key evil-normal-state-map (kbd "z c") 'outline-hide-leaves)
    ;; close all folds
    (define-key evil-normal-state-map (kbd "z m") 'outline-hide-body)
-   (define-key evil-normal-state-map (kbd "z s") 'outline-hide-sublevels))
+   (define-key evil-normal-state-map (kbd "z s") 'outline-hide-sublevels)
    (define-key evil-normal-state-map (kbd "z a") 'outline-toggle-children))
   :config (progn 
             (setq evil-emacs-state-cursor '("purple" bar)) 
