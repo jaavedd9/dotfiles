@@ -15,6 +15,10 @@
 ;;   :ensure t
 ;;   )
 ;;(require 'company-bootstrap)
+
+;; AI based auto completion suggestion
+(use-package company-tabnine :ensure t)
+
 (use-package company
   ;;  :diminish company-mode
   :init
@@ -33,6 +37,8 @@
   ;; set default `company-backends'
   (setq company-backends
         '((company-files          ; files & directory
+           company-tabnine        ; tabnine 
+           ;; M-X company-tabnine-install-binary to install requried binaries
            company-keywords       ; keywords
            company-capf)  ; completion-at-point-functions
           (company-abbrev company-dabbrev)
@@ -304,6 +310,7 @@ In that case, insert the number."
                         (company-abort)
                         (self-insert-command 1)))
   (define-key map (kbd "<return>") nil))
+
 
 (provide 'init-company)
 ;;; init-company.el ends here
