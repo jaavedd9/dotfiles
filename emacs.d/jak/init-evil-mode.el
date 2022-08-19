@@ -45,6 +45,10 @@
    (define-key evil-normal-state-map (kbd "z m") 'outline-hide-body)
    (define-key evil-normal-state-map (kbd "z s") 'outline-hide-sublevels)
    (define-key evil-normal-state-map (kbd "z a") 'outline-toggle-children))
+  ;; default
+   ;; (define-key evil-normal-state-map (kbd "z u") 'outline-heading-up)
+   (define-key evil-normal-state-map (kbd "z u") 'outline-previous-heading)
+   (define-key evil-normal-state-map (kbd "z d") 'outline-next-heading))
   :config (progn 
             (setq evil-emacs-state-cursor '("purple" bar)) 
             (setq evil-normal-state-cursor '("firebrick" box)) 
