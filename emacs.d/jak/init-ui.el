@@ -9,7 +9,7 @@
   (lazy-highlight ((t (:background nil :foreground nil :box (:line-width -1)))))
   (fixed-pitch ((t (:family "Noto Sans Mono"))))
   :config
-  (load-theme 'doom-spacegrey t)
+  ;; (load-theme 'doom-spacegrey t)
   (defconst fk/font-color (face-attribute 'default :foreground))
   (defconst fk/background-color (face-attribute 'default :background))
   (defconst fk/dark-color (doom-darken fk/background-color 0.15))
@@ -47,7 +47,7 @@
 (use-package kaolin-themes
   :ensure t
   :config
-  (load-theme 'kaolin-temple t)
+  ;; (load-theme 'kaolin-temple t)
   )
 
 ;; (use-package gruvbox-theme
@@ -564,6 +564,8 @@ size. This function also handles icons and modeline font sizes."
 (use-package hydra
   :ensure t
   )
+
+(load-theme 'kaolin-shiva)
 ;; fonts
 (set-face-attribute 'default nil
                   :font "DejaVu Sans Mono")
