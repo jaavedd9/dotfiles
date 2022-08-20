@@ -1065,6 +1065,8 @@
 ;; Turn on tab bar mode after startup
 (tab-bar-mode 1)
 
+;; disalbe linenumber in the modeline because it is redundant, left side bar
+(line-number-mode 0)
 ;; Save the desktop session
 (desktop-save-mode 1)
 
