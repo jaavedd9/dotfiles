@@ -24,6 +24,7 @@
                             (org-indent-mode)
                             (variable-pitch-mode)
                             (flyspell-mode)
+                            (setq doom-modeline-enable-word-count t)
                             ))
 
 ;; n characters per line
