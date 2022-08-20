@@ -981,9 +981,14 @@
 (use-package 
   editorconfig 
   :ensure t 
-  :config (progn (editorconfig-mode 1) 
-                 (add-hook 'editorconfig-after-apply-functions (lambda (props) 
-                                                                 (setq web-mode-block-padding 0)))))
+  :config
+  (progn
+    (editorconfig-mode 1)
+    (add-hook 'editorconfig-after-apply-functions (lambda (props)
+                                                    (setq web-mode-block-padding 0)))
+    ;; to make previous and next buffer movement compatible
+    (define-key editorconfig-conf-mode-map (kbd "C-c C-j") nil)
+    ))
 
 (defun copy-current-file-name-on-clipboard () 
   "Put the current file name on the clipboard" 

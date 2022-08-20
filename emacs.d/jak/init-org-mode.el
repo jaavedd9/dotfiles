@@ -188,7 +188,10 @@
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "markdown"))
+  :init (setq markdown-command "markdown")
+  :config
+  (define-key markdown-mode-map (kbd "C-c C-j") nil)
+  (define-key markdown-mode-map (kbd "C-c C-k") nil))
 
 ;; enable logging
 (setq org-log-into-drawer t)
