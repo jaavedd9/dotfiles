@@ -44,7 +44,7 @@
    ;; close all folds
    (define-key evil-normal-state-map (kbd "z m") 'outline-hide-body)
    (define-key evil-normal-state-map (kbd "z s") 'outline-hide-sublevels)
-   (define-key evil-normal-state-map (kbd "z a") 'outline-toggle-children))
+   (define-key evil-normal-state-map (kbd "z a") 'outline-toggle-children)
   ;; default
    ;; (define-key evil-normal-state-map (kbd "z u") 'outline-heading-up)
    (define-key evil-normal-state-map (kbd "z u") 'outline-previous-heading)
