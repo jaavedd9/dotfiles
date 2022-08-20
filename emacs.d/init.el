@@ -978,16 +978,15 @@
 ;; https://www.reddit.com/r/emacs/comments/e2u5n9/code_folding_with_outlineminormode/
 ;;; init.el ends here
 
-(use-package 
-  editorconfig 
+(use-package editorconfig 
   :ensure t 
   :config
+  (define-key editorconfig-conf-mode-map (kbd "C-c C-j") nil)
   (progn
     (editorconfig-mode 1)
     (add-hook 'editorconfig-after-apply-functions (lambda (props)
                                                     (setq web-mode-block-padding 0)))
     ;; to make previous and next buffer movement compatible
-    (define-key editorconfig-conf-mode-map (kbd "C-c C-j") nil)
     ))
 
 (defun copy-current-file-name-on-clipboard () 

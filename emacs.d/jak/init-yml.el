@@ -1,5 +1,8 @@
-;;; yaml configs
+;;; dependencies of yaml-mode
+(use-package outline-magic
+  :ensure t)
 
+;;; yaml configs
 (use-package yaml-mode 
   :ensure t 
   :mode "\\.vault" 
@@ -51,7 +54,17 @@
                                    ":"
                                    (+ nonl)
                                    eol)))))
-  )))))
+               ))
+    (use-package outline-magic :ensure t)
+    (setq outline-level 'leoc/yaml-outline-level)
+    (outline-minor-mode t)
+    (hide-body)
+    (show-paren-mode 1)
+    (define-key yaml-mode-map [tab] 'outline-cycle)
+    (define-key outline-minor-mode-map [M-S-tab] 'indent-for-tab-command)
+    (define-key outline-minor-mode-map [M-down] 'outline-move-subtree-down)
+    (define-key outline-minor-mode-map [M-down] 'outline-move-subtree-down)
+    (define-key outline-minor-mode-map [M-up] 'outline-move-subtree-up))))
 
 
 (use-package jinja2-mode
