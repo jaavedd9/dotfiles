@@ -242,6 +242,8 @@
     "tt"  '(tab-switch  :which-key "switch to another tab")
     "ts"  '(tab-switch  :which-key "switch to another tab")
     "tr"  '(tab-rename  :which-key "tab rename")
+    "tj"  '(tab-next  :which-key "tab next")
+    "tk"  '(tab-previous  :which-key "tab previous")
     "tb"  '(my/switch-to-tab-buffer  :which-key "select buffers in current tab")
     "tc"  '(tab-close  :which-key "tab close")
     "tn"  '(my/new-project-tab  :which-key "projectile project in new tab")
