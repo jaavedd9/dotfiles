@@ -5,31 +5,7 @@
 ;; (add-to-list 'auto-mode-alist
 ;;              '("\\.yml\\'" . yaml-mode)
 ;;              )
-
-(setq auto-mode-alist (append '(("\\.yml\\'" . yaml-mode) ; note these are encapsulated in a '() list
-                                ("\\.yaml\\'" . yaml-mode) 
-                                ("\\.yaml.j2\\'" . yaml-mode) 
-                                ("\\.yml.j2\\'" . yaml-mode)) auto-mode-alist))
-
-(use-package 
-  yaml-mode 
-  :ensure t 
-  :mode "\\.vault" 
-  :config
-  ;;  (add-hook 'yaml-mode-hook (lambda () (auto-fill-mode -1)))
-  (add-hook 'yaml-mode-hook 'flyspell-mode-off) 
-  (add-hook 'yaml-mode-hook 'highlight-indent-guides-mode))
-
-
-(use-package 
-  flycheck-yamllint 
-  :ensure t 
-  :defer t 
-  :init (progn (eval-after-load 'flycheck '(add-hook 'flycheck-mode-hook 'flycheck-yamllint-setup))))
-
-
-(use-package 
-  ansible 
+(use-package ansible 
   :ensure t 
   :after yaml-mode 
   :custom (ansible-vault-password-file "~/.emacs.d/.ansible-vault") 
@@ -56,8 +32,7 @@
   ;; ((ansible-lint . "sudo apt install ansible-lint"))
   )
 
-(use-package 
-  company-ansible 
+(use-package company-ansible 
   :ensure t 
   :hook ansible-mode)
 
@@ -69,9 +44,7 @@
 ;;   ;;       ("C-x C-s" . ignore))
 ;;   )
 
-
-(use-package 
-  ansible-doc 
+(use-package ansible-doc 
   :ensure t 
   :config (add-hook 'yaml-mode-hook #'ansible-doc-mode))
 
@@ -115,8 +88,7 @@
 
 
 ;; ansible-vault
-(use-package 
-  ansible-vault 
+(use-package ansible-vault 
   :ensure t 
   :init (add-hook 'yaml-mode-hook 'ansible-vault-mode-maybe
                   (add-hook 'yaml-mode-hook (lambda () 
@@ -125,10 +97,6 @@
   :config
   (add-to-list 'auto-mode-alist '("/encrypted$" . yaml-mode)))
 
-(use-package jinja2-mode
-  :ensure t
-  :config
-  (add-to-list 'auto-mode-alist '("\\.j2\\'" . yaml-mode)))
   
 (provide 'init-ansible)
 ;;; init-ansible.el ends here

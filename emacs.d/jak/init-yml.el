@@ -1,3 +1,70 @@
+;;; yaml configs
+
+(use-package yaml-mode 
+  :ensure t 
+  :mode "\\.vault" 
+  :config
+  ;;  (add-hook 'yaml-mode-hook (lambda () (auto-fill-mode -1)))
+  (progn
+  (add-hook 'yaml-mode-hook 'flyspell-mode-off) 
+  (add-hook 'yaml-mode-hook 'highlight-indent-guides-mode)
+  (setq auto-mode-alist (append '(("\\.yml\\'" . yaml-mode)
+        ; note these are encapsulated in a '() list
+                                ("\\.yaml\\'" . yaml-mode) 
+                                ("\\.yaml.j2\\'" . yaml-mode) 
+                                ("\\.yml.j2\\'" . yaml-mode)) auto-mode-alist))
+;; references
+  ;; https://github.com/yoshiki/yaml-mode/issues/25
+;; https://gist.github.com/leoc/f8c0868051003c4ea6eff638bc614575
+  (add-hook 'yaml-mode-hook 'leoc/yaml-outline-hook)
+      ;; Customize folding markers
+  ;; (set-display-table-slot
+  ;;      standard-display-table
+  ;;      'selective-display
+  ;;      (let ((face-offset (* (face-id 'shadow) (lsh 1 22))))
+  ;;        (vconcat (mapcar (lambda (c) (+ face-offset c)) " [+]"))))
+
+      (defun leoc/yaml-outline-level ()
+        (s-count-matches "\\([ ]\\{2\\}\\)" (match-string 0)))
+
+      (defun leoc/yaml-outline-hook ()
+        (interactive)
+        (setq outline-regexp
+              (rx
+               (seq
+                bol
+                (group (zero-or-more "  ")
+                       (or (group
+                            (seq (or (seq "\"" (*? (not (in "\"" "\n"))) "\"")
+                                     (seq "'" (*? (not (in "'" "\n"))) "'")
+                                     (*? (not (in ":" "\n"))))
+                                 ":"
+                                 (?? (seq
+                                      (*? " ")
+                                      (or (seq "&" (one-or-more nonl))
+                                          (seq ">-")
+                                          (seq "|"))
+                                      eol))))
+                           (group (seq
+                                   "- "
+                                   (+ (not (in ":" "\n")))
+                                   ":"
+                                   (+ nonl)
+                                   eol)))))
+  )))))
+
+
+(use-package jinja2-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.j2\\'" . yaml-mode)))
+
+
+(use-package flycheck-yamllint 
+  :ensure t 
+  :defer t 
+  :init (progn (eval-after-load 'flycheck '(add-hook 'flycheck-mode-hook 'flycheck-yamllint-setup))))
+
 
 (use-package yaml-imenu
   :ensure t
