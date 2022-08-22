@@ -565,7 +565,6 @@ size. This function also handles icons and modeline font sizes."
   :ensure t
   )
 
-(load-theme 'kaolin-shiva)
 ;; fonts
 (set-face-attribute 'default nil
                   :font "DejaVu Sans Mono")
@@ -574,6 +573,15 @@ size. This function also handles icons and modeline font sizes."
 (set-fontset-font "fontset-default" '(#x0000 . #xFFFFF) '("DejaVu Sans Mono" . "unicode-bmp"))
 ;; for deamon mode
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono"))
+
+
+(load-theme 'sanityinc-tomorrow-day)
+;; 
+;; (set-face-attribute 'hl-line nil :inherit nil :background "#90ee90")
+;; change the current line higlight color
+;; https://emacs.stackexchange.com/a/41918/26147
+(set-face-attribute 'hl-line nil :inherit nil :background "#e0ffff")
+
 (provide 'init-ui)
 ;;; init-ui.el ends here
 ;; Local Variables:
