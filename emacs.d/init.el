@@ -286,6 +286,7 @@
 (require 'init-external-programs)
 (require 'init-fonts)
 (require 'init-yml)
+(require 'dired+)
 ;;emmet
 
 (use-package 
