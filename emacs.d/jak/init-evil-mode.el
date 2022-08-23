@@ -21,6 +21,7 @@
     ;; (global-undo-tree-mode)
     ;; (setq evil-set-undo-system 'undo-tree)
     (setq evil-want-fine-undo t) 
+    (setq evil-want-minibuffer t)
     (setq evil-respect-visual-line-mode t) 
     (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state) 
     (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up) 
