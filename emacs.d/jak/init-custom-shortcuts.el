@@ -1,6 +1,4 @@
 (load "init-company.el")
-
-(bind-key "<backtab>" 'jak/company-to-yasnippet company-active-map)
 (use-package general
   :ensure t
   :config
@@ -242,8 +240,8 @@
     "tt"  '(tab-switch  :which-key "switch to another tab")
     "ts"  '(tab-switch  :which-key "switch to another tab")
     "tr"  '(tab-rename  :which-key "tab rename")
-    "tj"  '(tab-next  :which-key "tab next")
-    "tk"  '(tab-previous  :which-key "tab previous")
+    "tj"  '(tab-previous  :which-key "tab previous")
+    "tk"  '(tab-next  :which-key "tab next")
     "tb"  '(my/switch-to-tab-buffer  :which-key "select buffers in current tab")
     "tc"  '(tab-close  :which-key "tab close")
     "tn"  '(my/new-project-tab  :which-key "projectile project in new tab")
@@ -268,6 +266,8 @@
     "!s"   '(shell-command :which-key "shell command")
     )
   )
+
+(bind-key "<backtab>" 'jak/company-to-yasnippet company-active-map)
 
 (global-set-key (kbd "C-x b") #'my/switch-to-tab-buffer)
 ;; global key shortcuts
