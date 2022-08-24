@@ -979,6 +979,7 @@
 ;; https://www.reddit.com/r/emacs/comments/e2u5n9/code_folding_with_outlineminormode/
 ;;; init.el ends here
 
+
 (use-package editorconfig 
   :ensure t 
   :config
@@ -1093,3 +1094,4 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load-file-if-exists "~/.emacs.d/local-init.el")
+(put 'dired-find-alternate-file 'disabled nil)

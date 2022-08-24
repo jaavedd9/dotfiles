@@ -575,7 +575,7 @@ size. This function also handles icons and modeline font sizes."
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono"))
 
 
-(load-theme 'sanityinc-tomorrow-day)
+(load-theme 'sanityinc-tomorrow-day t)
 ;; 
 ;; (set-face-attribute 'hl-line nil :inherit nil :background "#90ee90")
 ;; change the current line higlight color
