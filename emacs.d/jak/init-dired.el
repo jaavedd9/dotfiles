@@ -5,7 +5,10 @@
   ;; native package
   :ensure nil
   :commands (dired dired-jump)
-  :bind (("C-x C-j" . dired-jump))
+  :bind (
+         ("C-x C-j" . dired-jump)
+         ("C-x j" . dired-jump)
+         )
   ;; :custom ((dired-listing-switches "-agho --group-directories-first"))
   :custom ((dired-listing-switches "-aho --group-directories-first"))
   ;; :custom
@@ -16,9 +19,12 @@
   ;; (evil-collection-define-key 'normal 'dired-mode-map
   ;;                             "h" 'dired-single-up-directory
   ;;                             "l" 'dired-single-buffer)
-  (setq
-   delete-by-moving-to-trash 1
-   )
+  (setq delete-by-moving-to-trash 1)
+  (define-key dired-mode-map (kbd "SPC") nil)
+  :bind
+  (:map dired-mode-map
+              ("SPC" . nil) 
+              )
   )
 
 (use-package dired-single
@@ -123,6 +129,10 @@
   :config
   (dired-recent-mode))
 
+
+(require 'dired+)
+;; to reuse dired buffer
+(diredp-toggle-find-file-reuse-dir t)
 
 ;; to enable unzip action from dired
 ;; (eval-after-load "dired-aux"
