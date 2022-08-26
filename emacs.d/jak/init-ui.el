@@ -582,6 +582,13 @@ size. This function also handles icons and modeline font sizes."
 ;; https://emacs.stackexchange.com/a/41918/26147
 (set-face-attribute 'hl-line nil :inherit nil :background "#e0ffff")
 
+
+;; how to check current face
+;; https://emacs.stackexchange.com/questions/40926/how-can-i-change-the-parentheses-highlight-style
+;; show-paren-mode highlights the current brackets
+;; change show-paren-mode mode face, hightlighted bracket
+(set-face-attribute 'show-paren-match nil :inherit nil :background "#ff8c00")
+
 (provide 'init-ui)
 ;;; init-ui.el ends here
 ;; Local Variables:
