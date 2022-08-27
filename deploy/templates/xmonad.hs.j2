@@ -386,6 +386,15 @@ searchList = [ ("a", archwiki)
              , ("z", S.amazon)
              ]
 
+-- hook refernce
+-- https://searchcode.com/file/21157755/xmonad-contrib-0.10/XMonad/Util/NamedScratchpad.hs/
+-- | Single named scratchpad configuration
+ -- data NamedScratchpad = NS { name   :: String      -- ^ Scratchpad name
+ --                        , cmd    :: String      -- ^ Command used to run application
+ --                          , query  :: Query Bool  -- ^ Query to find already running application
+ --                          , hook   :: ManageHook  -- ^ Manage hook called for application window, use it to define the placement. See @nonFloating@, @defaultFloating@ and @customFloating@
+                           -- }
+
 myScratchPads :: [NamedScratchpad]
 myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                 , NS "mocp" spawnMocp findMocp manageMocp
