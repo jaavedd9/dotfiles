@@ -389,7 +389,8 @@ searchList = [ ("a", archwiki)
 myScratchPads :: [NamedScratchpad]
 myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                 , NS "mocp" spawnMocp findMocp manageMocp
-                , NS "calculator" spawnCalc findCalc manageCalc
+                , NS "qalculate-qt" spawnCalc findCalc manageCalc
+                , NS "xyz" spawnXyz findXyz manageXyz
                 ]
   where
     spawnTerm  = myTerminal ++ " -n scratchpad"
@@ -409,15 +410,23 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                  t = 0.95 -h
                  l = 0.95 -w
     -- spawnCalc  = "qalculate-gtk"
-    spawnCalc  = "gnome-caculator"
+    spawnCalc  = "qalculate-qt"
     -- findCalc   = className =? "Qalculate-gtk"
-    findCalc   = className =? "Gnome-calculator"
+    findCalc   = className =? "qalculate-qt"
     manageCalc = customFloating $ W.RationalRect l t w h
                where
                  h = 0.5
                  w = 0.4
                  t = 0.75 -h
                  l = 0.70 -w
+    spawnXyz  = "tilix"
+    findXyz   = resource =? "tilix"
+    manageXyz = customFloating $ W.RationalRect l t w h
+               where
+                 h = 0.9
+                 w = 0.9
+                 t = 0.95 -h
+                 l = 0.95 -w
 
 --Makes setting the spacingRaw simpler to write. The spacingRaw module adds a configurable amount of space around windows.
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
@@ -534,10 +543,20 @@ myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y 
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
     where i = fromJust $ M.lookup ws myWorkspaceIndices
 
--- Hooks
+-- all pretty standard
+-- myManageHook :: ManageHook
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
--- myManageHook = placeHook simpleSmart <+> composeAll
-myManageHook = placeHook simpleSmart <+> composeAll
+myManageHook =
+  def
+    <+> manageSmart
+    <+> manageDialog
+    <+> manageScratchPad
+    <+> manageWindows
+ where
+  manageSmart = placeHook simpleSmart 
+  manageDialog = composeOne [ isDialog -?> doCenterFloat ]
+  manageScratchPad = namedScratchpadManageHook myScratchPads
+  manageWindows = composeAll
      -- using 'doShift ( myWorkspaces !! 7)' sends program to workspace 8!
      -- I'm doing it this way because otherwise I would have to write out the full
      -- name of my workspaces, and the names would very long if using clickable workspaces.
@@ -577,7 +596,12 @@ myManageHook = placeHook simpleSmart <+> composeAll
      -- Popup Dialogs
      -- , (className =? "Firefox-esr" <&&> resource =? "Dialog") --> doRectFloat (W.RationalRect (1 % 4) (1 % 4) (1 % 2) (1 % 2))
      -- , (className =? "Google-chrome" <&&> resource =? "Dialog") --> doRectFloat (W.RationalRect (1 % 4) (1 % 4) (1 % 2) (1 % 2))
-     ]<+> composeOne [ isDialog -?> doCenterFloat ]  <+> namedScratchpadManageHook myScratchPads
+     ] 
+
+-- Hooks
+-- myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
+-- myManageHook = placeHook simpleSmart <+> composeAll
+-- myManageHook = <+> <+>   <+> namedScratchpadManageHook myScratchPads
 
 myLogHook :: X ()
 myLogHook = fadeInactiveLogHook fadeAmount
@@ -749,7 +773,8 @@ myKeys =
     -- Toggle them to hide and it sends them back to hidden workspace (NSP).
         , ("M-t t", namedScratchpadAction myScratchPads "terminal")
         , ("M-t m", namedScratchpadAction myScratchPads "mocp")
-        , ("M-t c", namedScratchpadAction myScratchPads "calculator")
+        , ("M-t c", namedScratchpadAction myScratchPads "qalculate-qt")
+        , ("M-t k", namedScratchpadAction myScratchPads "xyz")
 
     -- KB_GROUP Controls for mocp music player (SUPER-u followed by a key)
         , ("M-u p", spawn "mocp --play")
