@@ -138,6 +138,15 @@
   notify: reload xmonad
   tags: xmonad
 
+- name: xmonad session rc
+  template:
+    src: xmonad-session-rc.j2
+    dest: "{{ workstation_home }}/.xmonad/xmonad-session-rc"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+  notify: reload xmonad
+  tags: xmonad
+
 - name: xmonad xession desktop
   template:
     src: xmonad.desktop.j2

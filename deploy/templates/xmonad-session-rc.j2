@@ -1,0 +1,7 @@
+#! /bin/sh
+#  {{ ansible_managed }}
+# this file will run before starting the xmonad
+dropb start -i &
+source ~/.xsession & # to run xmodmap for xcape keys to work
+/snap/bin/emacs --daemon &
+#exec xmonad # commented this because xmonad is started by systemd
