@@ -639,7 +639,13 @@
   (org-agenda arg "z"))
 
 (defun org-agenda-show-jak-customized (&optional arg)
+  (setq org-agenda-window-setup 'reorganize-frame)  
   (interactive "P")
+  (org-agenda arg "j"))
+
+(defun org-agenda-show-jak-customized-independent-window (&optional arg)
+  (interactive "P")
+  (setq org-agenda-window-setup 'only-window)  
   (org-agenda arg "j"))
 
 (defun org-agenda-show-super-week-view (&optional arg)
