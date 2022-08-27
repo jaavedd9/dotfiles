@@ -634,6 +634,16 @@
   )
 
 
+(defun org-capture-jak-work ()
+  (interactive)
+  (org-capture nil "w"))
+
+
+(defun org-capture-jak-personal ()
+  (interactive)
+  (org-capture nil "p"))
+
+
 (defun org-agenda-show-super-zaen-view (&optional arg)
   (interactive "P")
   (org-agenda arg "z"))
