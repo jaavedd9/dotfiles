@@ -587,7 +587,13 @@ size. This function also handles icons and modeline font sizes."
 ;; https://emacs.stackexchange.com/questions/40926/how-can-i-change-the-parentheses-highlight-style
 ;; show-paren-mode highlights the current brackets
 ;; change show-paren-mode mode face, hightlighted bracket
-(set-face-attribute 'show-paren-match nil :inherit nil :background "#ff8c00")
+
+(set-face-attribute 'show-paren-match nil :inherit nil :background "#ff6347")
+;;https://superuser.com/a/1181817/713461
+;; setting the face directly was not working for some reason - my lack of understanding -  as suggested in the stackoverflow
+;; adding it in the find file hook worked
+(add-hook 'find-file-hook (lambda ()
+                            (set-face-attribute 'show-paren-match nil :inherit nil :background "#ff6347")))
 
 (provide 'init-ui)
 ;;; init-ui.el ends here
