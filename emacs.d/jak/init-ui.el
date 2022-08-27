@@ -591,7 +591,7 @@ size. This function also handles icons and modeline font sizes."
 (set-face-attribute 'show-paren-match nil :inherit nil :background "#ff6347")
 ;;https://superuser.com/a/1181817/713461
 ;; setting the face directly was not working for some reason - my lack of understanding -  as suggested in the stackoverflow
-;; adding it in the find file hook worked
+;; adding it in the find file hook worked!
 (add-hook 'find-file-hook (lambda ()
                             (set-face-attribute 'show-paren-match nil :inherit nil :background "#ff6347")))
 
