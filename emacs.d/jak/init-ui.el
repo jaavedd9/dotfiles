@@ -575,12 +575,13 @@ size. This function also handles icons and modeline font sizes."
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono"))
 
 
-(load-theme 'sanityinc-tomorrow-day t)
+;; (load-theme 'sanityinc-tomorrow-day t)
+(load-theme 'modus-operandi t)
 ;; 
 ;; (set-face-attribute 'hl-line nil :inherit nil :background "#90ee90")
 ;; change the current line higlight color
 ;; https://emacs.stackexchange.com/a/41918/26147
-(set-face-attribute 'hl-line nil :inherit nil :background "#e0ffff")
+;; (set-face-attribute 'hl-line nil :inherit nil :background "#e0ffff")
 
 
 ;; how to check current face
@@ -588,7 +589,7 @@ size. This function also handles icons and modeline font sizes."
 ;; show-paren-mode highlights the current brackets
 ;; change show-paren-mode mode face, hightlighted bracket
 
-(set-face-attribute 'show-paren-match nil :inherit nil :background "#ff6347")
+;; (set-face-attribute 'show-paren-match nil :inherit nil :background "#ff6347")
 ;;https://superuser.com/a/1181817/713461
 ;; setting the face directly was not working for some reason - my lack of understanding -  as suggested in the stackoverflow
 ;; adding it in the find file hook worked!
