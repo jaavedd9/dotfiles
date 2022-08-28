@@ -581,7 +581,7 @@ size. This function also handles icons and modeline font sizes."
 ;; (set-face-attribute 'hl-line nil :inherit nil :background "#90ee90")
 ;; change the current line higlight color
 ;; https://emacs.stackexchange.com/a/41918/26147
-;; (set-face-attribute 'hl-line nil :inherit nil :background "#e0ffff")
+(set-face-attribute 'hl-line nil :inherit nil :background "#e0ffff")
 
 
 ;; how to check current face
