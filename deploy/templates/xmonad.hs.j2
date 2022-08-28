@@ -399,9 +399,8 @@ myScratchPads :: [NamedScratchpad]
 myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                 , NS "mocp" spawnMocp findMocp manageMocp
                 , NS "qalculate-qt" spawnCalc findCalc manageCalc
-                , NS "xyz" spawnXyz findXyz manageXyz
                 ]
-  where
+               where
     spawnTerm  = myTerminal ++ " -n scratchpad"
     findTerm   = resource =? "scratchpad"
     manageTerm = customFloating $ W.RationalRect l t w h
@@ -428,14 +427,6 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                  w = 0.4
                  t = 0.75 -h
                  l = 0.70 -w
-    spawnXyz  = "tilix"
-    findXyz   = resource =? "tilix"
-    manageXyz = customFloating $ W.RationalRect l t w h
-               where
-                 h = 0.9
-                 w = 0.9
-                 t = 0.95 -h
-                 l = 0.95 -w
 
 --Makes setting the spacingRaw simpler to write. The spacingRaw module adds a configurable amount of space around windows.
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
@@ -783,7 +774,6 @@ myKeys =
         , ("M-t t", namedScratchpadAction myScratchPads "terminal")
         , ("M-t m", namedScratchpadAction myScratchPads "mocp")
         , ("M-t c", namedScratchpadAction myScratchPads "qalculate-qt")
-        , ("M-t k", namedScratchpadAction myScratchPads "xyz")
 
     -- KB_GROUP Controls for mocp music player (SUPER-u followed by a key)
         , ("M-u p", spawn "mocp --play")
