@@ -631,7 +631,6 @@ myKeys =
         , ("M-p x", xmonadPrompt dtXPConfig)       -- xmonadPrompt
         -- , ("M-p p", spawn "emacsclient -c -a 'emacs' --eval '(emacs-everywhere)'") -- emacs everywhere
         , ("M-p p", spawn "emacsclient -c -a 'emacs' --eval '(emacs-everywhere)'") -- emacs everywhere
-        , ("M-p p", spawn "emacsclient -c -a 'emacs' --eval '(emacs-everywhere)'") -- emacs everywhere
         -- , ("M-p p", spawn "emacsclient --eval '(emacs-everywhere)'") -- emacs everywhere
         , ("M-p p", spawn "emacsclient -c -a 'emacs' --eval '(emacs-everywhere)'") -- emacs everywhere
 
@@ -767,6 +766,7 @@ myKeys =
         , ("M-e t", spawn (myEmacs ++ ("--eval '(mastodon)'")))  -- mastodon.el
         , ("M-e a", spawn (myEmacs ++ ("--eval '(org-agenda-show-jak-customized-independent-window)'"))) -- agenda 
         , ("M-e v", spawn (myEmacs ++ ("--eval '(+vterm/here nil)'")))
+        , ("M-e f", spawn (myEmacs ++ ("--eval '(org-roam-node-find)'")))
         -- , ("M-e w", spawn (myEmacs ++ ("--eval '(org-capture-jak-work)'")))
         -- , ("M-e w", spawn (myEmacs ++ ("--eval '(doom/window-maximize-buffer(eww \"distro.tube\"))'"))) -- eww browser if on Doom Emacs
     --  , ("M-e a", spawn (myEmacs ++ ("--eval '(emms)' --eval '(emms-play-directory-tree \"/mnt/data/Dropbox/music/\")'")))
