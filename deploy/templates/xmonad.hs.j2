@@ -629,6 +629,10 @@ myKeys =
         , ("M-p s", sshPrompt dtXPConfig)          -- sshPrompt
         , ("M-p u", mkUnicodePrompt "xsel" ["-b"] "/home/jaavedkhan/.xmonad/UnicodeData.txt" emojiXPConfig) -- unicodePrompt (for copying emojis)
         , ("M-p x", xmonadPrompt dtXPConfig)       -- xmonadPrompt
+        -- , ("M-p p", spawn "emacsclient -c -a 'emacs' --eval '(emacs-everywhere)'") -- emacs everywhere
+        , ("M-p p", spawn "emacsclient -c -a 'emacs' --eval '(emacs-everywhere)'") -- emacs everywhere
+        , ("M-p p", spawn "emacsclient -c -a 'emacs' --eval '(emacs-everywhere)'") -- emacs everywhere
+        -- , ("M-p p", spawn "emacsclient --eval '(emacs-everywhere)'") -- emacs everywhere
         , ("M-p p", spawn "emacsclient -c -a 'emacs' --eval '(emacs-everywhere)'") -- emacs everywhere
 
     -- Useful programs to have a keybinding for launch
@@ -774,6 +778,7 @@ myKeys =
         , ("M-t t", namedScratchpadAction myScratchPads "terminal")
         , ("M-t m", namedScratchpadAction myScratchPads "mocp")
         , ("M-t c", namedScratchpadAction myScratchPads "qalculate-qt")
+        , ("M-t k", namedScratchpadAction myScratchPads "xyz")
 
     -- KB_GROUP Controls for mocp music player (SUPER-u followed by a key)
         , ("M-u p", spawn "mocp --play")
