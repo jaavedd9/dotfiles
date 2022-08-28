@@ -1074,12 +1074,16 @@
 ;; disalbe linenumber in the modeline because it is redundant, left side bar
 (line-number-mode 0)
 ;; Save the desktop session
-(desktop-save-mode 1)
+;; (desktop-save-mode 1)
 
 (defun load-file-if-exists (path)
   (if (file-exists-p path)
       (load-file path)))
 
+
+;; (server-start) to make the current emacs run as server or daemon for emacsclient
+(load "server")
+(unless (server-running-p) (server-start))
 
 ;; to remove helm buffers inactive selection from helm previous and next buffers
 (defun my-buffer-predicate (buffer)

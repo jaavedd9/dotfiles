@@ -72,7 +72,6 @@
          :unnarrowed t)
         ))
 
-;; (server-start) to make the current emacs run as server or daemon for emacsclient
 (require 'org-protocol)
 (require 'org-roam-protocol)
 
