@@ -86,7 +86,7 @@ import XMonad.Actions.SpawnOn
 
 
 myFont :: String
-myFont = "xft:SauceCodePro Nerd Font Mono:regular:size=16:antialias=true:hinting=true"
+myFont = "xft:SauceCodePro Nerd Font Mono:regular:size=20:antialias=true:hinting=true"
 
 myEmojiFont :: String
 myEmojiFont = "xft:JoyPixels:regular:size=9:antialias=true:hinting=true"
@@ -366,6 +366,7 @@ urban    = S.searchEngine "urban" "https://www.urbandictionary.com/define.php?te
 yacy     = S.searchEngine "yacy" "http://localhost:8090/yacysearch.html?query="
 stackoverflow = S.searchEngine "stackoverflow" "https://stackoverflow.com/search?q="
 github = S.searchEngine "github" "https://github.com/search?q="
+evernote = S.searchEngine "evernote" "https://www.evernote.com/client/web#?query="
 
 -- This is the list of search engines that I want to use. Some are from
 -- XMonad.Actions.Search, and some are the ones that I added above.
@@ -375,7 +376,8 @@ searchList = [
                ("a", S.amazon)
              , ("c", github)
              , ("d", S.duckduckgo)
-             , ("e", ebay)
+             -- , ("e", ebay)
+             , ("e", evernote)
              , ("g", S.google)
              , ("h", S.hoogle)
              , ("i", S.images)
