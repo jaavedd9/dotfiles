@@ -1,8 +1,3 @@
-- name: create file where emacs customizations will be stored
-  file:
-    path: "{{ workstation_home }}/.emacs.d/emacs-custom.el"
-    state: file
-
 - name: link emacs dotfiles
   file:
     src: "{{ workstation_home }}/Code/personal/configs/dotfiles/emacs.d"
@@ -11,6 +6,11 @@
     owner: "{{ workstation_user }}"
   tags: emacs
 
+- name: create file where emacs customizations will be stored
+  file:
+    path: "{{ workstation_home }}/.emacs.d/emacs-custom.el"
+    state: touch
+      
 - name: create rofi and copyq config dirs
   file:
     path: "{{ workstation_home }}/.config/{{ item }}"
@@ -154,6 +154,7 @@
     owner: "{{ workstation_user }}"
     group: "{{ workstation_user }}"
   tags: xmonad
+  become: yes
 
 - name: xmobar config
   copy:

@@ -35,7 +35,8 @@ fi
 export WORKON_HOME={{ virtualenvs_path }}
 VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 # sudo find / -name "virtualenvwrapper.sh"
-source /usr/local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper.sh
+source ~/.local/bin/virtualenvwrapper.sh
 
 # to attach tmux to a terminal on launch
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
