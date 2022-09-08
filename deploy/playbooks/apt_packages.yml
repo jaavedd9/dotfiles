@@ -96,6 +96,7 @@
       - autojump
       - ranger
       - thefuck
+      - curl
 
 - name: intall copyq
   apt:
