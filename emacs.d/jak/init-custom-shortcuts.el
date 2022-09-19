@@ -294,7 +294,9 @@
 ;; (global-set-key (kbd "M-[") 'previous-buffer)
 
 (global-set-key (kbd "C-c C-j") 'previous-buffer)
+(global-set-key (kbd "C-c j") 'previous-buffer)
 (global-set-key (kbd "C-c C-k") 'next-buffer)
+(global-set-key (kbd "C-c k") 'next-buffer)
 
 (global-set-key (kbd "<M-up>") 'drag-stuff-up)
 (global-set-key (kbd "<M-down>") 'drag-stuff-down)
