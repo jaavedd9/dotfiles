@@ -97,6 +97,7 @@
       - ranger
       - thefuck
       - curl
+      - zip
 
 - name: intall copyq
   apt:
