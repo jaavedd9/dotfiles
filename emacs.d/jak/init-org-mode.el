@@ -472,7 +472,8 @@
   )
 ;; https://languagetool.org/
 ;; downloaded from https://languagetool.org/download/
-(setq langtool-language-tool-jar (concat dropbox-path "emacs/LanguageTool-5.4/languagetool-commandline.jar"))
+;; (setq langtool-language-tool-jar (concat dropbox-path "emacs/LanguageTool-5.4/languagetool-commandline.jar"))
+(setq langtool-language-tool-jar (concat dropbox-path "emacs/LanguageTool-5.9/languagetool-commandline.jar"))
 (require 'langtool)
 
 
