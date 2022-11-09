@@ -101,6 +101,7 @@
     ;; aGenda
     "g"   '(:ignore t :which-key "aGenda")
     "gg"  '(org-agenda-show-jak-customized :which-key "show jak agenda")
+    "gm"  '(org-agenda :which-key "agenda mode")
     "ga"  '(org-agenda-show-super-week-view :which-key "show week view")
     "gb"  '(org-timer-start :which-key "org timer start")
     "gs"  '(org-timer-set-timer :which-key "org set timer")
