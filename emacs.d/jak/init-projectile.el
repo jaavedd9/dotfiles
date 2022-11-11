@@ -45,6 +45,7 @@
                                          "~/Code/work/configs"
                                          "~/Code/work/cmss"
                                          "~/Code/work/docs"
+                                         "/mnt/data/Dropbox/emacs/documents"
                                          ))
   ;; https://docs.projectile.mx/projectile/configuration.html
   ;; (setq projectile-indexing-method 'hybrid)
