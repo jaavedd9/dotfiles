@@ -25,6 +25,7 @@
                             (variable-pitch-mode)
                             (flyspell-mode)
                             (setq doom-modeline-enable-word-count t)
+                            (display-line-numbers-mode 0)
                             ))
 
 ;; n characters per line
