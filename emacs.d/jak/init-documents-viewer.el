@@ -27,7 +27,7 @@
   :after org
   :ensure t
   :config (setq org-noter-default-notes-file-names '("notes.org")
-                org-noter-notes-search-path '((concat dropbox-path "emacs/org_files/org_roam/files/book_notes"))
+                org-noter-notes-search-path '("/mnt/data/Dropbox/emacs/notes")
                 ;;org-noter-separate-notes-from-heading t
                 ))
 
