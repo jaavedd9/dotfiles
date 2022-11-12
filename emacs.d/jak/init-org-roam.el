@@ -33,42 +33,47 @@
   )
 
 ;; setting up of capture templates not working in :config
+;; inserting property drawer in template
+;; https://github.com/org-roam/org-roam/issues/1783#issuecomment-900452202
 (setq org-roam-capture-templates
       '(("d" "default" plain "%?" :if-new
          (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
          :unnarrowed t)
         ("p" "Permenant Note" plain "%?"
          :if-new (file+head "permanent/${slug}--%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE:${title}\n#+filetags:permanent\n")
+                            "#+TITLE: ${title}\n#+FILETAGS: permanent\n")
          :unnarrowed t)
         ("f" "Fleeting Note" plain "%?"
          :if-new (file+head "fleeting/%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+filetags:fleeting\n")
+                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+FILETAGS: fleeting\n")
          :unnarrowed t)
         ("9" "Project Note" plain "%?"
          :if-new (file+head "permenant/%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+filetags:project\n")
+                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+FILETAGS: project\n")
          :unnarrowed t)
         ("i" "Idea" plain "%?"
          :if-new (file+head "permanent/%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+roam_tags:idea\n#+filetags:idea\n")
+                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+ROAM_TAGS: idea\n#+FILETAGS: idea\n")
          :unnarrowed t)
         ("m" "Meeting Note" plain "%?"
          :if-new (
                   file+head "meetings/${slug}--%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: ${title}\n#+roam_tags:meeting\n#+filetags:meeting\n* Summary\n** Held at <%<%Y-%m-%d %a>>")
+                            ":PROPERTIES:
+:ROAM_EXCLUDE: t
+:END:
+#+TITLE: ${title}\n#+ROAM_TAGS: :meeting:\n#+FILETAGS: :meeting:\n* Summary \n** SCHEDULED: <%<%Y-%m-%d %a>> \n\n* Present at meeting[0/0]\n - [ ] \n\n* Agenda\n - \n\n* Notes\n\n* Actions\n")
          :unnarrowed t)
         ("h" "Person" plain "%?"
          :if-new (file+head "permanent/${slug}--%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: ${title}\n#+roam_tags:person\n#+filetags:person\n")
+                            "#+TITLE: ${title}\n#+ROAM_TAGS: person\n#+FILETAGS: person\n")
          :unnarrowed t)
         ("o" "Organization" plain "%?"
          :if-new (file+head "permanent/${slug}--%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: ${title}\n#+roam_tags:organization\n#+filetags:organization\n")
+                            "#+TITLE: ${title}\n#+ROAM_TAGS: organization\n#+FILETAGS: organization\n")
          :unnarrowed t)
         ("w" "Web" plain "%?"
          :if-new (file+head "internet/%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: ${title}--%<%Y%m%d-%H%M%S>\n#+filetags:web\n")
+                            "#+TITLE: ${title}--%<%Y%m%d-%H%M%S>\n#+FILETAGS: web\n")
          :unnarrowed t)
         ))
 
@@ -80,7 +85,11 @@
       ;;    :file-name "internet/%<%Y%m%d%H%M>-${slug}"
       ;;    :unnarrowed t))
       '(("i" "internet" plain "%?" :if-new
-         (file+head "internet/%<%Y%m%d%H%M>-${slug}.org" "#+roam_key: ${ref}\n#+filetags: bookmark\n#+roam_tags: bookmark\n#+ROAM_EXCLUDE: t\n#+title: ${title}\n${body}")
+         (file+head "internet/%<%Y%m%d%H%M>-${slug}.org" 
+                      ":PROPERTIES:
+:ROAM_EXCLUDE: t
+:END:
+#+TITLE: ${title}\n#+ROAM_KEY: ${ref}\n#+fILETAGS: :bookmark:\n#+ROAM_TAGS: :bookmark:\n* Clipped text\n${body}")
          :unnarrowed t)
         ("r" "ref" plain "%?" :if-new
          (file+head "${slug}.org" "#+title: ${title}")
@@ -89,11 +98,12 @@
 ;; ref: https://www.orgroam.com/manual.html
 ;; to exclude certain tags from org-find
 
-(setq org-roam-db-node-include-function
-      (lambda ()
-        (not
-         (member "bookmark" (org-get-tags))
-         )))
+;; (setq org-roam-db-node-include-function
+;;       (lambda ()
+;;         (not
+;;          (member "bookmark" (org-get-tags))
+;;          )))
+
 
 ;; (use-package org-roam-ui
 ;;   :straight
