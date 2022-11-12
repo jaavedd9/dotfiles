@@ -80,12 +80,20 @@
       ;;    :file-name "internet/%<%Y%m%d%H%M>-${slug}"
       ;;    :unnarrowed t))
       '(("i" "internet" plain "%?" :if-new
-         (file+head "internet/%<%Y%m%d%H%M>-${slug}.org" "#+title: ${title}\n#+roam_key: ${ref}\n#+filetags: :bookmark:\n ${body}")
+         (file+head "internet/%<%Y%m%d%H%M>-${slug}.org" "#+roam_key: ${ref}\n#+filetags: bookmark\n#+roam_tags: bookmark\n#+ROAM_EXCLUDE: t\n#+title: ${title}\n${body}")
          :unnarrowed t)
         ("r" "ref" plain "%?" :if-new
          (file+head "${slug}.org" "#+title: ${title}")
          :unnarrowed t)))
 
+;; ref: https://www.orgroam.com/manual.html
+;; to exclude certain tags from org-find
+
+(setq org-roam-db-node-include-function
+      (lambda ()
+        (not
+         (member "bookmark" (org-get-tags))
+         )))
 
 ;; (use-package org-roam-ui
 ;;   :straight
