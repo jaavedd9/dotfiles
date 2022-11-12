@@ -175,9 +175,13 @@
     "o"   '(:ignore t :which-key "Org Mode")
     ;; "os"  '(flyspell-correct-wrapper :which-key "spell check")
     "os"  '(ispell-word :which-key "check spelling")
-    "og"   '(:ignore t :which-key "langtool grammar check")
-    "ogb"  '(langtool-check :which-key "check grammar begin")
-    "oge"  '(langtool-check-done :which-key "check grammar done")
+    "oe"   '(:ignore t :which-key "English")
+    "oed"  '(powerthesaurus-lookup-dwim :which-key "thesaurus dwim")
+    "oew"  '(define-word-at-point :which-key "define word at point")
+    "oeg"   '(:ignore t :which-key "langtool grammar check")
+    "oegb"  '(langtool-check :which-key "check grammar begin")
+    "oege"  '(langtool-check-done :which-key "check grammar done")
+
     "od"  '(dictionary-search :which-key "dictionary search")
     "ot"  '(org-roam-tag-add :which-key "add roam tag")
     ;; makki = copy

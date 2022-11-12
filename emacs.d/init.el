@@ -286,7 +286,9 @@
 (require 'init-external-programs)
 (require 'init-fonts)
 (require 'init-yml)
+(require 'init-languages)
 (require 'dired+)
+
 ;;emmet
 
 (use-package 
@@ -983,6 +985,7 @@
 (use-package editorconfig 
   :ensure t 
   :config
+  (eval-after-load 'editorconfig-mode (load-library "editorconfig"))
   (define-key editorconfig-conf-mode-map (kbd "C-c C-j") nil)
   (progn
     (editorconfig-mode 1)
@@ -1049,15 +1052,6 @@
 
 (use-package imenu-list
   :ensure t)
-
-(use-package ispell
-  :ensure nil
-  ;; native package
-  :config
-  (progn
-  ;; (ispell-local-dictionary "english")
-  (ispell-change-dictionary "american"))
-  )
 
 ;; Only show the tab bar if there are 2 or more tabs
 (setq tab-bar-show 1)
