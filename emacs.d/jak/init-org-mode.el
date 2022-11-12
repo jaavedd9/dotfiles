@@ -4,10 +4,10 @@
   :config
   (define-key org-mode-map (kbd "C-c C-j") nil)
   (define-key org-mode-map (kbd "C-c C-k") nil)
+  (setq org-id-link-to-org-use-id t) ;; to make org-store-link use id instead of file for org-roam backlinks to work
   )
 
 (require 'org)
-
 
 ;; to set sounds for org-timer
 (setq org-clock-sound (file-truename(concat dropbox-path  "emacs/sounds/service-bell-ring.")))
