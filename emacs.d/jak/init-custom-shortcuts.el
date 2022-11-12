@@ -186,9 +186,10 @@
     "ot"  '(org-roam-tag-add :which-key "add roam tag")
     ;; makki = copy
     "om"   '(:ignore t :which-key "copy links to nodes")
-    "omi"  '(org-id-copy :which-key "create org id and copy")
+    ;; "omi"  '(org-id-copy :which-key "create org id and copy")
+    "omi"  '(org-id-get-create :which-key "org-id-get-create")
     "omf"  '(copy-current-file-name-on-clipboard :which-key "copy current file name")
-    "omc"  '(org-store-link :which-key "copy org node link")
+    "omc"  '(org-store-link :which-key "copy org store link")
     "omp"  '(org-insert-link :which-key "insert node link")
     "on"  '(org-roam-alias-add :which-key "add roam alias")
     "of"  '(org-roam-node-find :which-key "find node")
