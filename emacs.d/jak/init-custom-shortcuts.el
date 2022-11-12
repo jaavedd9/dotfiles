@@ -210,7 +210,7 @@
     "p"   '(projectile-command-map :which-key "Projectile")
     ;; editing/culling/deleting
     "k"   '(:ignore t :which-key "editing/culling")
-    "kb"   '(kill-this- :which-key "flush lines")
+    "kb"   '(kill-this-buffer :which-key "kill this buffer")
     "kd"   '(flush-lines :which-key "flush lines")
     "kk"   '(keep-lines :which-key "keep lines")
     "ks"   '(delete-trailing-whitespace :which-key "delete trailing white spaces")
