@@ -167,10 +167,14 @@
     "me"   '(:ignore t :which-key "ediff")
     ;; evil window
     ;;"w"   '(evil-window-map :which-key "evil window")
-    ;; notdeft
+    ;; notdeft, search
     "n"   '(:ignore t :which-key "notdeft")
     "nn"   '(notdeft :which-key "notdeft")
     "nq"   '(notdeft-open-query :which-key "notdeft query")
+    "ne"   '(notdeft-open-edit :which-key "notdeft query edit")
+    "nk"   '(notdeft-query-clear :which-key "notdeft search reset/clear")
+    "nm"   '(notdeft-search-meetings :which-key "notdeft meetings")
+    "nb"   '(notdeft-search-bookmarks :which-key "notdeft bookmarks")
     ;; Org Mode
     "o"   '(:ignore t :which-key "Org Mode")
     ;; "os"  '(flyspell-correct-wrapper :which-key "spell check")

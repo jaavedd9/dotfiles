@@ -91,6 +91,17 @@
   (define-key notdeft-mode-map (kbd "C-c C-j") nil)
   )
 
+(defun notdeft-search-meetings ()
+  (interactive)
+  (notdeft-open-query "tag:meeting")
+  )
+
+(defun notdeft-search-bookmarks ()
+  (interactive)
+  (notdeft-open-query "tag:bookmark")
+  )
+
+
 ;;; copied
 
                                         ; refined init.el, gradually will mode all of my config here
