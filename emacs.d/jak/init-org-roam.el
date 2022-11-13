@@ -42,19 +42,19 @@
          :unnarrowed t)
         ("p" "Permenant Note" plain "%?"
          :if-new (file+head "permanent/${slug}--%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: ${title}\n#+FILETAGS: permanent\n")
+                            "#+TITLE: ${title}\n#+FILETAGS: permanent\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n")
          :unnarrowed t)
         ("f" "Fleeting Note" plain "%?"
          :if-new (file+head "fleeting/%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+FILETAGS: fleeting\n")
+                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+FILETAGS: fleeting\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n")
          :unnarrowed t)
         ("9" "Project Note" plain "%?"
          :if-new (file+head "permenant/%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+FILETAGS: project\n")
+                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+FILETAGS: project\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n")
          :unnarrowed t)
         ("i" "Idea" plain "%?"
          :if-new (file+head "permanent/%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+ROAM_TAGS: idea\n#+FILETAGS: idea\n")
+                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+ROAM_TAGS: idea\n#+FILETAGS: idea\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n")
          :unnarrowed t)
         ("m" "Meeting Note" plain "%?"
          :if-new (
@@ -62,7 +62,7 @@
                             ":PROPERTIES:
 :ROAM_EXCLUDE: t
 :END:
-#+TITLE: ${title}\n#+ROAM_TAGS: :meeting:\n#+FILETAGS: :meeting:\n* Summary \n** SCHEDULED: <%<%Y-%m-%d %a>> \n\n* Present at meeting[0/0]\n - [X] [[id:b459290d-646e-4dfd-82b4-83235c2d63b3][Javeed Ali Khan]] \n\n* Agenda\n - \n\n* Notes\n\n* Actions\n")
+#+TITLE: ${title}\n#+ROAM_TAGS: :meeting:\n#+FILETAGS: :meeting:\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n* Summary \n** SCHEDULED: <%<%Y-%m-%d %a>> \n\n* Present at meeting[0/0]\n - [X] [[id:b459290d-646e-4dfd-82b4-83235c2d63b3][Javeed Ali Khan]] \n\n* Agenda\n - \n\n* Notes\n\n* Actions\n")
          :unnarrowed t)
         ("h" "Person" plain "%?"
          :if-new (file+head "permanent/${slug}--%<%Y%m%d-%H%M%S>.org"
