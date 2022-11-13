@@ -16,7 +16,7 @@
 (setq time-stamp-active t
       time-stamp-start "#\\+LAST_MODIFIED:[ \t]*"
       time-stamp-end "$"
-      time-stamp-format "\[%04y-%02m-%02d %3a %02H:%02M\]")
+      time-stamp-format "\[%Y-%02m-%02d %3a %02H:%02M\]")
 ;; (add-hook 'before-save-hook 'time-stamp nil)
 
 (add-hook 'before-save-hook #'zp/org-set-last-modified)
