@@ -1,5 +1,6 @@
 (setq org-roam-v2-ack t)
 
+
 ;;(setq org-roam-directory  '/home/jaavedkhan/Dropbox/emacs/org_files/org_roam/files)
 (use-package org-roam
   :ensure t
@@ -89,7 +90,7 @@
                       ":PROPERTIES:
 :ROAM_EXCLUDE: t
 :END:
-#+TITLE: ${title}\n#+ROAM_KEY: ${ref}\n#+fILETAGS: :bookmark:\n#+ROAM_TAGS: :bookmark:\n* Clipped text\n${body}")
+#+TITLE: ${title}\n#+ROAM_KEY: ${ref}\n#+fILETAGS: :bookmark:\n#+ROAM_TAGS: :bookmark:\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n* Notes or comments\n\n* [[${ref}][URL]]\n\n* Clipped text\n${body}\n")
          :unnarrowed t)
         ("r" "ref" plain "%?" :if-new
          (file+head "${slug}.org" "#+title: ${title}")
