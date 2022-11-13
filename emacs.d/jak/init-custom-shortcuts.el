@@ -175,6 +175,9 @@
     "nk"   '(notdeft-query-clear :which-key "notdeft search reset/clear")
     "nm"   '(notdeft-search-meetings :which-key "notdeft meetings")
     "nb"   '(notdeft-search-bookmarks :which-key "notdeft bookmarks")
+    "np"   '(notdeft-search-projects :which-key "notdeft projects")
+    "nh"   '(notdeft-search-people :which-key "notdeft humans/people")
+    "no"   '(notdeft-search-organization :which-key "notdeft org")
     ;; Org Mode
     "o"   '(:ignore t :which-key "Org Mode")
     ;; "os"  '(flyspell-correct-wrapper :which-key "spell check")

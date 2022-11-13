@@ -101,6 +101,20 @@
   (notdeft-open-query "tag:bookmark")
   )
 
+(defun notdeft-search-projects ()
+  (interactive)
+  (notdeft-open-query "tag:project")
+  )
+
+(defun notdeft-search-people ()
+  (interactive)
+  (notdeft-open-query "tag:person")
+  )
+
+(defun notdeft-search-organization ()
+  (interactive)
+  (notdeft-open-query "tag:organization")
+  )
 
 ;;; copied
 
