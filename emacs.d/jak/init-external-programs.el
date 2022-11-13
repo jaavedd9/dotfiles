@@ -20,12 +20,12 @@
        ;;       "feh"
              ;; "nsxiv"
              '(file))
-       ;; (list (openwith-make-extension-regexp
-       ;;        '("pdf"))
-       ;;       "okular"
-       ;;       ;; "zathura"
-       ;;       '(file))
+       (list (openwith-make-extension-regexp
+              '("xlsx"))
+             "libreoffice"
+             '(file))
        ))
+
 (openwith-mode 1)
 
 ;; (use-package 
