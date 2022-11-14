@@ -37,24 +37,30 @@
 ;; inserting property drawer in template
 ;; https://github.com/org-roam/org-roam/issues/1783#issuecomment-900452202
 (setq org-roam-capture-templates
-      '(("d" "default" plain "%?" :if-new
-         (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
-         :unnarrowed t)
-        ("p" "Permenant Note" plain "%?"
+      '(
+        ;; ("d" "default" plain "%?" :if-new
+        ;;  (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+        ;;  :unnarrowed t)
+       ("d" "Permenant Note" plain "%?"
          :if-new (file+head "permanent/${slug}--%<%Y%m%d-%H%M%S>.org"
                             "#+TITLE: ${title}\n#+FILETAGS: permanent\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n")
          :unnarrowed t)
+       ("p" "project" plain "%?"
+         :if-new (file+head "permanent/${slug}--%<%Y%m%d-%H%M%S>.org"
+                            "#+TITLE: ${title}\n#+FILETAGS: :permanent:project:\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n* Project\n")
+         :unnarrowed t)
+
         ("f" "Fleeting Note" plain "%?"
          :if-new (file+head "fleeting/%<%Y%m%d-%H%M%S>.org"
                             "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+FILETAGS: fleeting\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n")
          :unnarrowed t)
         ("9" "Project Note" plain "%?"
          :if-new (file+head "permenant/%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+FILETAGS: project\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n")
+                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+FILETAGS: project\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n* Project\n")
          :unnarrowed t)
         ("i" "Idea" plain "%?"
          :if-new (file+head "permanent/%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+ROAM_TAGS: idea\n#+FILETAGS: idea\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n")
+                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+ROAM_TAGS: idea\n#+FILETAGS: idea\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n* Idea")
          :unnarrowed t)
         ("m" "Meeting Note" plain "%?"
          :if-new (
@@ -62,19 +68,24 @@
                             ":PROPERTIES:
 :ROAM_EXCLUDE: t
 :END:
-#+TITLE: ${title}\n#+ROAM_TAGS: :meeting:\n#+FILETAGS: :meeting:\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n* Summary \n** SCHEDULED: <%<%Y-%m-%d %a>> \n\n* Present at meeting[0/0]\n - [X] [[id:b459290d-646e-4dfd-82b4-83235c2d63b3][Javeed Ali Khan]] \n\n* Agenda\n - \n\n* Notes\n\n* Actions\n")
+#+TITLE: ${title}\n#+ROAM_TAGS: :meeting:\n#+FILETAGS: :meeting:\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n* Meeting\n** SCHEDULED: <%<%Y-%m-%d %a>> \n\n* Present at meeting[0/0]\n - [X] [[id:b459290d-646e-4dfd-82b4-83235c2d63b3][Javeed Ali Khan]] \n\n* Agenda\n - \n\n* Notes\n\n* Actions\n")
          :unnarrowed t)
         ("h" "Person" plain "%?"
          :if-new (file+head "permanent/${slug}--%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: ${title}\n#+ROAM_TAGS: person\n#+FILETAGS: person\n")
+                            "#+TITLE: ${title}\n#+ROAM_TAGS: person\n#+FILETAGS: person\n\n * Person")
          :unnarrowed t)
         ("o" "Organization" plain "%?"
          :if-new (file+head "permanent/${slug}--%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: ${title}\n#+ROAM_TAGS: organization\n#+FILETAGS: organization\n")
+                            "#+TITLE: ${title}\n#+ROAM_TAGS: organization\n#+FILETAGS: organization\n\n *Organization")
          :unnarrowed t)
         ("w" "Web" plain "%?"
          :if-new (file+head "internet/%<%Y%m%d-%H%M%S>.org"
                             "#+TITLE: ${title}--%<%Y%m%d-%H%M%S>\n#+FILETAGS: web\n")
+         :unnarrowed t)
+        ("a" "Area" plain "%?"
+         ;; Area of responsiblity or interest where some standard needs to be maintained
+         :if-new (file+head "permanent/%<%Y%m%d-%H%M%S>.org"
+                            "#+TITLE: ${title}--%<%Y%m%d-%H%M%S>\n#+FILETAGS: area\n\n *Area")
          :unnarrowed t)
         ))
 
