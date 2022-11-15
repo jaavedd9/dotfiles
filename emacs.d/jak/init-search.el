@@ -35,7 +35,30 @@
       (helm-rg query nil)))
   :bind
   (("<f12>" . helm-all-roam-files)
-   ("<f11>" . helm-rg-all-repos)))
+   ("<f11>" . helm-rg-all-repos))
+
+  :config
+  ;; Add actions for inserting org file link from selected match
+  (defun insert-org-mode-link-from-helm-result (candidate)
+    (interactive)
+    (with-helm-current-buffer
+      (insert (format "[[:%s][%s]]"
+                      ;; (plist-get candidate :file)
+                      (plist-get candidate :key)
+                      ;; Extract the title from the file name
+                      (subst-char-in-string
+                       ?_ ?\s
+                       (first
+                        (split-string
+                         (first
+                          (last
+                           (split-string (plist-get candidate :file) "\\-")))
+                         "\\.")))))))
+
+  (helm-add-action-to-source "Insert org-mode link"
+                             'insert-org-mode-link-from-helm-result
+                             helm-rg-process-source)
+  )
 
 
 ;; ;; deft

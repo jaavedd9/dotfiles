@@ -27,7 +27,8 @@
   ;;  (helm-autoresize-mode 1)
   (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
   (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB work in terminal
-  (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+  (define-key helm-map (kbd "C-c C-a")  'helm-select-action) ; list actions using C-z
+  (define-key helm-map (kbd "C-c C-m")  'helm-select-action) ; list actions using C-z
   ;; to make helm navigation compatible with evil
   ;;https://emacs.stackexchange.com/a/18872/26147
   (define-key helm-map (kbd "C-j") 'helm-next-line)
