@@ -210,6 +210,7 @@
     "oj"  '(org-roam-dailies-capture-today :which-key "roam journal today")
     "or"   '(:ignore t :which-key "Org roam")
     "ort"  '(org-roam-dailies-capture-today :which-key "journal today")
+    "orc"  '(org-roam-link-replace-all :which-key "clean: replace roam links with id links")
     "orr"  '(org-roam-buffer-refresh :which-key "roam link buffer refresh")
     "orl"  '(org-roam-buffer-toggle :which-key "buffer toggle or link buffer")
     "ord"  '(org-roam-dailies-capture-date :which-key "dated journal ")
