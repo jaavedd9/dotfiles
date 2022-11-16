@@ -72,7 +72,7 @@
          :unnarrowed t)
         ("h" "Person" plain "%?"
          :if-new (file+head "permanent/${slug}--%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: ${title}\n#+ROAM_TAGS: person\n#+FILETAGS: person\n\n * Person")
+                            "#+TITLE: ${title}\n#+ROAM_TAGS: person\n#+FILETAGS: person\n\n* Person")
          :unnarrowed t)
         ("o" "Organization" plain "%?"
          :if-new (file+head "permanent/${slug}--%<%Y%m%d-%H%M%S>.org"
@@ -85,7 +85,7 @@
         ("a" "Area" plain "%?"
          ;; Area of responsiblity or interest where some standard needs to be maintained
          :if-new (file+head "permanent/%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: ${title}--%<%Y%m%d-%H%M%S>\n#+FILETAGS: area\n\n *Area")
+                            "#+TITLE: ${title}--%<%Y%m%d-%H%M%S>\n#+FILETAGS: area\n\n* Area")
          :unnarrowed t)
         ))
 
