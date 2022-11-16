@@ -19,7 +19,7 @@
       time-stamp-format "\[%Y-%02m-%02d %3a %02H:%02M\]")
 ;; (add-hook 'before-save-hook 'time-stamp nil)
 
-(add-hook 'before-save-hook #'zp/org-set-last-modified)
+(add-hook 'before-save-hook #'jak/before-saving-org-file)
 
 
   ;;--------------------------
@@ -67,6 +67,16 @@ it can be passed in POS."
         (delete-region (point) (line-end-position))
         (let* ((now (format-time-string "[%Y-%m-%d %a %H:%M]")))
           (insert now)))))
+
+
+(defun jak/before-saving-org-file()
+  (jak/replace-org-roam-links)
+  (zp/org-set-last-modified)
+  )
+
+(defun jak/replace-org-roam-links ()
+  (org-roam-link-replace-all)
+  )
 
   (defun zp/org-set-last-modified ()
     "Update the LAST_MODIFIED file property in the preamble."
