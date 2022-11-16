@@ -76,7 +76,7 @@
          :unnarrowed t)
         ("o" "Organization" plain "%?"
          :if-new (file+head "permanent/${slug}--%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: ${title}\n#+ROAM_TAGS: organization\n#+FILETAGS: organization\n\n *Organization")
+                            "#+TITLE: ${title}\n#+ROAM_TAGS: organization\n#+FILETAGS: organization\n\n* Organization")
          :unnarrowed t)
         ("w" "Web" plain "%?"
          :if-new (file+head "internet/%<%Y%m%d-%H%M%S>.org"
