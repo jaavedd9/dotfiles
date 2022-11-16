@@ -39,12 +39,12 @@
 
   :config
   ;; Add actions for inserting org file link from selected match
+  ;; https://notes.alexkehayias.com/org-roam/?utm_source=pocket_saves
   (defun insert-org-mode-link-from-helm-result (candidate)
     (interactive)
     (with-helm-current-buffer
       (insert (format "[[:%s][%s]]"
-                      ;; (plist-get candidate :file)
-                      (plist-get candidate :key)
+                      (plist-get candidate :file)
                       ;; Extract the title from the file name
                       (subst-char-in-string
                        ?_ ?\s
