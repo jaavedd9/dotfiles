@@ -1,5 +1,20 @@
 (setq org-roam-v2-ack t)
 
+;; ref: https://jethrokuan.github.io/org-roam-guide/
+
+;; (cl-defmethod org-roam-node-type ((node org-roam-node))
+;;   "Return the TYPE of NODE."
+;;   (condition-case nil
+;;       (file-name-nondirectory
+;;        (directory-file-name
+;;         (file-name-directory
+;;          (file-relative-name (org-roam-node-file node) org-roam-directory))))
+;;     (error "")))
+
+(setq org-roam-node-display-template
+      ;; (concat "${title:*} " (propertize "${tags:10} " 'face 'org-tag) "${type:15}" )
+      (concat "${title:*} " (propertize "${tags:15} " 'face 'org-tag))
+      )
 
 ;;(setq org-roam-directory  '/home/jaavedkhan/Dropbox/emacs/org_files/org_roam/files)
 (use-package org-roam
@@ -43,49 +58,49 @@
         ;;  :unnarrowed t)
        ("d" "Permenant Note" plain "%?"
          :if-new (file+head "permanent/${slug}--%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: ${title}\n#+FILETAGS: permanent\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n")
+                            "#+TITLE: ${title}\n#+FILETAGS: permanent\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n - tags :: ")
          :unnarrowed t)
        ("p" "project" plain "%?"
          :if-new (file+head "permanent/${slug}--%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: ${title}\n#+FILETAGS: :permanent:project:\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n* Project\n")
+                            "#+TITLE: ${title}\n#+FILETAGS: :permanent:project:\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n - tags :: \n* Project")
          :unnarrowed t)
 
         ("f" "Fleeting Note" plain "%?"
          :if-new (file+head "fleeting/%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+FILETAGS: fleeting\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n")
+                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+FILETAGS: fleeting\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n - tags :: ")
          :unnarrowed t)
         ("9" "Project Note" plain "%?"
          :if-new (file+head "permenant/%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+FILETAGS: project\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n* Project\n")
+                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+FILETAGS: project\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n - tags :: \n* Project\n")
          :unnarrowed t)
         ("i" "Idea" plain "%?"
          :if-new (file+head "permanent/%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+ROAM_TAGS: idea\n#+FILETAGS: idea\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n* Idea")
+                            "#+TITLE: %<%Y%m%d-%H%M%S>--${title}\n#+ROAM_TAGS: idea\n#+FILETAGS: idea\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n* Idea - tags :: ")
          :unnarrowed t)
         ("m" "Meeting Note" plain "%?"
          :if-new (
                   file+head "meetings/${slug}--%<%Y%m%d-%H%M%S>.org"
-                            ":PROPERTIES:
+                            ":PROPERTIES
 :ROAM_EXCLUDE: t
 :END:
-#+TITLE: ${title}\n#+ROAM_TAGS: :meeting:\n#+FILETAGS: :meeting:\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n* Meeting\n** SCHEDULED: <%<%Y-%m-%d %a>> \n\n* Present at meeting[0/0]\n - [X] [[id:b459290d-646e-4dfd-82b4-83235c2d63b3][Javeed Ali Khan]] \n\n* Agenda\n - \n\n* Notes\n\n* Actions\n")
+#+TITLE: ${title}\n#+ROAM_TAGS: :meeting:\n#+FILETAGS: :meeting:\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n - tags :: \n* Meeting\n** SCHEDULED: <%<%Y-%m-%d %a>> \n\n* Present at meeting[0/0]\n - [X] [[id:b459290d-646e-4dfd-82b4-83235c2d63b3][Javeed Ali Khan]] \n\n* Agenda\n - \n\n* Notes\n\n* Actions \n** TODO")
          :unnarrowed t)
         ("h" "Person" plain "%?"
          :if-new (file+head "permanent/${slug}--%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: ${title}\n#+ROAM_TAGS: person\n#+FILETAGS: person\n\n* Person")
+                            "#+TITLE: ${title}\n#+ROAM_TAGS: person\n#+FILETAGS: person\n\n- tags :: \n* Person")
          :unnarrowed t)
         ("o" "Organization" plain "%?"
          :if-new (file+head "permanent/${slug}--%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: ${title}\n#+ROAM_TAGS: organization\n#+FILETAGS: organization\n\n* Organization")
+                            "#+TITLE: ${title}\n#+ROAM_TAGS: organization\n#+FILETAGS: organization\n\n- tags :: \n* Organization")
          :unnarrowed t)
         ("w" "Web" plain "%?"
          :if-new (file+head "internet/%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: ${title}--%<%Y%m%d-%H%M%S>\n#+FILETAGS: web\n")
+                            "#+TITLE: ${title}--%<%Y%m%d-%H%M%S>\n#+FILETAGS: web\n\n - tags :: ")
          :unnarrowed t)
         ("a" "Area" plain "%?"
          ;; Area of responsiblity or interest where some standard needs to be maintained
          :if-new (file+head "permanent/%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: ${title}--%<%Y%m%d-%H%M%S>\n#+FILETAGS: area\n\n* Area")
+                            "#+TITLE: ${title}--%<%Y%m%d-%H%M%S>\n#+FILETAGS: area\n\n* Area - tags :: ")
          :unnarrowed t)
         ))
 
@@ -167,5 +182,32 @@
          (file+head "%<%Y-%m-%d>.org"
                     "#+title: %<%Y-%m-%d>\n#+filetags: %<:%Y:%B:>"))
         ))
+
+
+;; (use-package consult-notes
+;;   :ensure t
+;;   :straight (:type git :host github :repo "mclear-tools/consult-notes")
+;;   :commands (consult-notes
+;;              consult-notes-search-in-all-notes
+;;              ;; if using org-roam 
+;;              consult-notes-org-roam-find-node
+;;              consult-notes-org-roam-find-node-relation)
+;;   :config
+;;   ;; (setq consult-notes-sources '("Name"  ?key  "path/to/dir")) ;; Set notes dir(s), see below
+;;   (setq consult-notes-sources
+;;       '(("Roam"             ?o "/mnt/data/Dropbox/emacs/org_files/org_roam")
+;;         ("Org"      ?r "/mnt/data/Dropbox/emacs/org_files/org_mode")))
+;;   ;; Set org-roam integration OR denote integration
+;;    ;; (when (locate-library "denote")
+;;     (when (locate-library "org-roam")
+;;   (consult-notes-org-roam-mode)))
+
+;; (defun bms/org-roam-rg-search ()
+;;   "Search org-roam directory using consult-ripgrep. With live-preview."
+;;   (interactive)
+;;   (let ((consult-ripgrep-command "rg --null --ignore-case --type org --line-buffered --color=always --max-columns=500 --no-heading --line-number . -e ARG OPTS"))
+;;     (consult-ripgrep org-roam-directory)))
+
+;; ;;(global-set-key (kbd "C-c rr") 'bms/org-roam-rg-search)
 
 (provide 'init-org-roam)
