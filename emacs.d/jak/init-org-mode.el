@@ -321,6 +321,7 @@ it can be passed in POS."
 (setq org-default-notes-file (concat dropbox-path "emacs/org_files/org_mode/inbox.org"))
 (setq org-agenda-files (list (concat dropbox-path "emacs/org_files/org_mode/agenda/")))
 (setq org-directory (concat dropbox-path "emacs/org_files"))
+
 ;; custom org templates
 (setq org-capture-templates
       '(
@@ -329,7 +330,7 @@ it can be passed in POS."
          "* TODO mini %?\n SCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))  %i\n  %a\n")
         ;; take some action based on this note, either on the same day or soon
         ("f" "Fleeing Note" entry (file+headline  (lambda () (concat dropbox-path "emacs/org_files/org_mode/agenda/fleeting.org")) "Tasks")
-         "* Fleeting note: %?\n  %i\n  %a\n")
+         "* %(org-insert-time-stamp (org-read-date nil t \"+0d\")) %?\n  %i\n  %a\n\n")
         ;; personal tasks
         ("p" "Personal Todo" entry (file+headline (lambda () (concat dropbox-path "emacs/org_files/org_mode/agenda/personal_tasks.org")) "Tasks")
          "* TODO %?  %i\n %a\n")
