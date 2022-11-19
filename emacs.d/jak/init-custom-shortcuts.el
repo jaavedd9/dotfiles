@@ -217,6 +217,7 @@
     "org"   '(:ignore t :which-key "Daily Goto")
     "orgt"  '(org-roam-dailies-goto-today :which-key "goto daily roam journal")
     "orgd"  '(org-roam-dailies-goto-date :which-key "goto dated journal roam")
+    "orm"  '(org-roam-refile :which-key "Roam Refile")
     ;; projectile
     "p"   '(projectile-command-map :which-key "Projectile")
     ;; editing/culling/deleting
