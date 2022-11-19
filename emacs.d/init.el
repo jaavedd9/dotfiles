@@ -10,12 +10,13 @@
 ;; default is 800kb
 ;;; Code:
 ;;(setq debug-on-error t)
+
 ;;(setq gc-cons-threshold 500000000)
 
 ;; evil integration conflicts
 ;; following suggestion mentioned here
 ;; https://www.reddit.com/r/emacs/comments/aybp3b/evilcollection_error/
-(setq evil-want-keybinding nil) 
+(setq evil-want-keybinding nil)
 
 ;; lsp performance https://emacs-lsp.github.io/lsp-mode/page/performance/
 (setq gc-cons-threshold 2 * 1000 * 1000) ;; earlyer it was 10^8
@@ -115,7 +116,7 @@
     ;;    company-try-hard
     company-shell org-caldav projectile helm-projectile zenburn-theme oauth2 ace-jump-mode
     ;; ace-window
-    ace-jump-helm-line git-gutter helm-dash helm-descbinds web-mode emmet-mode
+    ace-jump-helm-line helm-dash helm-descbinds web-mode emmet-mode
     ;; javascript
     js2-mode js2-refactor json-mode ac-js2 js-comint rainbow-delimiters lsp-mode vue-mode
     ;;org-trello
@@ -129,11 +130,10 @@
             (package-install package))) myPackages)
 
 
-(use-package flycheck
-  :ensure t
-  :custom
-  (flycheck-display-errors-delay 0)
-  )
+(use-package 
+  flycheck 
+  :ensure t 
+  :custom (flycheck-display-errors-delay 0))
 ;; On the fly syntax checking
 
 ;; ace-window
@@ -185,31 +185,31 @@
             :prefix "M-m" ("M-m" . which-key-show-full-major-mode) 
             ("M-h" . help-command) 
             :map fk/menu-map 
-            :prefix-map buffers         
+            :prefix-map buffers 
             :prefix "b" 
             :map fk/menu-map 
-            :prefix-map comments        
+            :prefix-map comments 
             :prefix "c" 
             :map fk/menu-map 
-            :prefix-map django          
+            :prefix-map django 
             :prefix "d" 
             :map fk/menu-map 
-            :prefix-map errors          
+            :prefix-map errors 
             :prefix "e" 
             :map fk/menu-map 
-            :prefix-map files           
+            :prefix-map files 
             :prefix "f" 
             :map fk/menu-map 
-            :prefix-map org             
+            :prefix-map org 
             :prefix "o" 
             :map fk/menu-map 
-            :prefix-map text            
+            :prefix-map text 
             :prefix "t" 
             :map fk/menu-map 
             :prefix-map version-control 
             :prefix "v" 
             :map fk/menu-map 
-            :prefix-map windows         
+            :prefix-map windows 
             :prefix "w")
 
 ;; *************************
@@ -219,12 +219,10 @@
 (use-package 
   flycheck 
   :ensure t 
-  :init (global-flycheck-mode)
-  :config
-  (setq flycheck-flake8rc "~/.config/flake8")
-  (setq flycheck-python-mypy-config "~/.config/mypy.ini")
-  (setq-default flycheck-disabled-checkers '(python-pylint))
-  )
+  :init (global-flycheck-mode) 
+  :config (setq flycheck-flake8rc "~/.config/flake8") 
+  (setq flycheck-python-mypy-config "~/.config/mypy.ini") 
+  (setq-default flycheck-disabled-checkers '(python-pylint)))
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
@@ -327,7 +325,7 @@
              ;;    :browser 'google-chrome
              :keybinding "C-m") 
   (defengine github "https://github.com/search?ref=simplesearch&q=%s" 
-             :keybinding "C-h")
+             :keybinding "C-h") 
   (defengine stack-overflow "https://stackoverflow.com/search?q=%s" 
              :keybinding "C-s") 
   (defengine pocket "https://getpocket.com/my-list/search?query=%s" 
@@ -376,9 +374,18 @@
 ;; auto reload externally edited files
 (global-auto-revert-mode t)
 
-;; enable git-gutter mode
-(global-git-gutter-mode +1)
-(custom-set-variables '(git-gutter:handled-backends '(git hg)))
+
+;; disable git gutter in org mode
+(use-package 
+  git-gutter 
+  :ensure t 
+  :config
+  ;; enable git-gutter mode
+  (global-git-gutter-mode +1) 
+  (custom-set-variables '(git-gutter:handled-backends '(git hg)))
+  :hook (git-gutter-mode . (lambda ()
+                           (setq git-gutter:disabled-modes '(org-mode image-mode))
+                        )))
 
 ;; tabs are 4 spaces
 (setq-default tab-width 4 indent-tabs-mode nil)
@@ -438,10 +445,10 @@
   :config (drag-stuff-global-mode 1))
 
 ;; expand region
-;; (use-package 
-;;   expand-region 
-;;   :ensure t 
-;;   :config (global-set-key (kbd "C-=") 'er/expand-region) 
+;; (use-package
+;;   expand-region
+;;   :ensure t
+;;   :config (global-set-key (kbd "C-=") 'er/expand-region)
 ;;   (global-set-key (kbd "C--") 'er/contract-region))
 
 ;; restart emacs
@@ -453,12 +460,11 @@
 (use-package 
   restclient 
   :ensure t 
-  :config
-  ( progn 
-    (use-package 
-      ob-restclient 
-      :ensure) 
-    (org-babel-do-load-languages 'org-babel-load-languages '((restclient . t)))))
+  :config ( progn 
+            (use-package 
+              ob-restclient 
+              :ensure) 
+            (org-babel-do-load-languages 'org-babel-load-languages '((restclient . t)))))
 
 ;; org-trello
 ;; (use-package org-trello
@@ -484,22 +490,20 @@
   :ensure t 
   :after evil 
   :diminish 
-  :config
-  (evil-set-undo-system 'undo-tree) 
+  :config (evil-set-undo-system 'undo-tree) 
   (global-undo-tree-mode 1)
   ;; (setq undo-tree-history-directory-alist (concat user-emacs-directory "undo-tree"))
   (setq undo-tree-history-directory-alist '(("." . "~/.cache/emacs/undo-tree")))
   ;;   https://emacs.stackexchange.com/questions/69779/emacs-get-frozen-due-to-error-reading-undo-tree-history
-  (setq undo-tree-enable-undo-in-region nil)
+  (setq undo-tree-enable-undo-in-region nil) 
   (setq undo-tree-auto-save-history nil)
   ;; https://www.reddit.com/r/emacs/comments/tejte0/undotree_bug_undotree_files_scattering_everywhere/
   )
 
-(defun clean-undo-tree ()
+(defun clean-undo-tree () 
   (interactive)
   ;; (setq buffer-undo-tree nil))
-  (undo-tree-discard-history)
-  )
+  (undo-tree-discard-history))
 ;; (global-set-key [(control c) u] 'clean-undo-tree)
 
 (use-package 
@@ -549,9 +553,9 @@
   (css-mode . rainbow-mode))
 
 
-;; (use-package 
-  ;; format-all 
-  ;; :ensure t)
+;; (use-package
+;; format-all
+;; :ensure t)
 
 
 (use-package 
@@ -562,8 +566,7 @@
 ;; groovy
 
 (use-package 
-  groovy-mode 
-
+  groovy-mode
   :init 
   :mode (("\\.groovy$" . groovy-mode)))
 
@@ -756,15 +759,15 @@
   :config (add-to-list 'auto-mode-alist '("\.hs$" . haskell-mode)))
 
 
-;; (use-package 
-;;   magit-todos 
-;;   :ensure t 
-;;   :commands helm-magit-todos 
-;;   :custom (magit-todos-ignored-keywords '("DONE")) 
-;;   (magit-todos-exclude-globs '("*jquery*.js" "*min.js" "*min.css")) 
-;;   (magit-todos-max-items 30) 
-;;   (magit-todos-auto-group-items 30) 
-;;   :bind* ( :map version-control ("t" . helm-magit-todos)) 
+;; (use-package
+;;   magit-todos
+;;   :ensure t
+;;   :commands helm-magit-todos
+;;   :custom (magit-todos-ignored-keywords '("DONE"))
+;;   (magit-todos-exclude-globs '("*jquery*.js" "*min.js" "*min.css"))
+;;   (magit-todos-max-items 30)
+;;   (magit-todos-auto-group-items 30)
+;;   :bind* ( :map version-control ("t" . helm-magit-todos))
 ;;   :hook (magit-mode . magit-todos-mode))
 
 
@@ -773,12 +776,10 @@
   json-mode 
   :ensure t 
   :defer t 
-  :config
-  (add-hook 'json-mode-hook (lambda () 
+  :config (add-hook 'json-mode-hook (lambda () 
                                       (set (make-local-variable 'company-backends) 
-                                           '(( company-files)))))
-  (define-key json-mode-map (kbd "C-c C-k") nil)
-  )
+                                           '(( company-files))))) 
+  (define-key json-mode-map (kbd "C-c C-k") nil))
 
 (setq delete-old-versions t)
 
@@ -795,16 +796,16 @@
 ;; *** From  David Wilson personal configurations ***
 ;; https://github.com/daviwil/dotfiles/blob/master/Emacs.org#auto-reverting-changed-files
 
-;; (use-package 
-;;   super-save 
+;; (use-package
+;;   super-save
 ;;   :ensure t
 ;;   ;;:defer 1
 ;;   ;;:diminish super-save-mode
 ;;   ;; add integration with ace-window
 ;;   ;; save on find-file
-;;   :config (super-save-mode +1) 
-;;   (setq super-save-auto-save-when-idle t) 
-;;   (setq super-save-remote-files nil) 
+;;   :config (super-save-mode +1)
+;;   (setq super-save-auto-save-when-idle t)
+;;   (setq super-save-remote-files nil)
 ;;   (setq super-save-exclude '(".gpg")))
 
 ;; (require 'super-save)
@@ -933,24 +934,27 @@
 (use-package 
   outline 
   :ensure nil                           ; built-in
-  :config (setq outline-blank-line t) 
+  :config (setq outline-blank-line t)
   ;; leave unhidden blank line before heading
   )
 
-(use-package outline-minor-faces
-  :ensure t
-  :after outline
-  :config (add-hook 'outline-minor-mode-hook
-		      #'outline-minor-faces-mode))
+(use-package 
+  outline-minor-faces 
+  :ensure t 
+  :after outline 
+  :config (add-hook 'outline-minor-mode-hook #'outline-minor-faces-mode))
 
 
 ;; Customize the distracting folding markers.
 ;; replace ... with +
-(set-display-table-slot
-   standard-display-table
-   'selective-display
-   (let ((face-offset (* (face-id 'shadow) (lsh 1 22))))
-     (vconcat (mapcar (lambda (c) (+ face-offset c)) " +"))))
+(set-display-table-slot standard-display-table 'selective-display (let ((face-offset (* (face-id
+                                                                                         'shadow) 
+                                                                                        (lsh 1
+                                                                                             22)))) 
+                                                                    (vconcat (mapcar (lambda (c) 
+                                                                                       (+
+                                                                                        face-offset
+                                                                                        c)) " +"))))
 
 (use-package 
   bicycle 
@@ -982,17 +986,16 @@
 ;;; init.el ends here
 
 
-(use-package editorconfig 
+(use-package 
+  editorconfig 
   :ensure t 
-  :config
-  (eval-after-load 'editorconfig-mode (load-library "editorconfig"))
-  (define-key editorconfig-conf-mode-map (kbd "C-c C-j") nil)
-  (progn
-    (editorconfig-mode 1)
-    (add-hook 'editorconfig-after-apply-functions (lambda (props)
-                                                    (setq web-mode-block-padding 0)))
-    ;; to make previous and next buffer movement compatible
-    ))
+  :config (eval-after-load 'editorconfig-mode (load-library "editorconfig")) 
+  (define-key editorconfig-conf-mode-map (kbd "C-c C-j") nil) 
+  (progn (editorconfig-mode 1) 
+         (add-hook 'editorconfig-after-apply-functions (lambda (props) 
+                                                         (setq web-mode-block-padding 0)))
+         ;; to make previous and next buffer movement compatible
+         ))
 
 (defun copy-current-file-name-on-clipboard () 
   "Put the current file name on the clipboard" 
@@ -1026,8 +1029,7 @@
 
 (setq custom-file "~/.emacs.d/emacs-custom.el")
 (load custom-file)
-(add-hook 'kill-emacs-query-functions
-          'custom-prompt-customize-unsaved-options)
+(add-hook 'kill-emacs-query-functions 'custom-prompt-customize-unsaved-options)
 ;; (customize-save-variable 'custom-file "/home/jaavedkhan/.emacs.d/emacs-custom.el")
 ;; (load custom-file)
 ;; (load custom-file 'noerror 'nomessage)
@@ -1041,25 +1043,26 @@
 
 ;; wakatime-cli installation
 ;; python3 -c "$(wget -q -O - https://raw.githubusercontent.com/wakatime/vim-wakatime/master/scripts/install_cli.py)"
-(use-package wakatime-mode
-  :ensure t
-  :config
-  (global-wakatime-mode)
-  )
+(use-package 
+  wakatime-mode 
+  :ensure t 
+  :config (global-wakatime-mode))
 
-(use-package tldr
+(use-package 
+  tldr 
   :ensure t)
 
-(use-package imenu-list
+(use-package 
+  imenu-list 
   :ensure t)
 
 ;; Only show the tab bar if there are 2 or more tabs
 (setq tab-bar-show 1)
 
-(defun my/switch-to-tab-buffer ()
-  (interactive)
-  (if (project-current)
-      (call-interactively #'project-switch-to-buffer)
+(defun my/switch-to-tab-buffer () 
+  (interactive) 
+  (if (project-current) 
+      (call-interactively #'project-switch-to-buffer) 
     (call-interactively #'switch-to-buffer)))
 
 ;; Turn on tab bar mode after startup
@@ -1070,20 +1073,19 @@
 ;; Save the desktop session
 ;; (desktop-save-mode 1)
 
-(defun load-file-if-exists (path)
-  (if (file-exists-p path)
+(defun load-file-if-exists (path) 
+  (if (file-exists-p path) 
       (load-file path)))
 
 
 ;; (server-start) to make the current emacs run as server or daemon for emacsclient
 (load "server")
-(unless (server-running-p) (server-start))
+(unless (server-running-p) 
+  (server-start))
 
 ;; to remove helm buffers inactive selection from helm previous and next buffers
-(defun my-buffer-predicate (buffer)
-  (if (string-match "helm" (buffer-name buffer))
-      nil
-    t))
+(defun my-buffer-predicate (buffer) 
+  (if (string-match "helm" (buffer-name buffer)) nil t))
 
 (set-frame-parameter nil 'buffer-predicate 'my-buffer-predicate)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
