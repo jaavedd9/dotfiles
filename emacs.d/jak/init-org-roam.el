@@ -83,7 +83,7 @@
                             ":PROPERTIES
 :ROAM_EXCLUDE: t
 :END:
-#+TITLE: ${title}\n#+ROAM_TAGS: :meeting:\n#+FILETAGS: :meeting:\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n* Meeting\n - tags :: \n** SCHEDULED: <%<%Y-%m-%d %a>> \n\n* Present at meeting[0/0]\n - [X] [[id:b459290d-646e-4dfd-82b4-83235c2d63b3][Javeed Ali Khan]] \n\n* Agenda\n - \n\n* Notes\n\n* Actions \n** TODO")
+#+TITLE: ${title}\n#+ROAM_TAGS: :meeting:\n#+FILETAGS: :meeting:\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n* Meeting\n - tags :: \n** SCHEDULED: <%<%Y-%m-%d %a>> \n\n* Present at meeting[0/0]\n - [X] [[id:b459290d-646e-4dfd-82b4-83235c2d63b3][Javeed Ali Khan]] \n\n* Agenda\n - \n\n* Notes\n\n* Questions during the meeting\n\n* Actions \n** TODO")
          :unnarrowed t)
         ("h" "Person" plain "%?"
          :if-new (file+head "permanent/${slug}--%<%Y%m%d-%H%M%S>.org"
@@ -95,12 +95,12 @@
          :unnarrowed t)
         ("w" "Web" plain "%?"
          :if-new (file+head "internet/%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: ${title}--%<%Y%m%d-%H%M%S>\n#+FILETAGS: web\n\n - tags :: \n")
+                            "#+TITLE: ${title}\n#+FILETAGS: web\n\n - tags :: \n")
          :unnarrowed t)
         ("a" "Area" plain "%?"
          ;; Area of responsiblity or interest where some standard needs to be maintained
          :if-new (file+head "permanent/%<%Y%m%d-%H%M%S>.org"
-                            "#+TITLE: ${title}--%<%Y%m%d-%H%M%S>\n#+FILETAGS: area\n\n*Area\n - tags :: \n")
+                            "#+TITLE: ${title}\n#+FILETAGS: area\n\n* Area\n - tags :: \n")
          :unnarrowed t)
         ))
 
