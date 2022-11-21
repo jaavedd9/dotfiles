@@ -1088,6 +1088,11 @@
   (if (string-match "helm" (buffer-name buffer)) nil t))
 
 (set-frame-parameter nil 'buffer-predicate 'my-buffer-predicate)
+
+;; calculations
+(use-package literate-calc-mode
+  :ensure t)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Do any initialization that's specific to this machine
