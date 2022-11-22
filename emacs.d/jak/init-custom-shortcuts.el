@@ -1,4 +1,3 @@
-(load "init-company.el")
 (use-package general
   :ensure t
   :config
@@ -201,7 +200,17 @@
     "omf"  '(copy-current-file-name-on-clipboard :which-key "copy current file name")
     "omp"  '(org-insert-link :which-key "insert node link")
     "on"  '(org-roam-alias-add :which-key "add roam alias")
-    "of"  '(org-roam-node-find :which-key "find node")
+    ;; "of"  '(org-roam-node-find :which-key "find node")
+    "of"   '(:ignore t :which-key "Org roam Find")
+    "off"  '(org-roam-node-find :which-key "Find from all nodes")
+    "ofa"  '(org-roam-node-find :which-key "Find from all nodes")
+    "ofm"  '(jak/org-roam-node-find-meeting :which-key "Find from all meeting nodes")
+    "ofp"  '(jak/org-roam-node-find-project :which-key "Find from all project nodes")
+    "ofh"  '(jak/org-roam-node-find-person :which-key "Find from all person nodes")
+    "ofc"  '(jak/org-roam-node-find-person :which-key "Find from all person nodes")
+    "ofo"  '(jak/org-roam-node-find-organization :which-key "Find from all organization nodes")
+    "ofw"  '(jak/org-roam-node-find-web :which-key "Find from all web nodes")
+
     "oi"  '(org-roam-node-insert :which-key "insert node")
     "ol"  '(org-roam-buffer-toggle :which-key "buffer toggle or link buffer")
     "oc"  '(org-capture :which-key "org capture")
@@ -209,8 +218,18 @@
     "oa"  '(org-agenda :which-key "org agenda")
     "oj"  '(org-roam-dailies-capture-today :which-key "roam journal today")
     "or"   '(:ignore t :which-key "Org roam")
-    "ort"  '(org-roam-dailies-capture-today :which-key "journal today")
     "orc"  '(org-roam-link-replace-all :which-key "clean: replace roam links with id links")
+    "orf"   '(:ignore t :which-key "Org roam Find")
+    "orff"  '(org-roam-node-find :which-key "Find from all nodes")
+    "orfa"  '(org-roam-node-find :which-key "Find from all nodes")
+    "orfm"  '(jak/org-roam-node-find-meeting :which-key "Find from all meeting nodes")
+    "orfp"  '(jak/org-roam-node-find-project :which-key "Find from all project nodes")
+    "orfh"  '(jak/org-roam-node-find-person :which-key "Find from all person nodes")
+    "orfc"  '(jak/org-roam-node-find-person :which-key "Find from all person nodes")
+    "orfo"  '(jak/org-roam-node-find-organization :which-key "Find from all organization nodes")
+    "orfw"  '(jak/org-roam-node-find-web :which-key "Find from all web nodes")
+    "ort"  '(org-roam-dailies-capture-today :which-key "journal today")
+    "ort"  '(org-roam-dailies-capture-today :which-key "journal today")
     "orr"  '(org-roam-buffer-refresh :which-key "roam link buffer refresh")
     "orl"  '(org-roam-buffer-toggle :which-key "buffer toggle or link buffer")
     "ord"  '(org-roam-dailies-capture-date :which-key "dated journal ")
@@ -284,6 +303,7 @@
     "!s"   '(shell-command :which-key "shell command")
     )
   )
+(load "init-company.el")
 
 (bind-key "<backtab>" 'jak/company-to-yasnippet company-active-map)
 

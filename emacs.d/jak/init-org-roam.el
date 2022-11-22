@@ -113,10 +113,10 @@
       ;;    :unnarrowed t))
       '(("i" "internet" plain "%?" :if-new
          (file+head "internet/%<%Y%m%d%H%M>-${slug}.org" 
-                      ":PROPERTIES:
-:ROAM_EXCLUDE: t
-:END:
-#+TITLE: ${title}\n#+ROAM_KEY: ${ref}\n#+fILETAGS: :bookmark:\n#+ROAM_TAGS: :bookmark:\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n* Notes or comments\n\n* [[${ref}][URL]]\n\n* Clipped text\n${body}\n")
+                      ;; ":PROPERTIES:
+;; :ROAM_EXCLUDE: t
+;; :END:
+"#+TITLE: ${title}\n#+ROAM_KEY: ${ref}\n#+fILETAGS: :bookmark:\n#+ROAM_TAGS: :bookmark:\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n* Notes or comments\n\n* [[${ref}][URL]]\n\n* Clipped text\n${body}\n")
          :unnarrowed t)
         ("r" "ref" plain "%?" :if-new
          (file+head "${slug}.org" "#+title: ${title}")
@@ -183,6 +183,31 @@
                     "#+title: %<%Y-%m-%d>\n#+filetags: %<:%Y:%B:>"))
         ))
 
+(defun jak/org-roam-node-find-meeting()
+  (interactive)
+  (org-roam-node-find  :key "meeting ")
+  )
+
+
+(defun jak/org-roam-node-find-project()
+  (interactive)
+  (org-roam-node-find  :key "project ")
+  )
+
+(defun jak/org-roam-node-find-person()
+  (interactive)
+  (org-roam-node-find  :key "person ")
+  )
+
+(defun jak/org-roam-node-find-organization()
+  (interactive)
+  (org-roam-node-find  :key "organization ")
+  )
+
+(defun jak/org-roam-node-find-web()
+  (interactive)
+  (org-roam-node-find  :key "web ")
+  )
 
 ;; (use-package consult-notes
 ;;   :ensure t
