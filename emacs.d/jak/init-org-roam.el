@@ -193,6 +193,11 @@
   (org-roam-node-find  :key "#permanent ")
   )
 
+(defun jak/org-roam-node-find-area()
+  (interactive)
+  (org-roam-node-find  :key "#area ")
+  )
+
 (defun jak/org-roam-node-find-project()
   (interactive)
   (org-roam-node-find  :key "#project ")
