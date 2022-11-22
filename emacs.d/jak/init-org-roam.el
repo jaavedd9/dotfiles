@@ -185,28 +185,32 @@
 
 (defun jak/org-roam-node-find-meeting()
   (interactive)
-  (org-roam-node-find  :key "meeting ")
+  (org-roam-node-find  :key "#meeting ")
   )
 
+(defun jak/org-roam-node-find-permanent()
+  (interactive)
+  (org-roam-node-find  :key "#permanent ")
+  )
 
 (defun jak/org-roam-node-find-project()
   (interactive)
-  (org-roam-node-find  :key "project ")
+  (org-roam-node-find  :key "#project ")
   )
 
 (defun jak/org-roam-node-find-person()
   (interactive)
-  (org-roam-node-find  :key "person ")
+  (org-roam-node-find  :key "#person ")
   )
 
 (defun jak/org-roam-node-find-organization()
   (interactive)
-  (org-roam-node-find  :key "organization ")
+  (org-roam-node-find  :key "#organization ")
   )
 
 (defun jak/org-roam-node-find-web()
   (interactive)
-  (org-roam-node-find  :key "web ")
+  (org-roam-node-find  :key "#web ")
   )
 
 ;; (use-package consult-notes
