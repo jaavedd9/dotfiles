@@ -533,9 +533,10 @@ it can be passed in POS."
 (use-package org-download
   :ensure t
   :after org
-  :config
+  :config 
   (custom-set-variables
    '(org-download-screenshot-method "flameshot gui --raw > %s"))
+  (setq org-download-image-org-width 330)
   :bind
   (:map org-mode-map
         (("s-Y" . org-download-screenshot)
