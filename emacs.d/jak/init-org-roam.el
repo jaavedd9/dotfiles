@@ -116,7 +116,7 @@
                       ;; ":PROPERTIES:
 ;; :ROAM_EXCLUDE: t
 ;; :END:
-"#+TITLE: ${title}\n#+ROAM_KEY: ${ref}\n#+fILETAGS: :bookmark:\n#+ROAM_TAGS: :bookmark:\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n* Notes or comments\n\n* [[${ref}][URL]]\n\n* Clipped text\n${body}\n")
+"#+TITLE: ${title}\n#+ROAM_KEY: ${ref}\n#+fILETAGS: :bookmark:\n#+ROAM_TAGS: :bookmark:\n#+CREATED: %U\n#+LAST_MODIFIED: %U\n\n* Bookmark Notes\n - tags :: \n\n* [[${ref}][URL]]\n\n* Clipped text\n${body}\n")
          :unnarrowed t)
         ("r" "ref" plain "%?" :if-new
          (file+head "${slug}.org" "#+title: ${title}")
@@ -183,39 +183,39 @@
                     "#+title: %<%Y-%m-%d>\n#+filetags: %<:%Y:%B:>"))
         ))
 
-(defun jak/org-roam-node-find-meeting()
+(defun jak/org-roam-node-find-meetings()
   (interactive)
   (org-roam-node-find  :key "#meeting ")
   )
 
-(defun jak/org-roam-node-find-permanent()
+(defun jak/org-roam-node-find-permanents()
   (interactive)
   (org-roam-node-find  :key "#permanent ")
   )
 
-(defun jak/org-roam-node-find-area()
+(defun jak/org-roam-node-find-areas()
   (interactive)
   (org-roam-node-find  :key "#area ")
   )
 
-(defun jak/org-roam-node-find-project()
+(defun jak/org-roam-node-find-projects()
   (interactive)
   (org-roam-node-find  :key "#project ")
   )
 
-(defun jak/org-roam-node-find-person()
+(defun jak/org-roam-node-find-persons()
   (interactive)
   (org-roam-node-find  :key "#person ")
   )
 
-(defun jak/org-roam-node-find-organization()
+(defun jak/org-roam-node-find-organizations()
   (interactive)
   (org-roam-node-find  :key "#organization ")
   )
 
-(defun jak/org-roam-node-find-web()
+(defun jak/org-roam-node-find-bookmarks()
   (interactive)
-  (org-roam-node-find  :key "#web ")
+  (org-roam-node-find  :key "#bookmark ")
   )
 
 ;; (use-package consult-notes
