@@ -535,7 +535,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
                myDefaultLayout =     tall
                                  ||| noBorders tabs
                                  ||| magnify 
-                                 ||| floats
+                                 -- ||| floats -- commented because there is a shortcut already for this
                                  -- ||| magnify
                                  -- ||| tall
                                  -- ||| grid
@@ -543,6 +543,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
                                  -- ||| spirals
                                  -- ||| threeCol
                                  -- ||| threeRow
+
 
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
 myWorkspaces = [" 1 dev ", " 2 www ", " 3 terminal ", " 4 vc ",  " 5 email ", " 6 chat ", " 7 files ", " 8 ", " 9 "]
@@ -626,6 +627,7 @@ myKeys =
     --    , ("M-S-<Return>", shellPrompt dtXPConfig) -- Xmonad Shell Prompt
         -- , ("M-S-<Return>", spawn "dmenu_run -i -p \"Run: \"") -- Dmenu
          -- , ("M-S-<Return>", spawn "rofi -show drun -config ~/.config/rofi/themes/dt-dmenu.rasi -display-drun \"Run: \" -drun-display-format \"{name}\"") -- Rofi
+        , ("M-S-<Right>", shiftTo Next nonNSP >> moveTo Next nonNSP)  -- Shifts focused window to next ws JAK: INTER WORKSPACE
          , ("M-<Space>", spawn "rofi -combi-modi window,drun -show combi -font \"mono 20\" -modi combi -display-drun -show-icons \"true\"  \"Run: \" -drun-display-format \"{name}\"") -- Rofi
 
     -- Other Prompts
@@ -654,19 +656,22 @@ myKeys =
         , ("M-S-a", killAll)   -- Kill all windows on current workspace
     -- JAK
       
-    -- Workspaces
+    -- move in Workspaces
         -- , ("M-.", nextScreen)  -- Switch focus to next monitor
         -- , ("M-,", prevScreen)  -- Switch focus to prev monitor
         , ("M-.", windows W.focusDown)    -- Move focus to the next window
         , ("M-,", windows W.focusUp)      -- Move focus to the prev window
         -- , ("M-S-<KP_Add>", shiftTo Next nonNSP >> moveTo Next nonNSP)       -- Shifts focused window to next ws
         -- , ("M-S-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP)  -- Shifts focused window to prev ws
-        , ("M-S-<Right>", shiftTo Next nonNSP >> moveTo Next nonNSP)       -- Shifts focused window to next ws JAK: INTER WORKSPACE
         , ("M-S-<Left>", shiftTo Prev nonNSP >> moveTo Prev nonNSP)  -- Shifts focused window to prev ws JAK: INTER WORKSPACE
 
-    -- Floating windows
+    -- Floating and splitting windows
         , ("M-f", sendMessage (T.Toggle "floats")) -- Toggles my 'floats' layout
-        , ("M-t", withFocused $ windows . W.sink)  -- Push floating window back to tile
+        -- , ("M-f", sendMessage (T.Toggle "magnify")) -- Toggles my 'floats' layout
+        -- TODO check why this is not working
+        , ("M-t", sendMessage (T.Toggle "tall")) -- Toggles my 'tabs' layout
+        -- , ("M-s", sendMessage (T.Toggle "floats")) -- Toggles my 'tall' layout
+        -- , ("M-t", withFocused $ windows . W.sink)  -- Push floating window back to tile
         , ("M-S-t", sinkAll)                       -- Push ALL floating windows to tile
 
     -- Increase/decrease spacing (gaps)
