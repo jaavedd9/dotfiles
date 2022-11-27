@@ -136,7 +136,11 @@
     ;; i(imaginary) or complex number or math
     "i"   '(:ignore t :which-key "maths")
     "ii"  '(quick-calc :which-key "quick-calc")
-    "ic"  '(calc :which-key "calc")
+    "iq"  '(quick-calc :which-key "quick-calc")
+    "ic"  '(calc :which-key "calc mode")
+    "ix"  '(literate-calc-eval-line :which-key "literate calc eval line")
+    ;; "ir"  '(literate-calc-remove-results :which-key "literate calc remove results")
+    ;; "ii"  '(literate-calc-insert-results :which-key "literate calc insert results")
     ;; lsp
     "l"   '(:ignore t :which-key "lsp")
     "lr"  '(lsp-rename :which-key "rename")

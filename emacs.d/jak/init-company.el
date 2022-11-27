@@ -37,7 +37,7 @@
   ;; set default `company-backends'
   (setq company-backends
         '((company-files          ; files & directory
-           company-tabnine        ; tabnine 
+           ;; company-tabnine        ; tabnine 
            ;; M-X company-tabnine-install-binary to install requried binaries
            company-keywords       ; keywords
            company-capf)  ; completion-at-point-functions
