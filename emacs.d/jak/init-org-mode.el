@@ -303,7 +303,8 @@ it can be passed in POS."
    (plantuml . t)
    (ditaa . t)
    (shell . t)
-
+   (calc . t)
+   ;; (literate-calc . t)
    ))
 
 (global-set-key (kbd "<f5>") 'org-capture)
@@ -652,6 +653,7 @@ it can be passed in POS."
 ;; David Wilson
 ;; This is needed as of Org 9.2
 (require 'org-tempo)
+;; (add-to-list 'org-modules 'org-tempo t)
 
 (add-to-list 'org-structure-template-alist '("sh" . "src sh"))
 (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
@@ -662,7 +664,8 @@ it can be passed in POS."
 (add-to-list 'org-structure-template-alist '("yaml" . "src yaml"))
 (add-to-list 'org-structure-template-alist '("json" . "src json"))
 (add-to-list 'org-structure-template-alist '("plant" . "src plantuml"))
-
+(add-to-list 'org-structure-template-alist '("calc" . "src calc"))
+(add-to-list 'org-structure-template-alist '("literate-calc" . "src literate-calc"))
 
 ;;We want the same syntax highlighting in source blocks as in the native language files.
 (setq org-src-fontify-natively t
