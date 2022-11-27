@@ -133,6 +133,10 @@
     "hbb"  '(helm-bookmarks :which-key "helm bookmarks")
     "hbc"  '(bookmark-set :which-key "create bookmark")
     "hbd"  '(bookmark-delete :which-key "delete bookmark")
+    ;; i(imaginary) or complex number or math
+    "i"   '(:ignore t :which-key "maths")
+    "ii"  '(quick-calc :which-key "quick-calc")
+    "ic"  '(calc :which-key "calc")
     ;; lsp
     "l"   '(:ignore t :which-key "lsp")
     "lr"  '(lsp-rename :which-key "rename")
