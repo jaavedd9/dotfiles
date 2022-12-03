@@ -464,7 +464,8 @@
             (use-package 
               ob-restclient 
               :ensure) 
-            (org-babel-do-load-languages 'org-babel-load-languages '((restclient . t)))))
+            (
+             org-babel-do-load-languages 'org-babel-load-languages '((restclient . t)))))
 
 ;; org-trello
 ;; (use-package org-trello

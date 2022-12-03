@@ -90,12 +90,14 @@
 ;; ansible-vault
 (use-package ansible-vault 
   :ensure t 
-  :init (add-hook 'yaml-mode-hook 'ansible-vault-mode-maybe
-                  (add-hook 'yaml-mode-hook (lambda () 
-                                              (and (string= (file-name-base) "encrypted") 
-                                                   (ansible-vault-mode 1))))) 
-  :config
-  (add-to-list 'auto-mode-alist '("/encrypted$" . yaml-mode)))
+  ;; :init (
+  ;;        add-hook 'yaml-mode-hook 'ansible-vault-mode-maybe
+  ;;                 (add-hook 'yaml-mode-hook (lambda () 
+  ;;                                             (and (string= (file-name-base) "encrypted") 
+  ;;                                                  (ansible-vault-mode 1))))) 
+  ;; :config
+  ;; (add-to-list 'auto-mode-alist '("/encrypted$" . yaml-mode))
+  )
 
   
 (provide 'init-ansible)
