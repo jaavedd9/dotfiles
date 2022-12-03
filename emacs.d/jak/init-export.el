@@ -42,6 +42,17 @@
 
 (add-to-list 'after-save-hook #'org-hugo--org-roam-save-buffer)
 
+;; to fix the problem of explorting to hugo
+;; with borken links in markdown
+;; https://github.com/kaushalmodi/ox-hugo/issues/500#issuecomment-1006674469
+(defun replace-in-string (what with in)
+  (replace-regexp-in-string (regexp-quote what) with in nil 'literal))
+
+(defun zeeros/fix-doc-path (path)
+  (replace-in-string "permanent/" "" (replace-in-string "../" "" path)))
+
+(advice-add 'org-export-resolve-id-link :filter-return #'zeeros/fix-doc-path)
+
 
 (defun my-org-hugo-org-roam-sync-all()
   ""
