@@ -665,7 +665,7 @@ it can be passed in POS."
 (add-to-list 'org-structure-template-alist '("json" . "src json"))
 (add-to-list 'org-structure-template-alist '("plant" . "src plantuml"))
 (add-to-list 'org-structure-template-alist '("calc" . "src calc"))
-(add-to-list 'org-structure-template-alist '("literate-calc" . "src literate-calc"))
+(add-to-list 'org-structure-template-alist '("lc" . "src literate-calc"))
 
 ;;We want the same syntax highlighting in source blocks as in the native language files.
 (setq org-src-fontify-natively t
@@ -778,6 +778,15 @@ it can be passed in POS."
 
 ;; in org mode imenu index headlines of level 2 not below that
 (setq org-imenu-depth 7)
+
+;; more details of about this here
+;;https://github.com/nobiot/org-transclusion
+;; https://www.youtube.com/watch?v=KxDrE3spAL8
+
+(use-package org-transclusion
+              :ensure t
+              :after org
+              )
 
 (provide 'init-org-mode)
 ;;; init-org.el ends here

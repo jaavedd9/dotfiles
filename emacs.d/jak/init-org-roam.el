@@ -244,4 +244,13 @@
 
 ;; ;;(global-set-key (kbd "C-c rr") 'bms/org-roam-rg-search)
 
+;; more details of about this here
+;;https://github.com/nobiot/org-transclusion
+;; https://www.youtube.com/watch?v=KxDrE3spAL8
+
+(use-package org-transclusion
+              :ensure t
+              :after org
+              )
+
 (provide 'init-org-roam)
