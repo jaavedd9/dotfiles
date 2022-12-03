@@ -205,6 +205,7 @@
     "omc"  '(org-id-get-create :which-key "org-id-get-create")
     "omm"  '(org-store-link :which-key "org-store-link store link to current location")
     "omy"  '(org-store-link :which-key "org-store-link store link to current location")
+    "oy"  '(org-store-link :which-key "org-store-link store link to current location")
     "omf"  '(copy-current-file-name-on-clipboard :which-key "copy current file name")
     "omp"  '(org-insert-link :which-key "insert node link")
     "on"  '(org-roam-alias-add :which-key "add roam alias")
