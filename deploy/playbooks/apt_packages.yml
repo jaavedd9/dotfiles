@@ -108,6 +108,7 @@
   apt:
     deb: "{{ dropbox_deb_url }}"
   become: true
+  tags: dropbox
 
 - name: intall rescuetime
   apt:
