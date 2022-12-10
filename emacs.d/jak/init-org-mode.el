@@ -567,7 +567,8 @@ it can be passed in POS."
 
 (add-to-list 'org-emphasis-alist
              '(
-               "*" (:foreground "yellow") ;; bold
+               ;; "*" (:foreground "yellow") ;; bold
+               "*" (:foreground "green") ;; bold
                "/" (:foreground "green") ;; italics
                "_" (:foreground "red") ;; underline
                ;;"=" (:foreground "orange") ;; verbatim
