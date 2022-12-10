@@ -27,3 +27,4 @@
       - epc
   become: true
   become_user: "{{ workstation_user }}"
+  tags: python
