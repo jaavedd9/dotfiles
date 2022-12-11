@@ -191,12 +191,12 @@
     "os"  '(ispell-word :which-key "check spelling")
     "oe"   '(:ignore t :which-key "English")
     "oed"  '(powerthesaurus-lookup-dwim :which-key "thesaurus dwim")
-    "oew"  '(define-word-at-point :which-key "define word at point")
+    "oew"  '(dictionary-search :which-key "define word at point")
+    "oep"  '(define-word-at-point :which-key "define word at point")
     "oeg"   '(:ignore t :which-key "langtool grammar check")
     "oegb"  '(langtool-check :which-key "check grammar begin")
     "oege"  '(langtool-check-done :which-key "check grammar done")
-
-    "od"  '(dictionary-search :which-key "dictionary search")
+    "od"  '(org-download-clipboard :which-key "copy/download from clipboard")
     "ot"  '(org-roam-tag-add :which-key "add roam tag")
     ;; makki = copy
     "om"   '(:ignore t :which-key "copy links to nodes")
