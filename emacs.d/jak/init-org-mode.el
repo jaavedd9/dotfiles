@@ -788,6 +788,9 @@ it can be passed in POS."
               :ensure t
               :after org
               )
+
+;; from
+;; https://stackoverflow.com/a/38277039/5305401
 (defun org-table-transform-in-place ()
   "Just like `ORG-TABLE-EXPORT', but instead of exporting to a
   file, replace table with data formatted according to user's
