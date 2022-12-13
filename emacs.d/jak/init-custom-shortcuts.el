@@ -304,7 +304,8 @@
     "SPC" '(helm-projectile-find-file :which-key "projectile find file")
     ;; "SPC" '(helm-mini :which-key "opened buffers and recent files")
     ;; "/"   '(helm-occur :which-key "helm occur local buffer")
-    "/"   '(helm-swoop :which-key "helm swoop local buffer")
+    ;; "/"   '(helm-swoop :which-key "helm swoop local buffer")
+    "/"   '(org-roam-node-find :which-key "find node")
     ;; "j"  '(helm-projectile-rg :which-key "rg, rip grep")
     ;; in normal mode
     ;; "u"   '(universal-argument :which-key "universal argument")
