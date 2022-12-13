@@ -14,7 +14,7 @@
   :init ;; tweak evil's configuration before loading it
   (progn 
     (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
-    (setq evil-want-C-u-scroll t) ;; to use C-u, bound to universal argument, to move up and down
+    (setq evil-want-C-u-scroll t) ;; to use C-u, bound to universal argument or prefix argument, to move up and down
     ;; (setq evil-vsplit-window-right t)
     ;; (setq evil-split-window-below t)
     (evil-mode)
@@ -26,6 +26,7 @@
     (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state) 
     (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up) 
     (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up) 
+    (define-key evil-visual-state-map (kbd "C-u") 'universal-argument) 
     ;; jak remap evil-search-forward
     (define-key evil-normal-state-map (kbd "/") 'helm-swoop) 
     ;; (define-key evil-visual-state-map (kbd "<tab>") 'bicycle-cycle)) 
