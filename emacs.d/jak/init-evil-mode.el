@@ -26,6 +26,8 @@
     (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state) 
     (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up) 
     (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up) 
+    ;; jak remap evil-search-forward
+    (define-key evil-normal-state-map (kbd "/") 'helm-swoop) 
     ;; (define-key evil-visual-state-map (kbd "<tab>") 'bicycle-cycle)) 
     ;; (define-key evil-normal-state-map (kbd "<tab>") 'bicycle-cycle)) 
     ;; evil-indent-plus
