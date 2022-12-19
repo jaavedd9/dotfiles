@@ -287,8 +287,12 @@ it can be passed in POS."
   :ensure t
   :init
   (setq plantuml-default-exec-mode 'jar)  (setq org-confirm-babel-evaluate nil)
-  (setq plantuml-jar-path  (concat dropbox-path "emacs/plantuml/plantuml.jar"))
-  (setq org-plantuml-jar-path (expand-file-name (concat dropbox-path "emacs/plantuml/plantuml.jar")))
+  ;; https://github.com/igorrosenberg/grails-plugin-uml-class-diagram/issues/12#issuecomment-99883068
+  ;; plantuml requires graphviz apt package
+  ;; (setq plantuml-jar-path  (concat dropbox-path "emacs/plantuml/plantuml.jar"))
+  (setq plantuml-jar-path  (concat dropbox-path "emacs/plantuml/plantuml-1.2022.14.jar"))
+  ;; (setq org-plantuml-jar-path (expand-file-name (concat dropbox-path "emacs/plantuml/plantuml.jar")))
+  (setq org-plantuml-jar-path (expand-file-name (concat dropbox-path "emacs/plantuml/plantuml-1.2022.14.jar")))
   (setq org-startup-with-inline-images t)
   (add-to-list 'org-src-lang-modes '("plantuml" . plantuml))
   )

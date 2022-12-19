@@ -98,6 +98,7 @@
       - thefuck
       - curl
       - zip
+      - graphviz # for plantuml
 
 - name: intall copyq
   apt:
