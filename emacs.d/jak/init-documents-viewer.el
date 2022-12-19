@@ -26,8 +26,9 @@
 (use-package org-noter
   :after org
   :ensure t
-  :config (setq org-noter-default-notes-file-names '("notes.org")
-                org-noter-notes-search-path '("/mnt/data/Dropbox/emacs/org_files/doc-notes")
+  :config (
+           ;; setq org-noter-default-notes-file-names '("notes.org")
+                ;; org-noter-notes-search-path '("/mnt/data/Dropbox/emacs/org_files/doc-notes")
                 ;;org-noter-separate-notes-from-heading t
                 ))
 
