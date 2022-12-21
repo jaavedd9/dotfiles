@@ -7,7 +7,10 @@
   ("C-x C-f" . helm-find-files)
   ("M-y" . helm-show-kill-ring)
   ("C-x b" . helm-mini)
-  :requires helm-config
+  ;; :requires helm-autoloads ;; needed for helm action open file externally to work
+  ;; :preface (require 'helm-autoloads)
+  ;; :preface (require 'helm-configs)
+  ;; causing org roam find node to break
   :config
   (setq helm-buffers-fuzzy-matching t
         helm-recentf-fuzzy-match    t
