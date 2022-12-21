@@ -987,16 +987,19 @@
 ;;; init.el ends here
 
 
-(use-package 
-  editorconfig 
+(use-package editorconfig
   :ensure t 
   :config (eval-after-load 'editorconfig-mode (load-library "editorconfig")) 
-  (define-key editorconfig-conf-mode-map (kbd "C-c C-j") nil) 
-  (progn (editorconfig-mode 1) 
-         (add-hook 'editorconfig-after-apply-functions (lambda (props) 
-                                                         (setq web-mode-block-padding 0)))
+  ;; :config
+  ;; (define-key editorconfig-conf-mode-map (kbd "C-c C-j") nil) 
+  ;; (progn (editorconfig-mode 1) 
+         ;; (add-hook 'editorconfig-after-apply-functions (lambda (props) 
+                                                         ;; (setq web-mode-block-padding 0)))
          ;; to make previous and next buffer movement compatible
-         ))
+  ;; )
+ ;; :bind (:map editorconfig-mode-map
+ ;;            ("C-c C-j" . nil))
+)
 
 (defun copy-current-file-name-on-clipboard () 
   "Put the current file name on the clipboard" 

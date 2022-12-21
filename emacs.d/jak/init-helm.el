@@ -21,7 +21,7 @@
   ;;(global-set-key (kbd "C-c C-i") 'helm-multi-swoop)
   ;;(global-set-key (kbd "C-x C-i") 'helm-multi-swoop-all)
   (global-set-key (kbd "C-c C-b") 'helm-bookmarks)
-  (require 'helm-config)
+  ;; (require 'helm-config)
   (helm-mode 1)
   ;;  (setq helm-split-window-inside-p t
   ;;  helm-move-to-line-cycle-in-source t)
