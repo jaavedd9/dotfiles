@@ -290,6 +290,8 @@
          (screen-size (string-to-number (shell-command-to-string command))))
     (if (or (> screen-size 16) (= screen-size 0)) 132 150)) ;; 132 the default fontsize size/10, I think
   )  ; screen-size=0 if command gives error
+
+(defconst fk/default-font-size 168)
 (defconst fk/default-icon-size 18)
 
 (defconst fk/variable-pitch-font-family "Noto Serif")
