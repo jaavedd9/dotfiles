@@ -7,6 +7,7 @@
   ("C-x C-f" . helm-find-files)
   ("M-y" . helm-show-kill-ring)
   ("C-x b" . helm-mini)
+  :requires helm-config
   :config
   (setq helm-buffers-fuzzy-matching t
         helm-recentf-fuzzy-match    t
@@ -37,6 +38,18 @@
   (define-key helm-map (kbd "C-j") 'helm-next-line)
   (define-key helm-map (kbd "C-k") 'helm-previous-line)
   (define-key helm-map (kbd "C-c C-k") nil)
+
+  ;; (define-key helm-find-files-map (kbd "<right>") 'helm-ff-run-open-file-externally) ; open files externally; works for helm-find-files
+
+  ;; (setq helm-external-programs-associations
+  ;; '(("pdf" ."evince")
+  ;;   ("html" . "chrome")
+  ;;   ("mp3" . "vlc")
+  ;;   ("mp4" . "vlc")
+  ;;   ("jpeg" . "feh")
+  ;;   ("png" . "feh"))
+  ;; )
+
   (setq
       helm-M-x-fuzzy-match                  t
       helm-bookmark-show-location           t
