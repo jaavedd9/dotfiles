@@ -380,10 +380,10 @@ it can be passed in POS."
 (setq org-refile-allow-creating-parent-nodes 'confirm)
 
 ;;org -bullet
-;; (use-package org-bullets
-;;       :ensure t
-;;       :config
-;;       (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+(use-package org-bullets
+      :ensure t
+      :config
+      (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (use-package org-superstar
   :ensure t
