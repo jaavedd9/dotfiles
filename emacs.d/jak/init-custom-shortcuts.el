@@ -120,6 +120,7 @@
     "hs"   '(:ignore t :which-key "helm search/find")
     "hsf"  '(helm-find :which-key "Helm Find: find files recursively in current directory")
     "hss"  '(helm-projectile-ag :which-key "ag, silver searcher")
+    "hsr"  '(helm-projectile-rg :which-key "rg, rip grep")
     "hsg"  '(helm-projectile-rg :which-key "rg, rip grep")
     "hsn"  '(helm-all-roam-files :which-key "search in notes")
     "hsc"  '(helm-rg-all-repos :which-key "search in code")
