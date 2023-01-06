@@ -3,7 +3,9 @@
   :ensure t            ;Auto-install thepackage from Melpa (optional)
   :after ox
   :config
-  (setq org-hugo-base-dir (concat dropbox-path "emacs/hugo/braindump"))
+  ;; (setq org-hugo-base-dir (concat dropbox-path "emacs/hugo/braindump"))
+  (setq org-hugo-base-dir (concat (expand-file-name "Documents/hugo/braindump" "~")))
+  (setq org-hugo-section "notes")
   ;;  (setq org-hugo-section "braindump")
   ;;  (setq org-hugo-base-dir (concat (dropbox-path )))
   )
