@@ -1097,6 +1097,15 @@
 (use-package literate-calc-mode
   :ensure t)
 
+;; chatgpt
+(use-package chatgpt
+  :straight (:host github :repo "joshcho/ChatGPT.el" :files ("dist" "*.el"))
+  :init
+  (require 'python)
+  (setq chatgpt-repo-path "~/.emacs.d/straight/repos/ChatGPT.el/")
+  (setq python-interpreter "python3")
+  :bind ("C-c q" . chatgpt-query))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Do any initialization that's specific to this machine
