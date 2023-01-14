@@ -253,4 +253,7 @@
               :after org
               )
 
+
+(add-to-list 'magit-section-initial-visibility-alist (cons 'org-roam-node-section 'hide))
+
 (provide 'init-org-roam)
