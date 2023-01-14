@@ -34,7 +34,7 @@
       )))
 (add-hook 'org-export-before-processing-hook #'org-hugo--org-roam-backlinks)
 
-(setq org-export-exclude-tags '("noexport" "private" "pain" "person" "meeting" "project"))
+(setq org-export-exclude-tags '("noexport" "private" "pain" "person" "meeting" "project" "organization"))
 (setq org-hugo-auto-set-lastmod t)
 
 (defun org-hugo--org-roam-save-buffer(&optional no-trace-links)
