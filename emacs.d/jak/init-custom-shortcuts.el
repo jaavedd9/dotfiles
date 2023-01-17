@@ -348,10 +348,10 @@
 ;; (global-set-key (kbd "M-]") 'next-buffer)
 ;; (global-set-key (kbd "M-[") 'previous-buffer)
 
-(global-set-key (kbd "C-c C-j") 'previous-buffer)
-(global-set-key (kbd "C-c j") 'previous-buffer)
-(global-set-key (kbd "C-c C-k") 'next-buffer)
-(global-set-key (kbd "C-c k") 'next-buffer)
+(global-set-key (kbd "C-c C-k") 'previous-buffer)
+(global-set-key (kbd "C-c k") 'previous-buffer)
+(global-set-key (kbd "C-c C-j") 'next-buffer)
+(global-set-key (kbd "C-c j") 'next-buffer)
 
 (global-set-key (kbd "<M-up>") 'drag-stuff-up)
 (global-set-key (kbd "<M-down>") 'drag-stuff-down)
