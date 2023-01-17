@@ -2,6 +2,10 @@
 (use-package helm
   :ensure t
   :defer 2
+  :init
+  (progn
+    (require 'helm-external)
+    )
   :bind
   ("M-x" . helm-M-x)
   ("C-x C-f" . helm-find-files)
@@ -12,15 +16,6 @@
   ;; :preface (require 'helm-configs)
   ;; causing org roam find node to break
   :config
-  (setq helm-buffers-fuzzy-matching t
-        helm-recentf-fuzzy-match    t
-        helm-full-frame nil;; to select candidates in the same window
-        helm-split-window-default-side 'same
-        helm-M-x-fuzzy-match t ;; optional fuzzy matching for helm-M-x
-        helm-recentf-fuzzy-match t
-        helm-mode-fuzzy-match t
-        helm-completion-in-region-fuzzy-match t
-        )
   (global-set-key (kbd "C-x C-i") 'helm-resume)
   ;;(global-set-key (kbd "C-c C-i") 'helm-multi-swoop)
   ;;(global-set-key (kbd "C-x C-i") 'helm-multi-swoop-all)
@@ -42,7 +37,7 @@
   (define-key helm-map (kbd "C-k") 'helm-previous-line)
   (define-key helm-map (kbd "C-c C-k") nil)
 
-  ;; (define-key helm-find-files-map (kbd "<right>") 'helm-ff-run-open-file-externally) ; open files externally; works for helm-find-files
+  (define-key helm-find-files-map (kbd "<right>") 'helm-ff-run-open-file-externally) ; open files externally; works for helm-find-files
 
   ;; (setq helm-external-programs-associations
   ;; '(("pdf" ."evince")
@@ -53,18 +48,23 @@
   ;;   ("png" . "feh"))
   ;; )
 
-  (setq
-      helm-M-x-fuzzy-match                  t
-      helm-bookmark-show-location           t
-      helm-buffers-fuzzy-matching           t
-      helm-completion-in-region-fuzzy-match t
-      helm-file-cache-fuzzy-match           t
-      helm-imenu-fuzzy-match                t
-      helm-mode-fuzzy-match                 t
-      helm-locate-fuzzy-match               t 
-      helm-quick-update                     t
-      helm-recentf-fuzzy-match              t
-      helm-semantic-fuzzy-match             t)
+  ;; (setq
+  ;;     helm-M-x-fuzzy-match t ;; optional fuzzy matching for helm-M-x
+  ;;     helm-bookmark-show-location           t
+  ;;     helm-buffers-fuzzy-matching           t
+  ;;     helm-completion-in-region-fuzzy-match t
+  ;;     helm-file-cache-fuzzy-match           t
+  ;;     helm-imenu-fuzzy-match                t
+  ;;     helm-mode-fuzzy-match                 t
+  ;;     helm-locate-fuzzy-match               t 
+  ;;     helm-quick-update                     t
+  ;;     helm-recentf-fuzzy-match              t
+  ;;     helm-semantic-fuzzy-match             t
+  ;;     helm-full-frame nil;; to select candidates in the same window
+  ;;     helm-split-window-default-side 'same
+  ;;     helm-mode-fuzzy-match t
+  ;;     helm-completion-in-region-fuzzy-match t
+  ;;     )
   )
 
 
