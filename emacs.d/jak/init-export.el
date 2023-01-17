@@ -56,7 +56,7 @@
 (advice-add 'org-export-resolve-id-link :filter-return #'zeeros/fix-doc-path)
 
 
-(defun my-org-hugo-org-roam-sync-all()
+(defun jak-org-roam-export-all-to-hugo()
   ""
   (interactive)
   (dolist (fil (org-roam--list-files org-roam-directory))
@@ -130,7 +130,7 @@
 ;;                       "\n\n"))))
 ;;       (insert "\n\n* No backlinks!"))))
 
-;; (defun my-org-hugo-org-roam-sync-all()
+;; (defun jak-org-roam-export-all-to-hugo()
 ;;   ""
 ;;   (interactive)
 ;;   (dolist (fil (split-string (string-trim (shell-command-to-string (concat "ls " org-roam-directory "/*.org")))))
