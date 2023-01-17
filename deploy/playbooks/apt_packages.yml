@@ -98,6 +98,7 @@
       - thefuck
       - curl
       - zip
+      - python-is-python3
       - graphviz # for plantuml
 
 - name: intall copyq
